@@ -1,0 +1,24 @@
+@import "tailwindcss";
+/* @import url('https://fonts.googleapis.com/css?family=Proxima+Nova'); */
+@theme {
+  --font-poppins:  "Poppins", sans-serif; 
+  --font-proxima:   "proxima-nova", sans-serif;
+  --color-primary: #262626; 
+  --color-primary-dark: #22262a; 
+  --color-skyblue: #33a0ff; 
+  --color-natural-blue: #223263; 
+  --color-natural-gray: #9098b1; 
+  --color-primary-red: #fb7181; 
+  --color-primary-blue: #40bfff; 
+  --color-secondry-red: #ff4858; 
+  --color-lightgray: #c1c8ce; 
+  --color-lightgray: #FAFAFB; 
+}
+@layer utilities{
+  .container{
+    @apply max-w-[1294px] w-full mx-auto px-5
+  }
+}
+.active{
+  color: #40bfff;
+}
