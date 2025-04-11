@@ -84,7 +84,7 @@ const Header = () => {
         </div>
       </section>
       <section>
-        <div className="container">
+        <div className="container pb-[26.26px]">
           <div className="flex pt-[26.26px] justify-between">
             <div className="flex w-[134.32px] justify-between items-center">
                   <img src={icon} alt="icon" />

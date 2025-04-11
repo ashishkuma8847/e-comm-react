@@ -1,8 +1,14 @@
 import React from 'react'
+import Flashoff from '../Home/Flashoff'
+import Saller from '../Home/Saller'
 
 const Home = () => {
   return (
-    <div></div>
+    <>
+    
+    <Flashoff/>
+    <Saller/>
+    </>
   )
 }
 

@@ -1,0 +1,53 @@
+[
+    {
+        "image":"../../public/images/blackpurspreview.png",
+        "title":"FS - QUILTED MAXI CROSS BAG",
+        "titlewidth":"w-[202.18px]",
+        "titletop":" top-[29.04px]",
+        "titleleft":"left-[52.43px]",
+        "titleright":"right-[]",
+        "titlebottom":"bottom-[]",
+        "discountbottom":"bottom-[70.41px]",
+        "discountleft":"left-[52.43px]",
+        "discountright":"right-[]",
+        "discounttop":" top-[]",
+        "pricebottom":"bottom-[41.49px]",
+        "priceright":"right-[22.37px]",
+        "pricetop":" top-[]",
+        "priceleft":"left-[]"
+    },
+    {
+        "image":"../../public/images/yellowproduct.png",
+        "title":"FS - Nike Air Max 270 React...",
+        "titlewidth":"w-[178.24px]",
+        "titletop":" top-[29.04px]",
+        "titleleft":"left-[52.43px]",
+        "titleright":"right-[]",
+        "titlebottom":"bottom-[]",
+        "discountbottom":"bottom-[30.99px]",
+        "discountleft":"left-[145.34px]",
+        "discountright":"right-[]",
+        "discounttop":" top-[]",
+        "pricebottom":"bottom-[]",
+        "priceright":"right-[35.39px]",
+        "pricetop":" top-[20.04px]",
+        "priceleft":"left-[]"
+    },
+    {
+        "image":"../../public/images/redProduct.png",
+        "title":"FS - Nike Air Max 270 React...",
+        "titlewidth":"w-[171.65px]",
+        "titletop": "top-[31.95px]",
+        "titleleft":"left-[44.64px]",
+        "titleright":"right-[]",
+        "titlebottom":"bottom-[]",
+        "discountbottom":"bottom-[]",
+        "discountleft":"left-[52.84px]",
+        "discountright":"right-[]",
+        "discounttop":" top-[112.47px]",
+        "pricebottom":"bottom-[14.49px]",
+        "priceright":"right-[33.06px]",
+        "pricetop":" top-[]",
+        "priceleft":"left-[]"
+    }
+]
