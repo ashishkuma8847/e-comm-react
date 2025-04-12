@@ -35,8 +35,16 @@ const Swiperdata = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4  gap-[34.5px]  ">
         {filteredProducts.map((item, index) => (
+          
           <div key={index} >
-             <div className="border-2 border-lightwhite rounded w-[299.5px] flex flex-col justify-center items-center ">
+           
+             <div className="border-2 relative border-lightwhite rounded w-[299.5px] flex flex-col justify-center items-center ">
+               {
+              item.deal == undefined ? "":(<>
+              <span className="font-proxima absolute top-0 left-0  bg-primary-red rounded text-white font-normal text-[18px] leading-[100%] w-[64px] h-[33px] flex justify-center items-center">{item.deal}</span>
+              </>)
+            }
+        
           <img
             src={item.image}
             className="w-[299.5px] h-[272.5px]"
