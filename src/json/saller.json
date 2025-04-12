@@ -1,0 +1,40 @@
+{
+    "saller": [
+        {
+           
+            "image": "../../public/images/firstProduct.png",
+            "category": "Bags"
+          },
+          {
+          
+            "image": "../../public/images/brownpurseProduct.png",
+            "category": "Sneakers"
+          },
+          {
+           
+            "image": "../../public/images/otherProduct.png",
+            "category": "Belt"
+          },
+          {
+            
+            "image": "../../public/images/blueshoueProduct.png",
+            "category": "Sunglasses"
+          },
+          {
+          
+            "image": "../../public/images/shouebottom.png"
+          },
+          {
+          
+            "image": "../../public/images/shoueright.png"
+          },
+          {
+          
+            "image": "../../public/images/shoueback.png"
+          },
+          {
+          
+            "image": "../../public/images/blueshoueProduct.png"
+          }
+    ]
+}
