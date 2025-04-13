@@ -1,0 +1,37 @@
+{
+    "data":[
+        {
+            "img":"../../public/svg/shipping.svg",
+            "tittle":"FREE SHIPPING"
+        },
+        {
+            "img":"../../public/svg/refund.svg",
+            "tittle":"100% REFUND"
+        },
+        {
+            "img":"../../public/svg/support.svg",
+            "tittle":"SUPPORT 24/7"
+        }
+    ],
+    "datanews":[
+        
+            {
+                "img":"../../public/svg/NIKE.svg",
+                "tittle":"Fashion Industry",
+                "width":"w-[377.65px]"
+            },
+            {
+                "img":"../../public/svg/figma.svg",
+                "tittle":"Best Design Tools",
+                "width":"w-[325.65px]"
+
+            },
+            {
+                "img":"../../public/svg/kronos-logo.svg",
+                "tittle":"SHR Community",
+                "width":"w-[377.65px]"
+
+            }
+        
+    ]
+}

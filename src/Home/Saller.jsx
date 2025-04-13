@@ -6,7 +6,7 @@ const Saller = () => {
 <>
 <section>
   <main className='pb-[90.83px]'>
-    <div className="max-w-[1315px] w-full mx-auto">
+    <div className="max-w-[1315px] w-full mx-auto px-5">
       <div className="flex flex-col justify-center  ">
         <div className="flex flex-col justify-center w-full items-center pb-[23.5px]">
           <h1 className='font-poppins font-[600] text-[35px] leading-[100%] mb-[26px]'>BEST SELLER</h1>

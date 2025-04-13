@@ -1,5 +1,4 @@
 @import "tailwindcss";
-/* @import url('https://fonts.googleapis.com/css?family=Proxima+Nova'); */
 @theme {
   --font-poppins:  "Poppins", sans-serif; 
   --font-Raleway: "Raleway", sans-serif; 
@@ -12,9 +11,10 @@
   --color-primary-red: #fb7181; 
   --color-primary-blue: #40bfff; 
   --color-secondry-red: #ff4858; 
-  --color-lightgray: #c1c8ce; 
+  --color-lightgray-white: #c1c8ce; 
   --color-lightgray: #FAFAFB; 
   --color-lightwhite: #f6f6f6; 
+  --color-lightskyblue: #BCDDFE; 
 }
 @layer utilities{
   .container{
