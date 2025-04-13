@@ -102,7 +102,7 @@ const Shipping = () => {
           <div className="container">
             <div className="flex pb-[95.41px] justify-center items-center">
                <input className="w-[508px] text-primary opacity-[35%] p-[23px_0_19px_21px] h-[64px] font-poppins font-normal text-[18px] leading-[100%] outline-none border-t-2 border-b-2 border-l-2 border-primary-blue rounded-bl-[3px] rounded-tl-[3px]" type="text"  placeholder="Search query..."/>
-               <button className="w-[127px] p-[17px_27.5px] text-white bg-primary-blue rounded-r-[3px]">Search</button>
+               <button className="w-[127px] p-[17px_27.5px] font-poppins h-[64px] font-[600] leading-[100%] text-xl text-white bg-primary-blue rounded-r-[3px]">Search</button>
             </div>
           </div>
         </main>

@@ -6,6 +6,7 @@ import Belt from './pages/Belt'
 import Bags from './pages/Bags'
 import Sneakers from './pages/Sneakers'
 import Contect from './pages/Contect'
+import Footer from './component/Common/Footer'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
    <Route path='/Belt' element={<Belt/>}/>
    <Route path='/Contect' element={<Contect/>}/>
      </Routes>
+     <Footer/>
      </BrowserRouter>
     </>
   )
