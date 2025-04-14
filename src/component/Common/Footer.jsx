@@ -31,7 +31,7 @@ const Footer = () => {
                           {item.heading}
                         </h4>
                       ) : (
-                        <div className="font-poppins font-[500] mt-[10px] text-[18px] text-primary-dark">{item.data}</div>
+                        <div className="font-poppins font-[500]  text-[18px] text-primary-dark">{item.data}</div>
                       )}
                     </div>
 
@@ -46,7 +46,7 @@ const Footer = () => {
                     )}
 
                     {item.facebook && (
-                      <div className="flex gap-6 mt-3">
+                      <div className="flex gap-6 ">
                         <img src="../../../public/svg/facebook.svg" alt="facebook" />
                         <img src="../../../public/svg/twitter.svg" alt="twitter" />
                       </div>
@@ -91,10 +91,10 @@ const Footer = () => {
               <img src={Paypal} alt="Paypal" />
 
               {/* VISA Composite */}
-              <div className="relative w-[50px] h-[30px]">
+              <div className="relative w-[50px] h-[30px] flex justify-center items-center">
                 <img className="absolute w-full h-full" src={backgroundvisa} alt="visa-bg" />
-                <img className="absolute top-[10px] left-[5px]" src={visaname} alt="visa-name" />
-                <img className="absolute" src={visasidebar} alt="visa-sidebar" />
+                <img className="absolute " src={visaname} alt="visa-name" />
+                <img className="absolute top-[11px] left-[11px]" src={visasidebar} alt="visa-sidebar" />
               </div>
             </div>
           </div>

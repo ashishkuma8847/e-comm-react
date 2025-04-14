@@ -1,8 +1,10 @@
 import React from 'react'
+import PageNotFound from '../component/error/PageNotFound'
 
 const Contect = () => {
   return (
-    <div>Contect</div>
+    <PageNotFound/>
+
   )
 }
 

@@ -16,7 +16,7 @@ const Dropdown = ({ name, items, activeDropdown, setActiveDropdown }) => {
         className="font-proxima cursor-pointer flex flex-col w-[38.26px] relative"
       >
         <div className="flex gap-[5.6px]">
-          <h1 className="font-[400] text-xl text-primary-dark leading-[100%]">{name}</h1>
+          <h1 className="font-[400] text-xl text-primary-dark ">{name}</h1>
           <img
             className={`transition-all duration-200 ${down ? "rotate-180" : "rotate-0"}`}
             src={arrowdown}
@@ -30,7 +30,7 @@ const Dropdown = ({ name, items, activeDropdown, setActiveDropdown }) => {
         >
           {items.map((item, index) => (
             <div key={index}>
-              <h1 className="font-[400] text-xl leading-[100%] border-b-2 border-b-transparent hover:border-b-white">
+              <h1 className="font-[400] text-xl  border-b-2 border-b-transparent hover:border-b-white">
                 {item}
               </h1>
             </div>
@@ -42,6 +42,7 @@ const Dropdown = ({ name, items, activeDropdown, setActiveDropdown }) => {
 }
 
 const Header = () => {
+  const [homedata,sethomedata]=useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
 
   return (
@@ -68,13 +69,13 @@ const Header = () => {
             <div className="flex justify-between w-[366.15px] items-center">
               <div className="flex justify-between   w-[113.53px]">
                 <img src={profile} className='w-[20px] h-[20px]' alt="profile" />
-                <h4 className='font-proxima font-[400] text-xl leading-[100%] text-primary'>My profile</h4>
+                <h4 className='font-proxima font-[400] text-xl  text-primary'>My profile</h4>
               </div>
               <div className="w-[75px] p-[16px_25px_19px_26px] relative">
                 <img src={cart} className='' alt="cart" />
                 <span className='bg-primary-red top-[5px] border-white border-[2px] right-[15px] absolute flex justify-center items-center text-white font-poppins font-bold text-[10px] tracking-[0.5px] w-[22px] h-[22px]  rounded-full' >2</span>
               </div>
-              <div className="flex justify-between  font-proxima font-[400] text-xl leading-[100%] w-[137px] ">
+              <div className="flex justify-between  font-proxima font-[400] text-xl w-[137px] ">
                 <h4 className='w-[53px] text-primary text-end'> Items</h4>
                 <h4 className='w-[52px] text-primary opacity-[50%]'>$0.00</h4>
               </div>
@@ -88,18 +89,27 @@ const Header = () => {
           <div className="flex pt-[26.26px] justify-between">
             <div className="flex w-[134.32px] justify-between items-center">
                   <img src={icon} alt="icon" />
-                  <h4 className=' font-poppins font-bold text-[18px] leading-[100%] text-primary-dark'>E-comm</h4>
+                  <h4 className=' font-poppins font-bold text-[18px]  text-primary-dark'>E-comm</h4>
             </div>
-            <div className="flex w-[815.49px] justify-between items-center font-poppins font-medium text-2xl leading-[100%] text-primary">
+            <div className="flex w-[815.49px] justify-between items-center font-poppins font-medium text-2xl  text-primary">
                     {
                       Headerjson.map((item,index)=>(
                         <div key={Date.now()+item+index}>
-                          <NavLink to={item.path}>
-                            <h4>{item.title}</h4>
+                          <NavLink className="relative" to={item.path}>
+                            {
+                              index === 0 ? (<>
+                              <div onMouseOver={()=>sethomedata(true)} onMouseLeave={()=>sethomedata(false)} className="">
+                                {item.title}
+                              </div>
+    
+                            
+                            </>):<h4>{item.title}</h4>
+                            }
                           </NavLink>
                         </div>
                       ))
                     }
+                    
             </div>
           </div>
         </div>

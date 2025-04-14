@@ -17,7 +17,7 @@ const Flashoff = () => {
             </h4>
           </div>
         </div>
-        <div className="container relative pb-[334.68px]">
+        {/* <div className="container relative pb-[334.68px]">
           <div className="flex absolute top-[-90px] bg-lightwhite rounded ">
         
             {Flashjson.map((item, index) => (
@@ -59,8 +59,8 @@ const Flashoff = () => {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
       </section>
     </>
   );

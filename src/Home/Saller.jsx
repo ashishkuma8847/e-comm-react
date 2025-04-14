@@ -1,5 +1,6 @@
 import React from 'react'
 import Swiperdata from './Swiper'
+import { Link } from 'react-router-dom'
 
 const Saller = () => {
   return (
@@ -10,7 +11,7 @@ const Saller = () => {
             <div className="flex flex-col justify-center">
               {/* Title + Swiper */}
               <div className="flex flex-col justify-center w-full items-center pb-[23.5px] text-center">
-                <h1 className="font-poppins font-[600] text-[28px] sm:text-[32px] md:text-[35px] leading-[100%] mb-[26px]">
+                <h1 className="font-poppins font-[600] text-[28px] sm:text-[32px] md:text-[35px]  mb-[26px]">
                   BEST SELLER
                 </h1>
                 <Swiperdata />
@@ -19,11 +20,12 @@ const Saller = () => {
 
             {/* Load More Button */}
             <div className="flex justify-center">
-              <button
-                className="cursor-pointer h-[33px] px-4 text-primary-blue font-poppins font-[500] text-lg sm:text-xl leading-[100%] border-b-[3px] border-primary-blue"
+              <Link ><button
+                className="cursor-pointer h-[33px]  text-primary-blue font-poppins font-[500] text-lg sm:text-xl border-b-[3px] border-primary-blue"
               >
                 LOAD MORE
-              </button>
+              </button></Link>
+              
             </div>
           </div>
         </main>
