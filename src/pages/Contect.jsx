@@ -3,6 +3,7 @@ import PageNotFound from '../component/error/PageNotFound'
 
 const Contect = () => {
   return (
+    
     <PageNotFound/>
 
   )

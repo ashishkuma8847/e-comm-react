@@ -91,15 +91,23 @@ const Header = () => {
                   <img src={icon} alt="icon" />
                   <h4 className=' font-poppins font-bold text-[18px]  text-primary-dark'>E-comm</h4>
             </div>
-            <div className="flex w-[815.49px] justify-between items-center font-poppins font-medium text-2xl  text-primary">
+            <div className="flex w-[815.49px] relative justify-between items-center font-poppins font-medium text-2xl  text-primary">
                     {
                       Headerjson.map((item,index)=>(
                         <div key={Date.now()+item+index}>
-                          <NavLink className="relative" to={item.path}>
+                          <NavLink className="" to={item.path}>
                             {
                               index === 0 ? (<>
-                              <div onMouseOver={()=>sethomedata(true)} onMouseLeave={()=>sethomedata(false)} className="">
+                              <div onMouseEnter={()=>sethomedata(true)} onMouseLeave={()=>sethomedata(false)} className="">
                                 {item.title}
+                              </div>
+
+                              <div className={`${ homedata   ? "w-[1029px]  z-50" : "w-0  -z-50"}  absolute transition-all duration-300  mx-auto left-[-290px] top-[55px] border-t-2 border-lightgray  h-[360.51px] bg-white  p-[38.82px_32.7px_3.7px_84.14px]`}>
+                                 <div className="flex ">
+                                  <div className="">
+                                          <h1 className='font-poppins font-[500] text-[22px]'>Category</h1>
+                                  </div>
+                                 </div>
                               </div>
     
                             
