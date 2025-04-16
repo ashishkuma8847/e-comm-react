@@ -9,6 +9,7 @@ import Contect from './pages/Contect'
 import Footer from './component/Common/Footer'
 import PageNotFound from './component/error/PageNotFound'
 import ScrollToTop from './component/Common/ScrollToTop.JSX'
+import Hotdeal from './Hordeal/Hotdeal'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
    <Route path='/Belt' element={<Belt/>}/>
    <Route path='/Contect' element={<Contect/>}/>
    <Route path='/error' element={<PageNotFound/>}/>
+   <Route path='/Hotdeal' element={<Hotdeal/>}/>
      </Routes>
      <Footer/>
      </BrowserRouter>

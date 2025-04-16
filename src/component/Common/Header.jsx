@@ -3,9 +3,10 @@ import arrowdown from "../../../public/svg/arrowdown.svg"
 import profile from "../../../public/svg/profile.svg"
 import cart from "../../../public/svg/cart.svg"
 import search from "../../../public/svg/search.svg"
+import arrow from "../../../public/svg/arrowlightwhite.svg"
 import icon from "../../../public/svg/icon.svg"
 import Headerjson from "../../json/Header.json"
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 const Dropdown = ({ name, items, activeDropdown, setActiveDropdown }) => {
   const down = activeDropdown === name;
 
@@ -42,7 +43,7 @@ const Dropdown = ({ name, items, activeDropdown, setActiveDropdown }) => {
 }
 
 const Header = () => {
-  const [homedata,sethomedata]=useState(false)
+  const [homedata, sethomedata] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
 
   return (
@@ -88,36 +89,127 @@ const Header = () => {
         <div className="container pb-[26.26px]">
           <div className="flex pt-[26.26px] justify-between">
             <div className="flex w-[134.32px] justify-between items-center">
-                  <img src={icon} alt="icon" />
-                  <h4 className=' font-poppins font-bold text-[18px]  text-primary-dark'>E-comm</h4>
+              <img src={icon} alt="icon" />
+              <h4 className=' font-poppins font-bold text-[18px]  text-primary-dark'>E-comm</h4>
             </div>
-            <div className="flex w-[815.49px] relative justify-between items-center font-poppins font-medium text-2xl  text-primary">
-                    {
-                      Headerjson.map((item,index)=>(
-                        <div key={Date.now()+item+index}>
-                          <NavLink className="" to={item.path}>
-                            {
-                              index === 0 ? (<>
-                              <div onMouseEnter={()=>sethomedata(true)} onMouseLeave={()=>sethomedata(false)} className="">
-                                {item.title}
-                              </div>
+            <div  className="flex w-[815.49px] relative justify-between items-center font-poppins font-medium text-2xl  text-primary">
+              {
+                Headerjson.path.map((item, index) => (
+                  <div  className='' key={Date.now() + item + index}>
+                    <NavLink className="" to={item.path}>
+                      {
 
-                              <div className={`${ homedata   ? "w-[1029px]  z-50" : "w-0  -z-50"}  absolute transition-all duration-300  mx-auto left-[-290px] top-[55px] border-t-2 border-lightgray  h-[360.51px] bg-white  p-[38.82px_32.7px_3.7px_84.14px]`}>
-                                 <div className="flex ">
-                                  <div className="">
-                                          <h1 className='font-poppins font-[500] text-[22px]'>Category</h1>
-                                  </div>
-                                 </div>
-                              </div>
-    
-                            
-                            </>):<h4>{item.title}</h4>
+                        index === 0 ? (<>
+                          <h4 onMouseEnter={() => sethomedata(true)} className={""}>
+                            {item.title}
+                          </h4>
+                          <div onMouseLeave={() => sethomedata(false)} className={` transition-all duration-300  ${homedata ? "block" : "hidden"} w-[1029px]    absolute  mx-auto left-[-290px] top-[55px] border-t-2 border-lightgray  h-[360.51px] bg-white text-primary  p-[38.82px_32.7px_3.7px_84.14px]`}>
+                      <img className='absolute top-[-11px] left-[315px]' src={arrow} alt="arrowlightwhite" />
+                      <div className="flex w-full justify-between">
+                        <div className="flex flex-col gap-[12.94px]">
+                          
+                          <h1 className='font-poppins font-[500] text-lightgray-white text-[22px]'>Category</h1>
+                          <div className="flex flex-col gap-6">
+                            {
+                              Headerjson.datacatogry.map((item, index) => (
+                                <div key={index}>
+                                  <Link to={"/error"}>
+                                  <h4 className='font-poppins  font-normal text-[16px]'>{item.title}</h4></Link>
+
+                                </div>
+                              ))
                             }
-                          </NavLink>
+
+                          </div>
+
                         </div>
-                      ))
-                    }
-                    
+                        <div className="flex flex-col gap-[12.94px]">
+                          <div className="flex flex-col gap-6 mt-[43.55px]">
+                            {
+                              Headerjson.datacatogry.map((item, index) => (
+                                <div key={index}>
+                                  <Link to={"/error"}>
+                                  <h4 className='font-poppins  font-normal text-[16px]'>{item.title}</h4></Link>
+
+                                </div>
+                              ))
+                            }
+
+                          </div>
+
+                        </div>
+                        <div className="flex flex-col gap-[12.94px]">
+                          <h1 className='font-poppins font-[500] text-lightgray-white text-[22px]'>Category</h1>
+                          <div className="flex flex-col gap-6">
+                            {
+                              Headerjson.datacatogryhotdeal.map((item, index) => (
+                                <div key={index}>
+                                   {
+                                    index === 0 ? (<><Link to={"/Hotdeal"}>
+                                  <h4 className='font-poppins  font-normal text-[16px]'>{item.title}</h4>
+                                  </Link>
+                                    </>):<Link to={"/error"}>
+                                  <h4 className='font-poppins  font-normal text-[16px]'>{item.title}</h4>
+                                  </Link>
+                                  }
+                                </div>
+                              ))
+                            }
+
+                          </div>
+
+                        </div>
+                        <div className="flex flex-col gap-[12.94px]">
+                          <div className="flex flex-col gap-6 mt-[43.55px]">
+                            {
+                              Headerjson.datacatogryhotdeal.map((item, index) => (
+                                <div key={index}>
+                                  {
+                                    index === 0 ? (<><Link to={"/Hotdeal"}>
+                                  <h4 className='font-poppins  font-normal text-[16px]'>{item.title}</h4>
+                                  </Link>
+                                    </>):<Link to={"/error"}>
+                                  <h4 className='font-poppins  font-normal text-[16px]'>{item.title}</h4>
+                                  </Link>
+                                  }
+                                  
+
+                                </div>
+                              ))
+                            }
+
+                          </div>
+
+                        </div>
+                        <div className="flex flex-col gap-[12.94px]">
+                          <h1 className='font-poppins font-[500] text-lightgray-white text-[22px]'>Category</h1>
+                          <div className="flex flex-col gap-6">
+                            {
+                              Headerjson.datacatogry.map((item, index) => (
+                                <div key={index}>
+                                  <Link to={"/error"}>
+                                  <h4 className='font-poppins  font-normal text-[16px]'>{item.title}</h4></Link>
+
+                                </div>
+                              ))
+                            }
+
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                        </>) : <h4>{item.title}</h4>
+                      }
+                    </NavLink>
+                  
+                  </div>
+                ))
+              }
+
             </div>
           </div>
         </div>
