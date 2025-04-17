@@ -43,6 +43,8 @@ const Dropdown = ({ name, items, activeDropdown, setActiveDropdown }) => {
 }
 
 const Header = () => {
+  const [Click1, setClick1] = useState(false)
+
   const [homedata, sethomedata] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
 
@@ -92,7 +94,13 @@ const Header = () => {
               <img src={icon} alt="icon" />
               <h4 className=' font-poppins font-bold text-[18px]  text-primary-dark'>E-comm</h4>
             </div>
-            <div  className="flex w-[815.49px] relative justify-between items-center font-poppins font-medium text-2xl  text-primary">
+            
+            <button className="grid  lg:hidden  h-[30px] items-center   relative cursor-pointer" onClick={() => setClick1(!Click1)}>
+            <p className={`${Click1 ? "-rotate-45 absolute  z-50 " : ""} w-8 border-2 h-1 duration-500`} ></p>
+            <span className={`${Click1 ? "border-transparent" : ""} w-8 border-2  h-1`} ></span>
+            <p className={`${Click1 ? "rotate-45 absolute  z-50" : ""} w-8 border-2 h-1 duration-500`}></p>
+          </button>
+            <div  className="hidden  lg:w-[815.49px] sm:w-[515px] sm:text-xl xl:flex  lg:flex relative justify-between items-center font-poppins font-medium lg:text-2xl  text-primary">
               {
                 Headerjson.path.map((item, index) => (
                   <div  className='' key={Date.now() + item + index}>
