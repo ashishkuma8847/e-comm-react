@@ -51,7 +51,7 @@ const App = () => {
         <ScrollToTop />
         <Header />
         <AnimatedRoutes />
-        {/* <Footer /> */}
+        <Footer />
       </Router>
       {/* } */}
 

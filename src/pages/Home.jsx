@@ -1,10 +1,10 @@
 import React from 'react'
 import Flashoff from '../Home/Flashoff'
 import Saller from '../Home/Saller'
-import Sneacker from '../Home/Sneacker'
 import Shipping from '../Home/Shipping'
 import Bannerproducts from '../Home/Bannerproducts'
 import { motion } from "framer-motion";
+import Sneacker from '../component/Card/Sneacker'
 
 const pageVariants = {
   initial: { x: "100vw", opacity: 0 }, 
@@ -20,11 +20,11 @@ const Home = () => {
       animate="animate"
       exit="exit"
     >
-    {/* <Flashoff/>
+    <Flashoff/>
     <Bannerproducts/>
     <Saller/>
-    <Sneacker/>
-    <Shipping/> */}
+<Sneacker width={"w-[592px]"} container={"container"} height={"h-[600px]"}/>
+    <Shipping/>
     </motion.div>
     </>
   )

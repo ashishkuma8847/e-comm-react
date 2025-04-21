@@ -90,9 +90,9 @@ const Header = () => {
           </div>
         </div>
       </section>
-      <section>
-        <div className="container pb-[26.26px]">
-          <div className="flex pt-[26.26px] justify-between">
+      <section className=' pt-[34.74px] pb-[34.04px]'>
+        <div className="container">
+          <div className="flex  justify-between  ">
             <div className={`${Click1 ? "hidden  " : "block "} lg:flex flex w-[134.32px] justify-between items-center`}>
               <img src={icon} alt="icon" />
               <h4 className=' font-poppins font-bold text-[18px]  text-primary-dark'>E-comm</h4>
