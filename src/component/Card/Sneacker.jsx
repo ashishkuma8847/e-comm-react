@@ -1,26 +1,26 @@
 import React from "react";
 import sneackerimage from "../../../public/images/sneacker.png";
-const Sneacker = ({width,container,height}) => {
+const Sneacker = ({width,container,height,imgclass,headingstyle,pstyle,buttonstyle,spanstyle,section}) => {
   return (
     <>
-      <section className=" pb-[97.2px]">
+      <section className={section}>
         <main className={`${height} bg-primary-blue `}>
           <div className={`${container}`}>
             <div className="flex relative  text-white">
-              <div className={`${width} h-[600px] justify-center flex flex-col  `}>
-                <h1 className="font-poppins font-[500] text-[55px]  mb-[23.34px]">
+              <div className={`${width}  justify-center flex flex-col  `}>
+                <h1 className={`${headingstyle} font-poppins  `}>
                   Adidas Men Running Sneakers
                 </h1>
-                <p className="mb-[12.11px] font-poppins font-[400] text-[24px] ">
+                <p className={`${pstyle} font-poppins  `}>
                   Performance and design. Taken right to the edge.
                 </p>
-                <button className="font-poppins w-[111px] h-[30px] font-[600] text-[20px] ">
+                <button className={ `${buttonstyle} font-poppins `}>
                   SHOP NOW
                 </button>
-                <span className="bg-white  w-[75px] h-[3px]"></span>
+                <span className={`${spanstyle} bg-white `}></span>
               </div>
               <img
-                className="absolute right-[-120px] top-[-93px]"
+                className={`${imgclass} absolute `}
                 src={sneackerimage}
                 alt="sneackerimage"
               />

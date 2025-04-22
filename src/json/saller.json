@@ -37,5 +37,121 @@
           
             "image": "../../public/images/blueshoueProduct.png"
           }
-    ]
+    ],
+    
+      "hotdeal": [
+          {
+             
+              "image": "../../public/images/firstProduct.png",  
+              "deal":"HOT"
+            },
+            {
+            
+              "image": "../../public/images/brownpurseProduct.png",
+              "deal":"HOT"
+
+            },
+            {
+             
+              "image": "../../public/images/otherProduct.png",
+              "deal":"HOT"
+
+            },
+            {
+              
+              "image": "../../public/images/blueshoueProduct.png",
+              "deal":"HOT"
+             
+            },
+            {
+            
+              "image": "../../public/images/shouebottom.png",
+              "deal":"HOT"
+
+            },
+            {
+            
+              "image": "../../public/images/shoueright.png",
+              "deal":"HOT"
+
+            },
+            {
+            
+              "image": "../../public/images/shoueback.png",
+              "deal":"HOT"
+
+            },
+            {
+            
+              "image": "../../public/images/blueshoueProduct.png",
+              "deal":"HOT"
+
+            },
+            {
+             
+              "image": "../../public/images/firstProduct.png",
+              "deal":"HOT"
+            }
+      ],
+      "data3":[
+       
+        {
+            "image":"bestProductseven.png",
+            "title":"Nike Air Max 270 React",
+            "ratting":"rate.svg",
+            "review":" 0 reviews",
+            "submitreview":" Submit a review",
+            "offprice":"$299,43",
+            "price":"$534,33",
+            "offer":"24% Off",
+            "description":"Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lectus lorem nunc leifend laorevtr istique et congue. Vivamus adipiscin vulputate g nisl ut dolor ...",
+            "cart":"cart2.svg",
+            "addtocart":"Add To Cart",
+            "wishlist":"hearts.svg"
+        },
+        {
+            "image":"bestProductseven.png",
+            "title":"Nike Air Max 270 React",
+            "ratting":"rate.svg",
+            "review":" 0 reviews",
+            "submitreview":" Submit a review",
+            "offprice":"$299,43",
+            "price":"$534,33",
+            "offer":"24% Off",
+            "description":"Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lectus lorem nunc leifend laorevtr istique et congue. Vivamus adipiscin vulputate g nisl ut dolor ...",
+            "cart":"cart2.svg",
+            "addtocart":"Add To Cart",
+            "wishlist":"hearts.svg"
+        },
+        {
+            "image":"bestProductseven.png",
+            "title":"Nike Air Max 270 React",
+            "ratting":"rate.svg",
+            "review":" 0 reviews",
+            "submitreview":" Submit a review",
+            "offprice":"$299,43",
+            "price":"$534,33",
+            "offer":"24% Off",
+            "description":"Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lectus lorem nunc leifend laorevtr istique et congue. Vivamus adipiscin vulputate g nisl ut dolor ...",
+            "cart":"cart2.svg",
+            "addtocart":"Add To Cart",
+            "wishlist":"hearts.svg"
+        },
+        {
+            "image":"bestProductseven.png",
+            "title":"Nike Air Max 270 React",
+            "ratting":"rate.svg",
+            "review":" 0 reviews",
+            "submitreview":" Submit a review",
+            "offprice":"$299,43",
+            "price":"$534,33",
+            "offer":"24% Off",
+            "description":"Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lectus lorem nunc leifend laorevtr istique et congue. Vivamus adipiscin vulputate g nisl ut dolor ...",
+            "cart":"cart2.svg",
+            "addtocart":"Add To Cart",
+            "wishlist":"hearts.svg"
+        }
+
+      ]
+  
 }
