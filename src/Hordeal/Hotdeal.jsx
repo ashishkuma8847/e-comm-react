@@ -9,6 +9,9 @@ import threelinemenu from "../../public/svg/threelinemenu.svg"
 import threelinemenuncolor from "../../public/svg/threelinemenuwithcolor.svg"
 import Seller from "../component/Card/Seller";
 import hotdeljson from "../json/saller.json"
+import cart from "../../public/svg/cartblue.svg"
+import wishlist from "../../public/svg/wishlistblue.svg"
+import rating from "../../public/svg/rate.svg"
 import { Link } from "react-router-dom";
 const Hotdeal = () => {
   const [color, setcolor] = useState(false);
@@ -146,7 +149,8 @@ const Hotdeal = () => {
                     ))}
                   </div>
                   </div>
-                  <button className="pt-[19px] pb-[16px] w-full flex justify-center items-center font-poppins font-[500] text-[14px] text-primary bg-sidegray rounded">MORE</button>
+                  <Link to={"/error"}>  </Link>
+                 
               </div>
               <div className="">
                 <div className="mb-[23px]">
@@ -186,34 +190,39 @@ const Hotdeal = () => {
                 <div   className={`${isnike ? "block" : "hidden"} flex flex-col` }>
                 {
                 hotdeljson.data3.map((item, index) => (
-                  <div className={`max-w-[870px] w-full border-border-gray pt-[30px] pb-[26px] flex  ${index <= 2 ? "border-b-2 " :"border-none"}`} key={index}>
+                  <div className={`max-w-[870px] w-full border-sidegray relative pt-[30px] pb-[26px] flex  ${index <= 2 ? "border-b-2 " :"border-none"}`} key={index}>
                     <Link >
                       <div className="flex gap-[14px]">
-                        {<> <Link to={"/nikeairmax"}>
-                          <img src={"/public/assets/Images"} alt="image" />
+                        {<> <Link to={"/product"}>
+                          <img src={item.image} className="" alt="image" />
+                        {item.deal && (
+                    <span className="font-proxima  absolute  top-[32px] z-50  bg-primary-red rounded text-white font-normal text-[18px] w-[64px] h-[33px] flex justify-center items-center">
+                      {item.deal}
+                    </span>
+                  )}
                         </Link></>
                         }
                         
                         <div className="flex flex-col">
-                          <h1 className='font-poppins font-medium text-2xl text-primary'></h1>
-                          <div className="flex items-center pt-[14px] pb-5 border-b-2 border-border-gray max-w-[470px] w-full gap-[15px]">
-                            <img className='max-w-[72px] w-full' src={"/public/assets/Icon"} alt="image" />
-                            <h4 className='font-proxima font-normal text-sm text-light-gray'></h4>
-                            <h4 className='font-proxima font-normal text-sm text-primary-blue'></h4>
+                          <h1 className='font-poppins font-medium text-2xl text-primary-dark'>Nike Airmax 270 React</h1>
+                          <div className="flex items-center pt-[14px] pb-5 border-b-2 border-sidegray max-w-[470px] w-full gap-[15px]">
+                            <img className='max-w-[72px] w-full' src={rating} alt="image" />
+                            <h4 className='font-proxima font-normal text-sm text-lightgray-white'>0 reviews</h4>
+                            <h4 className='font-proxima font-normal text-sm text-primary-blue'>Submit a review</h4>
                           </div>
                           <div className="flex pt-[10px] pb-5 items-center gap-[9px]">
-                            <h4 className='font-poppins font-bold text-xl tracking-[0.5px] text-primary-blue leading-[180%]'></h4>
-                            <h4 className='font-poppins font-medium text-sm tracking-[0.5px] text-natural-gray leading-[150%] line-through'></h4>
-                            <h4 className='font-poppins font-bold text-sm tracking-[0.5px] text-primary-red leading-[150%]'></h4>
+                            <h4 className='font-poppins font-bold text-xl tracking-[0.5px] text-primary-blue leading-[180%]'>$299,43</h4>
+                            <h4 className='font-poppins font-medium text-sm tracking-[0.5px] text-natural-gray leading-[150%] line-through'>$534,33</h4>
+                            <h4 className='font-poppins font-bold text-sm tracking-[0.5px] text-primary-red leading-[150%]'>24% Off</h4>
                           </div>
-                          <h4 className='font-poppins font-medium text-sm text-primary max-w-[652px] w-full'></h4>
+                          <h4 className='font-poppins mb-[28.25px] font-medium text-sm text-primary max-w-[652px] w-full'>Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lectus lorem nunc leifend laorevtr istique et congue. Vivamus adipiscin vulputate g nisl ut dolor ...</h4>
                           <div className="flex items-center gap-4">
-                          <button className="flex items-center gap-2 bg-bg-blue  max-w-[150px] w-full py-[15px] justify-center rounded">
-                            <img src={"/public/assets/Icon"} alt="image" />
-                            <h4 className='font-poppins font-medium text-sm text-primary-blue'></h4>
+                          <button className="flex items-center gap-2 bg-lightskyblue  max-w-[150px] w-full py-[15px] justify-center rounded">
+                            <img src={cart} className="w-[15.95px] h-[16px]" alt="image" />
+                            <h4 className='font-poppins font-medium text-sm text-primary-blue'>Add To Cart</h4>
                           </button>
-                          <div className="flex bg-bg-blue p-[15px_26px_15px_20px]  rounded">
-                            <img src={"/public/assets/Icon"} alt="image" />
+                          <div className="flex bg-lightskyblue h-[46px] w-[46px] justify-center items-center   rounded">
+                            <img src={wishlist} alt="image" />
                           </div>
                           </div>
                         </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import bag from "../../public/Images/blackpurspreview.png"
 import shoe from "../../public/Images/yellowproduct.png"
-import redshoe from "../../public/Images/redProduct.png"
+import redshoe from "../../public/Images/Productred.png"
 
 const Bannerproducts = () => {
     return (

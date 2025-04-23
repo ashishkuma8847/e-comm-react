@@ -12,6 +12,7 @@ import Header from './component/Common/Header';
 import Footer from './component/Common/Footer';
 import PageNotFound from './component/error/PageNotFound';
 import './App.css'
+import Product from './product/Product';
 
 
 const AnimatedRoutes = () => {
@@ -28,6 +29,7 @@ const AnimatedRoutes = () => {
         <Route path='/Contect' element={<Contect />} />
         <Route path='/error' element={<PageNotFound />} />
         <Route path='/Hotdeal' element={<Hotdeal />} />
+        <Route path='/product' element={<Product />} />
       </Routes>
     </AnimatePresence>
   );

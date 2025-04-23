@@ -18,6 +18,7 @@
   --color-lightskyblue: #BCDDFE; 
   --color-sidegray: #F6F7F8; 
   --color-roundedgray:#F1F3F4 ; 
+  --color-lightskyblue:#ebf5ff ; 
 }
 @layer utilities{
   .container{
