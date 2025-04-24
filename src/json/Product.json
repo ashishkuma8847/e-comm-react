@@ -1,0 +1,36 @@
+{
+    "title1": [
+        {
+            "titledata": "Availability:"
+        },
+        {
+            "titledata": "Category:"
+        },
+        {
+            "titledata": "Free shipping"
+        }
+    ],
+    "title2": [
+        {
+            "titledata": "In stock"
+        },
+        {
+            "titledata": "Accessories"
+        }
+    ],
+        "color":[
+        {
+            "color":"#006CFF"
+        },
+        {
+            "color":"#FC3E39"
+        },
+        {
+            "color":"#171717"
+        },
+        {
+            "color":"#FFF600"
+        }
+      
+    ]
+}

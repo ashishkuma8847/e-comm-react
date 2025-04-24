@@ -184,9 +184,9 @@ const Hotdeal = () => {
                       </div>
                      </div>
                 </div>
-                <div  className={`grid grid-cols-1 sm:grid-cols-2 mt-[27px]  md:grid-cols-2 xl:grid-cols-3 gap-[33px] place-items-center ${nike ? "block " : "hidden"}`}>
+                <Link to={"/product"}   className={`grid grid-cols-1 sm:grid-cols-2 mt-[27px]  md:grid-cols-2 xl:grid-cols-3 gap-[33px] place-items-center ${nike ? "block " : "hidden"}`}>
                   <Seller data={hotdeljson.hotdeal}/>
-                </div>
+                </Link>
                 <div   className={`${isnike ? "block" : "hidden"} flex flex-col` }>
                 {
                 hotdeljson.data3.map((item, index) => (
