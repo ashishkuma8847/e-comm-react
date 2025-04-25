@@ -7,15 +7,39 @@ import cart from "../../public/svg/cartblue.svg"
 import wishlist from "../../public/svg/wishlistblue.svg"
 import plus from "../../public/svg/plus.svg"
 import minus from "../../public/svg/minus.svg"
+import facebook from "../../public/svg/facebookwhite.svg"
+import twitter from "../../public/svg/twitterwhite.svg"
+import swiperimg from "../../public/images/firstProduct.png"
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Autoplay, Pagination } from "swiper/modules";
+import "./Product.css"
+import nikeprojson from "../json/nikeinfo.json" 
+import { Link } from 'react-router-dom'
 const Product = () => {
     const [isImage, setImage] = useState(nikepro.data[2].img)
     const [isborder, setIsborder] = useState(false);
     const [arrowdata, setarrowdata] = useState(false);
     const [count, setcount] = useState(1);
+    const [isindex, setindex] = useState(0)
+    const data = [
+        {
 
+        },
+        {
+
+        },
+        {
+
+        },
+        {
+
+        }
+    ]
     return (
         <>
-            <section>
+            <section >
                 <main>
                     <div className=" flex justify-center items-center bg-sidegray py-[14.5px] gap-2 font-normal text-[18px] mb-[42.28px] ">
                         <h1 className="text-primary-blue ">Home</h1>
@@ -26,7 +50,7 @@ const Product = () => {
 
                     </div>
                     <div className="container">
-                        <div className="flex ">
+                        <div className="flex pl-[21.45px] pb-[49px]">
                             <div className="mr-[36px]">
 
 
@@ -43,7 +67,7 @@ const Product = () => {
 
                                 </div>
                             </div>
-                            <div className="flex flex-col max-w-[500px] w-full  ">
+                            <div className="flex flex-col max-w-[500px] w-full mr-[32px] ">
                                 <div className="flex flex-col gap-[27px] pb-[22px] mb-[17px] border-b-2 border-sidegray w-full">
                                     <h1 className=' font-poppins font-[500] text-2xl text-primary-dark'>Nike Airmax 270 React</h1>
                                     <div className="flex items-center gap-[17px]">
@@ -116,11 +140,13 @@ const Product = () => {
 
 
                                 </div>
-                                <div className="flex justify-between items-center">
-                                    <div className="flex w-[124px] h-[49px] justify-between items-center rounded border-2 border-sidegray">
-                                        <img onClick={()=>setcount(count == 1 ? count : count - 1)} src={minus} alt="minus" />
+                                <div className="flex justify-between items-center pb-[22.23px] border-b-2 border-sidegray mb-[20.2px]">
+                                    <div className="flex w-[124px]  bg-sidegray h-[49px] justify-between items-center rounded border-2 border-sidegray">
+                                        <div onClick={() => setcount(count == 1 ? count : count - 1)} className="w-[27.2px] cursor-pointer h-full flex justify-end items-center"><img src={minus} alt="minus" /></div>
+
                                         <h4>{count}</h4>
-                                        <img onClick={()=> setcount(count >= 10 ? count : count + 1)} src={plus} alt="plus" />
+                                        <div onClick={() => setcount(count >= 10 ? count : count + 1)} className="w-[27.2px] cursor-pointer h-full flex justify-start items-center"><img src={plus} alt="plus" /></div>
+
                                     </div>
                                     <div className="flex gap-[17px] max-w-[225px] w-full">
                                         <button className="flex items-center gap-2 bg-lightskyblue  max-w-[159px] w-full pt-[14px] pb-[16px] h-[48px] justify-center rounded">
@@ -132,7 +158,100 @@ const Product = () => {
                                         </div>
                                     </div>
                                 </div>
+                                <div className="flex max-w-[499.49px] w-full justify-between items-center font-poppins font-[500] text-[16px]">
+                                    <div className="flex max-w-[244.43px] w-full bg-[#385C8E] gap-[12.32px] rounded text-white items-center pt-[13.96px] pb-[16.88px]  justify-center">
+                                        <img src={facebook} alt="facebook" />
+                                        <h4>Share on Facebook</h4>
+                                    </div>
+                                    <div className="flex max-w-[244.43px] w-full bg-skyblue gap-[14.19px] text-white rounded  items-center pt-[12.95px] pb-[17.6px] justify-center">
+                                        <img src={twitter} alt="twitter" />
+                                        <h4>Share on Twitter</h4>
+                                    </div>
+                                </div>
                             </div>
+
+                            <div className="flex flex-col gap-[35px] ">
+                                <h4 className='font-normal text-[18px] text-lightgray-white'>BEST SELLER</h4>
+                                <div className=" w-[284px] ">
+
+                                    <Swiper
+                                        modules={[Pagination, Autoplay]}
+                                        pagination={{
+                                            clickable: true,
+                                        }}
+                                        autoplay={{ delay: 2500 }}
+                                        loop={true}
+                                        className="mySwiper"
+                                    >
+                                        {
+                                            data.map((item, index) => (
+                                                <div key={index + item + Date.now()}>
+                                                    <SwiperSlide ><div className="flex flex-col mb-[30px] justify-center items-center border-2 rounded border-sidegray">
+                                                        <img className='w-[284px] h-[240px]' src={swiperimg} alt="" />
+                                                        <div className="flex flex-col w-[93px] gap-[12px] justify-center pt-[53px] pb-[34px] items-center  ">
+                                                            <img className='w-[77px] h-[11px] ' src={rating} alt="rating" />
+                                                            <div className="flex gap-[11.42px] items-center justify-center ">
+                                                                <h4 className='font-normal text-[16px] text-primary-red'>$499</h4>
+                                                                <h4 className='line-through text-[16px] text-lightgray-white'>$599</h4>
+                                                            </div>
+                                                        </div>
+                                                    </div></SwiperSlide>
+                                                </div>
+                                            ))
+                                        }
+
+
+
+                                    </Swiper>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div className="bg-lightgray rounded relative flex flex-col  max-w-[930px] w-full mt-[49px] mb-[78px]">
+                            <div className=" flex ab gap-[79px] pl-[31.82px] z-50  pt-[34.29px]">
+                                {
+                                    nikeprojson.infromation.map((item, index) => (
+                                        <div key={index + item - Date.now()}>
+                                            <Link to={item.path}>
+                                                <div onClick={() => setindex(item.value)} className={` ${index === 0 ? "174.82px" : index === 1 ? "87.44px" : "109.92px"} flex   h-[55px] `} >
+                                                    <h1 className='font-poppins  font-normal text-lg hover:border-b-4  hover:border-primary-blue hover:text-primary-blue'>{item.info}</h1>
+                                                    {
+                                                        index === 1 && (<>
+                                                            <p className='font-poppins font-normal leading-[180%] text-neutral-gray tracking-[0.5px] pl-0.5 pt-[0.3px]'>0</p>
+                                                        </>)
+                                                    }
+                                                </div>
+                                            </Link>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                            <div className="   border-b-4 border-lightborder"></div>
+                            {
+                                isindex == 0 && (
+                                    nikeprojson.info.map((item, index) => (
+                                        <div key={index+ item- Date.now()}>
+                                            <Link to={item.path}>
+                                                <div className="max-w-[765px] w-full pl-[31px] pt-[21px] pb-[44px] gap-[15px] flex flex-col">
+                                                    <h4 className='font-poppins font-normal text-[12px] leading-[180%] text-neutral-gray tracking-[0.5px]'>{item.firstinfo}</h4>
+                                                    <h4 className='font-poppins font-normal text-[12px] leading-[180%] text-neutral-gray tracking-[0.5px]'>{item.secondinfo}</h4>
+                                                    <h4 className='font-poppins font-normal text-[12px] leading-[180%] text-neutral-gray tracking-[0.5px]'>{item.thirdinfo}</h4>
+                                                </div>
+                                            </Link>
+                                        </div>
+                                    ))
+                                )
+                            }{
+                                isindex == 1 && (
+                                    <h1 className='font-poppins font-normal text-[12px] leading-[180%] text-neutral-gray tracking-[0.5px] pl-[31px] pt-[21px]'>Coming Soon</h1>
+                                )
+                            }{
+                                isindex == 2 && (
+                                    <h1 className='font-poppins font-normal text-[12px] leading-[180%] text-neutral-gray tracking-[0.5px] pl-[31px] pt-[21px]'>Not available</h1>
+                                )
+                            }
                         </div>
                     </div>
                 </main>
