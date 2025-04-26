@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import bg from "../../public/images/PromotionImage.png";
-import Flashjson from "../json/Flashoff.json";
+import bg from "../../../public/images/PromotionImage.png";
 
 const Flashoff = () => {
   

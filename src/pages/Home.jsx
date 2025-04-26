@@ -1,10 +1,11 @@
 import React from 'react'
-import Flashoff from '../Home/Flashoff'
-import Saller from '../Home/Saller'
-import Shipping from '../Home/Shipping'
-import Bannerproducts from '../Home/Bannerproducts'
+
 import { motion } from "framer-motion";
-import Sneacker from '../component/Card/Sneacker'
+import Flashoff from '../component/Home/Flashoff';
+import Bannerproducts from '../component/Home/Bannerproducts';
+import Saller from '../component/Home/Saller';
+import Sneacker from '../component/Card/Sneacker';
+import Shipping from '../component/Home/Shipping';
 
 const pageVariants = {
   initial: { x: "100vw", opacity: 0 }, 

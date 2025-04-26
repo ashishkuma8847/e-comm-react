@@ -1,7 +1,9 @@
+
 @import "tailwindcss";
 @theme {
   
   --font-poppins:  "Poppins", sans-serif; 
+  --font-Nunito:   "Nunito", sans-serif; 
   --font-Raleway: "Raleway", sans-serif; 
   --font-proxima:   "proxima-nova", sans-serif;
   --color-primary: #262626; 
@@ -20,6 +22,7 @@
   --color-roundedgray:#F1F3F4 ; 
   --color-lightskyblue:#ebf5ff ; 
   --color-lightborder:#E5E8EA ; 
+  --color-buttongray:#DFDEDE ; 
 }
 @layer utilities{
   .container{

@@ -78,7 +78,9 @@ const Header = () => {
                 <h4 className='font-proxima font-[400] text-xl    text-primary'>My profile</h4>
               </div>
               <div className="w-[75px] p-[16px_25px_19px_26px]  relative">
+                <Link to={"/cart"}>
                 <img src={cart} className='' alt="cart" />
+                </Link>
                 <span className='bg-primary-red top-[5px] border-white border-[2px] right-[15px]  absolute flex justify-center items-center text-white font-poppins font-bold text-[10px] tracking-[0.5px] w-[22px] h-[22px]  rounded-full' >2</span>
               </div>
               <div className="flex justify-between  font-proxima font-[400] text-xl w-[137px] ">

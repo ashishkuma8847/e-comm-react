@@ -1,22 +1,23 @@
 import React, { Fragment, useState } from 'react'
-import nikepro from "../json/nikepro.json"
-import rating from "../../public/svg/rate.svg"
-import productjson from "../json/Product.json"
-import arrow from "../../public/svg/arrowdown.svg"
-import cart from "../../public/svg/cartblue.svg"
-import wishlist from "../../public/svg/wishlistblue.svg"
-import plus from "../../public/svg/plus.svg"
-import minus from "../../public/svg/minus.svg"
-import facebook from "../../public/svg/facebookwhite.svg"
-import twitter from "../../public/svg/twitterwhite.svg"
-import swiperimg from "../../public/images/firstProduct.png"
+import nikepro from "../../json/nikepro.json"
+import rating from "../../../public/svg/rate.svg"
+import productjson from "../../json/Product.json"
+import arrow from "../../../public/svg/arrowdown.svg"
+import cart from "../../../public/svg/cartblue.svg"
+import wishlist from "../../../public/svg/wishlistblue.svg"
+import plus from "../../../public/svg/plus.svg"
+import minus from "../../../public/svg/minus.svg"
+import facebook from "../../../public/svg/facebookwhite.svg"
+import twitter from "../../../public/svg/twitterwhite.svg"
+import swiperimg from "../../../public/images/firstProduct.png"
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
 import "./Product.css"
-import nikeprojson from "../json/nikeinfo.json" 
+import nikeprojson from "../../json/nikeinfo.json" 
 import { Link } from 'react-router-dom'
+import Seller from '../../component/Card/Seller'
 const Product = () => {
     const [isImage, setImage] = useState(nikepro.data[2].img)
     const [isborder, setIsborder] = useState(false);
@@ -252,6 +253,12 @@ const Product = () => {
                                     <h1 className='font-poppins font-normal text-[12px] leading-[180%] text-neutral-gray tracking-[0.5px] pl-[31px] pt-[21px]'>Not available</h1>
                                 )
                             }
+                        </div>
+                        <div className="flex flex-col gap-[83.76px] pb-[86.26px] justify-center items-center">
+                            <h4 className='font-poppins font-[600] text-[35px] text-primary-dark'>RELATED PRODUCTS</h4>
+                        <div className="flex w-full justify-between">
+                            <Seller data={productjson.saller}/>
+                        </div>
                         </div>
                     </div>
                 </main>

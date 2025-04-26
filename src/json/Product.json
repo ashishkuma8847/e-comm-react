@@ -32,5 +32,30 @@
             "color":"#FFF600"
         }
       
+    ],
+    "saller": [
+        {
+           
+            "image": "../../public/images/firstProduct.png",
+            "category": "Bags",
+            "deal":"HOT"
+          },
+          {
+          
+            "image": "../../public/images/brownpurseProduct.png",
+            "category": "Sneakers"
+          },
+          {
+           
+            "image": "../../public/images/otherProduct.png",
+            "category": "Belt"
+          },
+          {
+            
+            "image": "../../public/images/blueshoueProduct.png",
+            "category": "Sunglasses"
+          }
+          
     ]
+    
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import data from "../json/saller.json";
+import data from "../../json/saller.json";
 
-import Seller from "../component/Card/Seller";
+import Seller from "../../component/Card/Seller";
 const Swiperdata = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
