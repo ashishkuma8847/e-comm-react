@@ -28,6 +28,24 @@ const Hotdeal = () => {
     setisnike(true);
     setnike(false);
   };
+  const data = [
+
+    {
+      value:"1"
+    },
+    {
+      value:"2"
+    },
+    {
+      value:"3"
+    },
+    {
+      value:"4"
+    },
+    {
+      value:"5"
+    }
+  ]
   return (
     <>
       <section className="mb-[155px]">
@@ -334,6 +352,14 @@ const Hotdeal = () => {
                     </div>
                   ))}
                 </div>
+                <div className="flex mt-[47px] bg-lightgray justify-center items-center pt-[16px] pb-[18px] ">
+                  {
+                    data.map((item,index)=>(
+                      <div className="flex justify-center items-center bg-transparent " key={index+item-Date.now()}>
+                        <h4 className="w-[63px]   flex justify-center text-primary-dark items-center font-[400] text-[18px] h-[56px] cursor-pointer">{item.value}</h4>
+                      </div>
+                    ))
+                  }</div>
               </div>
             </div>
           </div>
