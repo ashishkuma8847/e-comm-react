@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import backimg from "../../../public/svg/StatusBar.svg";
 import cross from "../../../public/svg/bluecross.svg";
-import Input from "../ui/Input";
-import cartjson from "../../json/Cart.json";
 import Paymenydetails from "../cart/Paymenydetails";
 import Carddetails from "../cart/Carddetails";
 import Confirm from "../cart/Confirm";
