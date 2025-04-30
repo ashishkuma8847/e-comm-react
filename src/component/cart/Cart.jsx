@@ -4,13 +4,25 @@ import plus from "../../../public/svg/plus.svg";
 import minus from "../../../public/svg/minus.svg";
 import cartjson from "../../json/Cart.json";
 import Popupcart from "../Card/Popupcart";
+import { motion } from "framer-motion";
+
 const Cart = () => {
   const [count, setcount] = useState(1);
   const [iscount, setiscount] = useState(1);
   const [isCheck, setCheck] = useState(false);
-
+  const pageVariants = {
+    initial: { x: "100vw", opacity: 0 }, 
+    animate: { x: 0, opacity: 1, transition: { duration: 0.3 } }, 
+    exit: { x: "-100vw", opacity: 0, transition: { duration: 0.3 } } 
+  };
   return (
     <>
+     <motion.div
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
       <section>
         <main>
           <div className=" flex justify-center items-center bg-sidegray py-[14.5px] gap-2 font-normal text-[18px] mb-[42.28px] ">
@@ -176,6 +188,7 @@ const Cart = () => {
           </div>
         </main>
       </section>
+      </motion.div>
     </>
   );
 };

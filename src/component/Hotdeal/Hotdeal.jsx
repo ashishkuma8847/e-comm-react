@@ -13,6 +13,8 @@ import cart from "../../../public/svg/cartblue.svg";
 import wishlist from "../../../public/svg/wishlistblue.svg";
 import rating from "../../../public/svg/rate.svg";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+
 const Hotdeal = () => {
   const [color, setcolor] = useState(false);
   const [price, setPrice] = useState(13.99);
@@ -27,6 +29,11 @@ const Hotdeal = () => {
   const isnikedata = () => {
     setisnike(true);
     setnike(false);
+  };
+  const pageVariants = {
+    initial: { x: "100vw", opacity: 0 }, 
+    animate: { x: 0, opacity: 1, transition: { duration: 0.3 } }, 
+    exit: { x: "-100vw", opacity: 0, transition: { duration: 0.3 } } 
   };
   const data = [
 
@@ -48,6 +55,13 @@ const Hotdeal = () => {
   ]
   return (
     <>
+
+<motion.div
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
       <section className="mb-[155px]">
         <main>
           <div className=" flex justify-center items-center bg-sidegray py-[14.5px] gap-2 font-normal text-[18px] mb-[51.53px] ">
@@ -248,13 +262,13 @@ const Hotdeal = () => {
                       <img
                         onClick={nikedata}
                         src={nike ? iconninedot : iconninedotcolor}
-                        className="px-[16.58px] pt-[8px] pb-[10px]"
+                        className="px-[16.58px] cursor-pointer pt-[8px] pb-[10px]"
                         alt="iconninedot"
                       />
                       <img
                         onClick={isnikedata}
                         src={isnike ? threelinemenuncolor : threelinemenu}
-                        className="px-[18px] pt-[10px] pb-[12px]"
+                        className="px-[18px] pt-[10px] cursor-pointer pb-[12px]"
                         alt="threelinemenu"
                       />
                     </div>
@@ -331,6 +345,7 @@ const Hotdeal = () => {
                               istique et congue. Vivamus adipiscin vulputate g
                               nisl ut dolor ...
                             </h4>
+                              <Link to={"/cart"}>
                             <div className="flex items-center gap-4">
                               <button className="flex items-center gap-2 bg-lightskyblue  max-w-[150px] w-full py-[15px] justify-center rounded">
                                 <img
@@ -346,6 +361,7 @@ const Hotdeal = () => {
                                 <img src={wishlist} alt="image" />
                               </div>
                             </div>
+                              </Link>
                           </div>
                         </div>
                       </Link>
@@ -365,6 +381,7 @@ const Hotdeal = () => {
           </div>
         </main>
       </section>
+      </motion.div>
     </>
   );
 };

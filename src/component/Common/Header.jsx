@@ -53,11 +53,11 @@ const Header = () => {
 
   return (
     <>
-      <section className='border-b-[2px] border-lightgray'>
+      <section className={`${Click1 ? "h-0 opacity-0 "  : "h-[70px] opacity-100"} transition-all hidden md:block duration-200 border-b-[2px] border-lightgray`}>
 
 
         <div className="container">
-          <div className="pt-[9.74px] md:flex justify-between items-center hidden ">
+          <div className="pt-[9.74px]  md:flex justify-between items-center hidden ">
             <div className=" flex gap-4">
               <Dropdown
                 name="EN"
@@ -95,7 +95,7 @@ const Header = () => {
       <section className=' pt-[34.74px] pb-[34.04px]'>
         <div className="container">
           <div className="flex  justify-between  ">
-            <div className={`${Click1 ? "hidden  " : "block "} lg:flex flex w-[134.32px] justify-between items-center`}>
+            <div className={`${Click1 ? " hidden   " : "block "} lg:flex  flex w-[134.32px] justify-between items-center`}>
               <img src={icon} alt="icon" />
               <h4 className=' font-poppins font-bold text-[18px]  text-primary-dark'>E-comm</h4>
             </div>
@@ -105,13 +105,16 @@ const Header = () => {
             {
               (<>
               <div className="lg:hidden">
-                <div className={`flex gap-1.5 md:hidden md:my-[26px] transition-all duration-300 ${Click1 ? "z-10  translate-0 delay-500  opacity-100" : " -z-50 translate-x-[50px] opacity-0 "} items-center `}>
-                  <div className="flex">
-                  <img src={icon} alt="logo" />
-                  <h6 className='text-lg  tracking-normal font-bold font-poppins text-white'>E-Comm</h6></div>
-                 
+              
+                <div className={`flex flex-col  gap-5 absolute top-20 z-10 transition-all mt-[20px] duration-500 ${Click1 ? "translate-x-0 delay-300 opacity-100 " : "translate-x-[500px] opacity-0"} `}>
+                  
+                  
                 </div>
-                <div className={`flex flex-col gap-5 absolute top-20 z-10 transition-all duration-500 ${Click1 ? "translate-x-0 delay-300 opacity-100 " : "translate-x-[500px] opacity-0"} `}>
+                <div className={`max-h-1vh lg:hidden h-full ${Click1 ? "w-full opacity-100" : "w-0 opacity-0"}  pt-[34.74px] px-[20.04px]  transition-all duration-500 top-0 right-0 absolute bg-lightgray  `}>
+                   <div className={`${Click1 ? " block   " : "hidden "} lg:flex  flex w-[134.32px] justify-between items-center`}>
+              <img src={icon} alt="icon" />
+              <h4 className=' font-poppins font-bold text-[18px]  text-primary-dark'>E-comm</h4>
+            </div>
                   { Click1 &&
                     Headerjson.path.map((item, index) => (
                       <NavLink onClick={() => setClick1(false)} key={Date.now() + item + index} className="text-2xl font-[500] font-poppins" to={item.path}>
@@ -129,10 +132,14 @@ const Header = () => {
 
                     ))
                   }
-                </div>
-                <div className={`max-h-1vh lg:hidden h-full ${Click1 ? "w-full" : "w-0"} transition-all duration-500 top-0 right-0 absolute bg-gray-400  `}></div>
-              </div></>)
+                  </div>
+              </div>
+             
+              
+              
+              </>)
             }
+            
 
 
             <button className="grid  lg:hidden  h-[40px] items-center   relative cursor-pointer" onClick={() => (setClick1(!Click1))}>
@@ -165,6 +172,7 @@ const Header = () => {
           </div>
         </div>
       </section>
+      
     </>
   )
 }

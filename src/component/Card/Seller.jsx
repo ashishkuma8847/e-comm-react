@@ -1,6 +1,7 @@
 import React from 'react'
 import wishlist from "../../../public/svg/wishlist.svg"
 import cart from "../../../public/svg/cartblue.svg"
+import { Link } from 'react-router-dom'
 const Seller = ({data}) => {
   
   return (
@@ -26,12 +27,14 @@ const Seller = ({data}) => {
                   />
                   <div className=" ">
                     <div className="absolute  flex group-hover:w-[112px]  z-20 group-hover:opacity-100 transition-all duration-200 opacity-0  w-0 justify-between items-center top-[120px] left-[90px]">
-                      <div className=" border-2 rounded-full flex justify-center items-center bg-white border-lightskyblue w-[51px] h-[51px]">
+                      <Link to={"/error"}> <div className=" border-2 rounded-full flex justify-center items-center bg-white border-lightskyblue w-[51px] h-[51px]">
                         <img className="w-[17.8px ] h-[15.6px] " src={wishlist} alt="wishlist" />
-                      </div>
-                      <div className="border-2 rounded-full flex justify-center items-center bg-white border-lightskyblue w-[51px] h-[51px]">
+                      </div></Link>
+                     
+                      <Link to={"/cart"}><div className="border-2 rounded-full flex justify-center items-center bg-white border-lightskyblue w-[51px] h-[51px]">
                         <img className="w-[17.77px ] h-[17.83px]  " src={cart} alt="cart" />
-                      </div>
+                      </div></Link>
+                      
                     </div></div></div>
                   {/* Product Info */}
                   <div className="flex flex-col items-center justify-center gap-[6px] pt-[9.5px] pb-[18px]">
