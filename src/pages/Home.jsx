@@ -21,11 +21,11 @@ const Home = () => {
       animate="animate"
       exit="exit"
     >
-    {/* <Flashoff/>
+    <Flashoff/>
     <Bannerproducts/>
-    <Saller/>
-<Sneacker section={"pb-[97.2px]"} width={"w-[592px] h-[600px]"} container={"container"} height={"h-[600px]"} imgclass={"right-[-120px] top-[-93px]"} headingstyle={"font-[500] text-[55px]  mb-[23.34px]"} pstyle={"mb-[12.11px]  font-[400] text-[24px]"} buttonstyle={"w-[111px] h-[30px] font-[600] text-[20px] "} spanstyle={" w-[75px] h-[3px]"}/>
-    <Shipping/> */}
+    {/* <Saller/> */}
+{/* <Sneacker section={"pb-[97.2px]"} width={"w-[592px] h-[600px]"} container={"container"} height={"h-[600px]"} imgclass={"right-[-120px] top-[-93px]"} headingstyle={"font-[500] text-[55px]  mb-[23.34px]"} pstyle={"mb-[12.11px]  font-[400] text-[24px]"} buttonstyle={"w-[111px] h-[30px] font-[600] text-[20px] "} spanstyle={" w-[75px] h-[3px]"}/> */}
+    {/* <Shipping/> */}
     </motion.div>
     </>
   )

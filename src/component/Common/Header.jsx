@@ -53,12 +53,12 @@ const Header = () => {
 
   return (
     <>
-      <section className={`${Click1 ? "h-0 opacity-0 "  : "h-[70px] opacity-100"} transition-all hidden md:block duration-200 border-b-[2px] border-lightgray`}>
+      <section className={`  ${Click1 ? " hidden" : "block"} transition-all  duration-200 border-b-[2px] border-lightgray`}>
 
 
         <div className="container">
           <div className="pt-[9.74px]  md:flex justify-between items-center hidden ">
-            <div className=" flex gap-4">
+            <div className={ ` flex gap-4`}>
               <Dropdown
                 name="EN"
                 items={["EN", "HINDI", "PUNJABI"]}
@@ -79,7 +79,7 @@ const Header = () => {
               </div>
               <div className="w-[75px] p-[16px_25px_19px_26px]  relative">
                 <Link to={"/cart"}>
-                <img src={cart} className='' alt="cart" />
+                  <img src={cart} className='' alt="cart" />
                 </Link>
                 <span className='bg-primary-red top-[5px] border-white border-[2px] right-[15px]  absolute flex justify-center items-center text-white font-poppins font-bold text-[10px] tracking-[0.5px] w-[22px] h-[22px]  rounded-full' >2</span>
               </div>
@@ -104,42 +104,74 @@ const Header = () => {
 
             {
               (<>
-              <div className="lg:hidden">
-              
-                <div className={`flex flex-col  gap-5 absolute top-20 z-10 transition-all mt-[20px] duration-500 ${Click1 ? "translate-x-0 delay-300 opacity-100 " : "translate-x-[500px] opacity-0"} `}>
-                  
-                  
-                </div>
-                <div className={`max-h-1vh lg:hidden h-full ${Click1 ? "w-full opacity-100" : "w-0 opacity-0"}  pt-[34.74px] px-[20.04px]  transition-all duration-500 top-0 right-0 absolute bg-lightgray  `}>
-                   <div className={`${Click1 ? " block   " : "hidden "} lg:flex  flex w-[134.32px] justify-between items-center`}>
-              <img src={icon} alt="icon" />
-              <h4 className=' font-poppins font-bold text-[18px]  text-primary-dark'>E-comm</h4>
-            </div>
-                  { Click1 &&
-                    Headerjson.path.map((item, index) => (
-                      <NavLink onClick={() => setClick1(false)} key={Date.now() + item + index} className="text-2xl font-[500] font-poppins" to={item.path}>
-                        {
+                <div className="lg:hidden">
 
-                          index === 0 ? (<>
+                 
+                  <div className={`max-h-1vh lg:hidden h-full ${Click1 ? "w-full opacity-100" : "w-0 opacity-0"} flex flex-col gap-[50px] sm:gap-[10px]  pt-[34.74px] px-[20.04px]  transition-all duration-500 top-0 right-0 absolute bg-lightgray  `}>
+                    <div className={`${Click1 ? " block   " : "hidden "} lg:flex  flex w-[134.32px] justify-between items-center`}>
+                      <img src={icon} alt="icon" />
+                      <h4 className=' font-poppins font-bold text-[18px]  text-primary-dark'>E-comm</h4>
+                    </div>
+                    <div className="flex gap-2 md:gap-[50px] h-fit md:h-[59px] md:flex-row flex-col md:items-center">
+                      {Click1 &&
+                        Headerjson.path.map((item, index) => (
+                          <NavLink onClick={() => setClick1(false)} key={Date.now() + item + index} className="text-2xl font-[500] font-poppins" to={item.path}>
+                            {
 
-                            <Popup child={item.title} />
+                              index === 0 ? (<>
+
+                                <Popup child={item.title} />
 
 
 
-                          </>) : <h4>{item.title}</h4>
-                        }
-                      </NavLink>
+                              </>) : <h4>{item.title}</h4>
+                            }
+                          </NavLink>
 
-                    ))
-                  }
+                        ))
+                      }
+                    </div>
+                    <div  className={`    md:flex justify-between flex flex-col sm:gap-0 gap-5 sm:flex-row  items-center  `}>
+                      <div className={`${!Click1 && "hidden"} flex gap-4`}>
+                        <Dropdown
+                          name="EN"
+                          items={["EN", "HINDI", "PUNJABI"]}
+                          activeDropdown={activeDropdown}
+                          setActiveDropdown={setActiveDropdown}
+                        />
+                        <Dropdown
+                          name="USD"
+                          items={["IND", "USD", "USA"]}
+                          activeDropdown={activeDropdown}
+                          setActiveDropdown={setActiveDropdown}
+                        />
+                      </div>
+                      <div className={`${!Click1 && "hidden"} flex  justify-between w-fit sm:w-[366.15px]  items-center`}>
+                        <div className="flex justify-between items-center  w-[113.53px] ">
+                          <img src={profile} className='w-[20px] h-[20px]' alt="profile" />
+                          <h4 className='font-proxima font-[400] text-xl    text-primary'>My profile</h4>
+                        </div>
+                        <div className="w-[75px] p-[16px_25px_19px_26px]  relative">
+                          <Link onClick={() => setClick1(false)} to={"/cart"}>
+                            <img src={cart} className='' alt="cart" />
+                          </Link>
+                          <span className='bg-primary-red top-[5px] border-white border-[2px] right-[15px]  absolute flex justify-center items-center text-white font-poppins font-bold text-[10px] tracking-[0.5px] w-[22px] h-[22px]  rounded-full' >2</span>
+                        </div>
+                        <div className="flex justify-between  font-proxima font-[400] text-xl w-[137px] ">
+                          <h4 className='w-[53px] text-primary text-end'> Items</h4>
+                          <h4 className='w-[52px] text-primary opacity-[50%]'>$0.00</h4>
+                        </div>
+                        <img className='w-[20.95px] h-[20.94px] ' src={search} alt="search" />
+                      </div>
+                    </div>
                   </div>
-              </div>
-             
-              
-              
+                </div>
+
+
+
               </>)
             }
-            
+
 
 
             <button className="grid  lg:hidden  h-[40px] items-center   relative cursor-pointer" onClick={() => (setClick1(!Click1))}>
@@ -172,7 +204,7 @@ const Header = () => {
           </div>
         </div>
       </section>
-      
+
     </>
   )
 }

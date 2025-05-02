@@ -6,7 +6,7 @@ import redshoe from "../../../public/Images/Productred.png"
 const Bannerproducts = () => {
     return (
         <>
-            <div className="container                relative mb-[334.88px]">
+            <div className="container    hidden xl:block            relative mb-[334.88px]">
                 <div className="flex absolute -top-[90px] rounded bg-lightwhite">
                     <div className="relative rounded-[5px] ">
                         <h1 className='absolute text-natural-blue font-poppins font-bold text-xl leading-[150%] tracking-[0.5px] top-[29px] left-[52px] max-w-[202px] w-full'>FS - QUILTED MAXI CROSS BAG</h1>
