@@ -6,7 +6,7 @@ const Saller = () => {
   return (
     <>
       <section>
-        <main className="pb-[90.83px]">
+        <main className="xl:pb-[90.83px] pb-[35.83px] xl:mt-0 mt-[30px]">
           <div className="max-w-[1315px] w-full mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col justify-center">
               {/* Title + Swiper */}

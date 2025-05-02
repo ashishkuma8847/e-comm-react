@@ -23,8 +23,8 @@ const Home = () => {
     >
     <Flashoff/>
     <Bannerproducts/>
-    {/* <Saller/> */}
-{/* <Sneacker section={"pb-[97.2px]"} width={"w-[592px] h-[600px]"} container={"container"} height={"h-[600px]"} imgclass={"right-[-120px] top-[-93px]"} headingstyle={"font-[500] text-[55px]  mb-[23.34px]"} pstyle={"mb-[12.11px]  font-[400] text-[24px]"} buttonstyle={"w-[111px] h-[30px] font-[600] text-[20px] "} spanstyle={" w-[75px] h-[3px]"}/> */}
+    <Saller/>
+<Sneacker section={"pb-[97.2px]"} width={"xl:w-[592px] lg:w-[400px] lg:h-[400] xl:h-[600px]"} container={"container"} height={"h-[600px]"} imgclass={"right-[-120px] top-[-93px]"} headingstyle={"font-[500] xl:text-[55px] lg:text-[35px]  mb-[23.34px]"} pstyle={"mb-[12.11px]  font-[400] lg:text-[15px] xl:text-[24px]"} buttonstyle={"w-[111px] h-[30px] font-[600] text-[20px] "} spanstyle={" w-[75px] h-[3px]"}/>
     {/* <Shipping/> */}
     </motion.div>
     </>
