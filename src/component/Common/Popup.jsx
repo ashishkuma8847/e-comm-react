@@ -11,7 +11,7 @@ const Popup = ({child}) => {
     <h4 onMouseEnter={() => sethomedata(true)} className={""}>
                                 {child}
                               </h4>
-    <div onMouseLeave={() => sethomedata(false)} className={` transition-all duration-300  ${homedata ? "block" : "hidden"} w-[1029px]    absolute  mx-auto left-[-290px] top-[55px] border-t-2 border-lightgray  h-[360.51px] bg-white text-primary  p-[38.82px_32.7px_3.7px_84.14px]`}>
+    <div onMouseLeave={() => sethomedata(false)} className={` transition-all duration-300 z-50 ${homedata ? "block" : "hidden"} w-[1029px]    absolute  mx-auto left-[-290px] top-[55px] border-t-2 border-lightgray  h-[360.51px] bg-white text-primary  p-[38.82px_32.7px_3.7px_84.14px]`}>
                             <img className='absolute top-[-11px] left-[315px]' src={arrow} alt="arrowlightwhite" />
                             <div className="flex w-full justify-between">
                               <div className="flex flex-col gap-[12.94px]">
@@ -36,7 +36,7 @@ const Popup = ({child}) => {
                                   {
                                     Headerjson.datacatogry.map((item, index) => (
                                       <div key={index}>
-                                        <Link to={"/error"}>
+                                        <Link onClick={()=>sethomedata(false)} to={"/error"}>
                                           <h4 className='font-poppins  font-normal text-[16px]'>{item.title}</h4></Link>
 
                                       </div>
@@ -53,10 +53,10 @@ const Popup = ({child}) => {
                                     Headerjson.datacatogryhotdeal.map((item, index) => (
                                       <div key={index}>
                                         {
-                                          index === 0 ? (<><Link to={"/Hotdeal"}>
+                                          index === 0 ? (<><Link onClick={()=>sethomedata(false)} to={"/Hotdeal"}>
                                             <h4 className='font-poppins  font-normal text-[16px]'>{item.title}</h4>
                                           </Link>
-                                          </>) : <Link to={"/error"}>
+                                          </>) : <Link onClick={()=>sethomedata(false)} to={"/error"}>
                                             <h4 className='font-poppins  font-normal text-[16px]'>{item.title}</h4>
                                           </Link>
                                         }
@@ -73,10 +73,10 @@ const Popup = ({child}) => {
                                     Headerjson.datacatogryhotdeal.map((item, index) => (
                                       <div key={index}>
                                         {
-                                          index === 0 ? (<><Link to={"/Hotdeal"}>
+                                          index === 0 ? (<><Link onClick={()=>sethomedata(false)} to={"/Hotdeal"}>
                                             <h4 className='font-poppins  font-normal text-[16px]'>{item.title}</h4>
                                           </Link>
-                                          </>) : <Link to={"/error"}>
+                                          </>) : <Link onClick={()=>sethomedata(false)} to={"/error"}>
                                             <h4 className='font-poppins  font-normal text-[16px]'>{item.title}</h4>
                                           </Link>
                                         }
@@ -95,7 +95,7 @@ const Popup = ({child}) => {
                                   {
                                     Headerjson.datacatogry.map((item, index) => (
                                       <div key={index}>
-                                        <Link to={"/error"}>
+                                        <Link onClick={()=>sethomedata(false)} to={"/error"}>
                                           <h4 className='font-poppins  font-normal text-[16px]'>{item.title}</h4></Link>
 
                                       </div>

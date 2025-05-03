@@ -1,113 +1,120 @@
 import React from "react";
 import data from "../../json/Shipping.json";
+
 const Shipping = () => {
   return (
-    <>
-      <section>
-        <main className="">
-          <div className="max-w-[1091px] mx-auto px-5 pb-[121.34px]">
-            <div className="flex justify-between">
-              {data.data.map((item, index) => {
-                return (
-                  <div key={index + item + Date.now()}>
-                    <div className="max-w-[197.56px] w-full flex flex-col justify-center items-center gap-[11.98px]">
-                      <div className="flex flex-col justify-center items-center gap-[53.81px]">
-                        <img
-                          className="w-[100.76px] h-[65.86px]"
-                          src={item.img}
-                          alt="shippingimg"
-                        />
-                        <h4 className="font-poppins text-primary-dark font-[500] text-[27px] ">
-                          {item.tittle}
-                        </h4>
-                      </div>
-                      <p className="font-proxima font-normal text-center text-[18px] text-primary-dark">
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry.
-                      </p>
+    <section>
+      <main>
+        {/* SHIPPING SECTION */}
+        <div className="max-w-[1091px] mx-auto px-5 pb-[60px] lg:pb-[121.34px]">
+          <div className="flex flex-wrap justify-center lg:justify-between gap-8">
+            {data.data.map((item, index) => (
+              <div
+                key={index + item + Date.now()}
+                className="max-w-[197.56px] w-full flex flex-col justify-center items-center gap-4"
+              >
+                <div className="flex flex-col justify-center items-center gap-8">
+                  <img
+                    className="w-[80px] md:w-[100.76px] h-auto"
+                    src={item.img}
+                    alt="shippingimg"
+                  />
+                  <h4 className="font-poppins text-primary-dark font-medium text-[20px] md:text-[27px] text-center">
+                    {item.tittle}
+                  </h4>
+                </div>
+                <p className="font-proxima text-center text-base md:text-[18px] text-primary-dark">
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry.
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* LATEST NEWS */}
+        <div className="flex flex-col justify-center items-center gap-10 max-w-[1212.93px] w-full px-5 mx-auto pb-[60px] lg:pb-[110.04px]">
+          <h1 className="font-poppins font-semibold text-[26px] md:text-[34px] text-primary-dark text-center">
+            LATEST NEWS
+          </h1>
+          <div className="flex flex-col gap-8 lg:flex-row justify-between items-center w-full">
+            {data.datanews.map((item, index) => (
+              <div key={index + item + Date.now()} className="w-full ">
+                <div
+                  className={`flex flex-col sm:flex-row items-center gap-4 ${item.width}`}
+                >
+                  <img src={item.img} alt="NIKE" className="" />
+                  <div className="flex flex-col sm:w-[197.56px] xl:w-full text-center sm:text-left">
+                    <h4 className="text-lightgray-white mb-1 font-poppins font-medium text-base md:text-[18px]">
+                      01 Jan, 2015
+                    </h4>
+                    <h4 className="text-primary-dark  xl:w-[200px] font-poppins font-semibold text-lg md:text-[22px]">
+                      {item.tittle}
+                    </h4>
+                    <p className="text-primary-dark font-proxima text-sm md:text-[18px]">
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* FEATURED PRODUCTS */}
+        <div className="flex flex-col pb-[60px] lg:pb-[110.04px] justify-center items-center max-w-[1304.98px] w-full mx-auto px-5 gap-12">
+          <h1 className="text-primary-dark font-poppins font-semibold text-[28px] md:text-[35px] text-center">
+            FEATURED PRODUCTS
+          </h1>
+          <div className="flex flex-col lg:flex-row gap-8">
+            {data.datanews.map((item, index) => (
+              <div key={index + item + Date.now()} className="w-full">
+                <div className="flex flex-col sm:flex-row gap-4 w-full max-w-[428px] mx-auto">
+                  <img
+                    className="h-[154px] w-[154px] mx-auto sm:mx-0"
+                    src={"../../public/images/RectangleSNICKER.png"}
+                    alt="RectangleSNICKER"
+                  />
+                  <div className="flex flex-col  gap-3 sm:w-[249.29px]">
+                    <h1 className="text-primary font-proxima font-normal text-[18px] md:text-[22px]">
+                      Blue Swade Nike Sneakers
+                    </h1>
+                    <img
+                      className="w-[86.02px] mx-auto xl:m-0 h-[11.88px]"
+                      src={"../../public/svg/rate.svg"}
+                      alt="rate"
+                    />
+                    <div className="flex  sm:justify-between xl:items-start xl:justify-start items-center gap-4">
+                      <h4 className="text-primary-red font-poppins font-medium text-lg md:text-[20px]">
+                        $499
+                      </h4>
+                      <h4 className="text-lightgray-white line-through font-poppins font-medium text-lg md:text-[20px]">
+                        $599
+                      </h4>
                     </div>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              </div>
+            ))}
           </div>
-          <div className="flex flex-col justify-center items-center gap-[71.97px] max-w-[1212.93px] w-full px-5 mx-auto pb-[110.04px] ">
-            <h1 className="font-poppins font-[600] flex justify-center items-center h-[51px]  text-[34px] text-primary-dark">
-              LATEST NEWS
-            </h1>
-            <div className=" flex justify-between w-full">
-              {data.datanews.map((item, index) => {
-                return (
-                  <div key={index + item + Date.now()}>
-                    <div
-                      className={`${item.width} flex justify-between items-center`}
-                    >
-                      <img src={item.img} alt="NIKE" />
-                      <div className="flex flex-col w-[197.56px]">
-                        <h4 className="text-lightgray-white mb-[2.2px]  font-poppins font-[500] text-[18px] ">
-                          01 Jan, 2015
-                        </h4>
-                        <h4 className="text-primary-dark h-[33px] flex  items-center font-poppins font-[600] text-[22px] ">
-                          {item.tittle}
-                        </h4>
-                        <p className="text-primary-dark font-proxima font-normal text-[18px] ">
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+        </div>
+
+        {/* SEARCH BAR */}
+        <div className="container px-5">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pb-[95.41px]">
+            <input
+              className="w-full sm:w-[508px] text-primary opacity-35 px-5 py-4 h-[64px] font-poppins text-base md:text-[18px] border-t-2 border-b-2 border-l-2 border-primary-blue rounded-tl-md rounded-bl-md outline-none"
+              type="text"
+              placeholder="Search query..."
+            />
+            <button className="w-full sm:w-[127px] px-6 py-4 font-poppins font-semibold text-lg text-white bg-primary-blue rounded-r-md">
+              Search
+            </button>
           </div>
-          <div className="flex flex-col pb-[110.04px] justify-center items-center max-w-[1304.98px] w-full mx-auto px-5 gap-[55.44px]">
-            <h1 className="text-primary-dark font-poppins font-[600] text-[35px]  h-[53px] justify-center items-center flex">
-              FEATURED PRODUCTS
-            </h1>
-            <div className="flex">
-              {data.datanews.map((item, index) => {
-                return (
-                  <div key={index + item + Date.now()}>
-                    <div className="flex w-[428px]  justify-between">
-                      <img
-                        className="h-[154px] w-[154px]"
-                        src={"../../public/images/RectangleSNICKER.png"}
-                        alt="RectangleSNICKER"
-                      />
-                      <div className="flex flex-col w-[249.29px] gap-[17.34px]">
-                        <h1 className="text-primary font-proxima font-normal text-[22px] ">
-                          Blue Swade Nike Sneakers
-                        </h1>
-                        <img
-                          className="w-[86.02px] h-[11.88px]"
-                          src={"../../public/svg/rate.svg"}
-                          alt="rate"
-                        />
-                        <div className="flex w-[104.27px] justify-between items-center ">
-                          <h4 className="text-primary-red font-poppins font-[500] text-[20px] ">
-                            $499
-                          </h4>
-                          <h4 className="text-lightgray-white line-through font-poppins font-[500] text-[20px] ">
-                            $599
-                          </h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-          <div className="container">
-            <div className="flex pb-[95.41px] justify-center items-center">
-               <input className="w-[508px] text-primary opacity-[35%] p-[23px_0_19px_21px] h-[64px] font-poppins font-normal text-[18px]  outline-none border-t-2 border-b-2 border-l-2 border-primary-blue rounded-bl-[3px] rounded-tl-[3px]" type="text"  placeholder="Search query..."/>
-               <button className="w-[127px] p-[17px_27.5px] font-poppins h-[64px] font-[600] text-xl text-white bg-primary-blue rounded-r-[3px]">Search</button>
-            </div>
-          </div>
-        </main>
-      </section>
-    </>
+        </div>
+      </main>
+    </section>
   );
 };
 

@@ -1,13 +1,13 @@
 import React from "react";
 import sneackerimage from "../../../public/images/sneacker.png";
-const Sneacker = ({width,container,height,imgclass,headingstyle,pstyle,buttonstyle,spanstyle,section}) => {
+const Sneacker = ({width,container,height,imgclass,headingstyle,pstyle,buttonstyle,spanstyle,section,relative}) => {
   return (
     <>
-      <section className={section}>
+      <section className={`${section}   `} >
         <main className={`${height} bg-primary-blue `}>
           <div className={`${container}`}>
-            <div className="flex relative  text-white">
-              <div className={`${width}  justify-center flex flex-col  `}>
+            <div className={`${relative} flex relative   text-white`}>
+              <div className={`${width}    flex flex-col  `}>
                 <h1 className={`${headingstyle} font-poppins  `}>
                   Adidas Men Running Sneakers
                 </h1>

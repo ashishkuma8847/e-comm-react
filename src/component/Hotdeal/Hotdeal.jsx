@@ -210,7 +210,8 @@ const Hotdeal = () => {
               <div className="">
                 <div className="mb-[23px]">
                   <Sneacker
-                    width={"h-[297.99px] ml-[110px] w-[351px]"}
+                  relative={""}
+                    width={"h-[297.99px] justify-center ml-[110px] w-[351px]"}
                     container={"w-[962px]  "}
                     height={"h-[298px]"}
                     imgclass={
