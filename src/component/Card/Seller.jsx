@@ -9,7 +9,7 @@ const Seller = ({data}) => {
     
     {data.map((item, index) => (
               <div key={index}>
-                <div className="border-2 relative  border-lightwhite rounded w-[100%] max-w-[299.5px] flex flex-col justify-center items-center">
+                <div className={ ` border-2 relative  border-lightwhite rounded w-[100%] max-w-[299.5px] flex flex-col justify-center items-center`}>
                   {/* Deal Badge */}
     
                   {item.deal && (
@@ -22,7 +22,7 @@ const Seller = ({data}) => {
                   <div className="group  ">
                   <img
                     src={item.image}
-                    className="w-[100%]  hover:blur-xs  h-[272.5px] object-cover"
+                    className="  hover:blur-xs  h-[272.5px] object-cover"
                     alt="product"
                   />
                   <div className=" ">

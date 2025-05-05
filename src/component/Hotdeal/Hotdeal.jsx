@@ -2,8 +2,8 @@ import React, { Fragment, useState } from "react";
 import Sneacker from "../Card/Sneacker";
 import sallerjson from "../../json/saller.json";
 import iconninedot from "../../../public/svg/iconninedot.svg";
-import iconninedotcolor from "../../../public/svg/arrowdown.svg";
-import arrow from "../../../public/svg/ninedotswithoutcolor.svg";
+import arrow from "../../../public/svg/arrowdown.svg";
+import iconninedotcolor from "../../../public/svg/ninedotswithoutcolor.svg";
 import threelinemenu from "../../../public/svg/threelinemenu.svg";
 import threelinemenuncolor from "../../../public/svg/threelinemenuwithcolor.svg";
 import Seller from "../Card/Seller";
@@ -65,33 +65,33 @@ const Hotdeal = () => {
               <h4 className=" text-lightgray-white"> /</h4>
               <h1> Hot Deal</h1>
             </div>
-            <div className="container">
-              <div className="flex relative  w-full justify-between">
+            <div className="container ">
+              <div className="flex relative   justify-between">
                 <div className="hidden xl:block"> <Sidebar data={""}/></div>
              
-               <div  className={`${popup ? "w-[300px]  " :"w-[30px] "}  absolute z-50 flex transition-all duration-200`}>
+               <div  className={`${popup ? "w-[300px]  " :"w-[30px] "}  xl:hidden  absolute z-50 flex transition-all duration-200`}>
                       <div className={`${popup ? "w-[270px]  opacity-100 z-50" :"w-0 opacity-0 -z-50"}  transition-all duration-200`}>
                     <Sidebar data={popup}/>  
                       </div>
-                      <div onClick={()=>setpopup(!popup)} className={` w-[30px] h-[50px] rounded-r bg-lightgray flex items-center justify-center`}>
-<img className={`${popup ? "rotate-90" :"-rotate-90"} transition-all duration-200 w-[15px] h-[15px]`} src={iconninedotcolor} alt="" />
+                      <div onClick={()=>setpopup(!popup)} className={` w-[30px] h-[50px] rounded-r bg-buttongray flex items-center justify-center`}>
+<img className={`${popup ? "rotate-90" :"-rotate-90"}  transition-all duration-200 w-[15px] h-[15px]`} src={arrow} alt="" />
                       </div>
                </div>
 
 
 
 
-                <div className="">
+                <div className="m-auto">
                   <div className="mb-[23px]">
                     <Sneacker
-                      relative={""}
-                      width={"h-[297.99px] justify-center ml-[110px] w-[351px]"}
-                      container={"w-[962px]  "}
-                      height={"h-[298px]"}
+                      relative={"flex flex-col xl:flex-row justify-center items-center xl:justify-start items-start"}
+                      width={"h-[297.99px]  justify-center xl:ml-[110px] max-w-[351px] w-full m-auto "}
+                      container={"xl:w-[962px] max-w-[962px]  w-full "}
+                      height={"xl:h-[298px]"}
                       imgclass={
-                        "right-[113px] top-[-34.32px] w-[397.93px] h-[297.46px]"
+                        "static xl:absolute m-auto xl:m-0 right-[113px] top-[-34.32px]  sm:w-[397.93px] w-[297.93px] sm:h-[297.46px] h-[197.46px]"
                       }
-                      headingstyle={"font-[500] text-[30px]  mb-[15.34px]"}
+                      headingstyle={"font-[500] sm:text-[30px] text-[20px]  mb-[15.34px]"}
                       pstyle={"mb-[12.11px]  font-[400] text-[14px]"}
                       buttonstyle={
                         "w-[111px] text-left h-[30px] font-[600] text-[12px] "
@@ -100,8 +100,8 @@ const Hotdeal = () => {
                     />
                   </div>
                   <div className="flex items-center">
-                    <div className="w-full flex justify-between items-center  pt-[11px] pb-[9px] rounded bg-sidegray pl-[22.23px]">
-                      <div className="flex w-[526px] justify-between items-center">
+                    <div className="max-w-[962px] w-full flex justify-between items-center  pt-[11px] pb-[9px] rounded bg-sidegray pl-[22.23px]">
+                      <div className=" hidden md:flex  w-[526px] justify-between items-center">
                         <div className="flex w-[58px] justify-between items-center font-normal text-[16px] text-primary-dark">
                           <h4>{sallerjson.saller.length}</h4>
                           <h4>Items</h4>
@@ -151,24 +151,24 @@ const Hotdeal = () => {
                   </div>
                   <Link
                     to={"/product"}
-                    className={`grid grid-cols-1 sm:grid-cols-2 mt-[27px]  md:grid-cols-2 xl:grid-cols-3 gap-[33px] place-items-center ${
+                    className={`grid grid-cols-1 w-[] sm:grid-cols-2 lg:grid-cols-3  mt-[27px]  md:grid-cols-2 xl:grid-cols-3 gap-[33px] place-items-center ${
                       nike ? "block " : "hidden"
                     }`}
                   >
-                    <Seller data={hotdeljson.hotdeal} />
+                    <Seller  data={hotdeljson.hotdeal} />
                   </Link>
                   <div
                     className={`${isnike ? "block" : "hidden"} flex flex-col`}
                   >
                     {hotdeljson.data3.map((item, index) => (
                       <div
-                        className={`max-w-[870px] w-full border-sidegray relative pt-[30px] pb-[26px] flex  ${
+                        className={`max-w-[870px]  w-full border-sidegray relative pt-[30px] pb-[26px] flex  ${
                           index <= 2 ? "border-b-2 " : "border-none"
                         }`}
                         key={index}
                       >
                         <Link>
-                          <div className="flex gap-[14px]">
+                          <div className="flex gap-[14px] flex-col lg:flex-row justify-center items-center lg:justify-start lg:items-start">
                             {
                               <>
                                 {" "}
@@ -187,11 +187,11 @@ const Hotdeal = () => {
                               </>
                             }
 
-                            <div className="flex flex-col">
+                            <div className="flex flex-col justify-center items-center lg:justify-start lg:items-start">
                               <h1 className="font-poppins font-medium text-2xl text-primary-dark">
                                 Nike Airmax 270 React
                               </h1>
-                              <div className="flex items-center pt-[14px] pb-5 border-b-2 border-sidegray max-w-[470px] w-full gap-[15px]">
+                              <div className="flex items-center justify-center lg:justify-start pt-[14px] pb-5 border-b-2 border-sidegray max-w-[470px] w-full gap-[15px]">
                                 <img
                                   className="max-w-[72px] w-full"
                                   src={rating}
@@ -257,7 +257,7 @@ const Hotdeal = () => {
                       </div>
                     ))}
                   </div>
-                </div>
+                </div> 
               </div>
             </div>
           </main>
