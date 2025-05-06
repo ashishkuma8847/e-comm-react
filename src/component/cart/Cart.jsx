@@ -46,10 +46,10 @@ const Cart = () => {
                 <div className="flex flex-col gap-[111.35px] pb-[62.2px]">
                   {cartjson.data.map((item, index) => (
                     <div key={index + item + Date.now()}>
-                      <div className="flex flex-col lg:flex-row gap-[10px] lg:gap-0 items-center justify-between">
-                        <div className="flex items-center max-w-[435.47px] w-full justify-between">
-                          <img src={cross} alt="del" />
-                          <div className="flex sm:flex-row flex-col items-center gap-[28.7px]">
+                      <div className="flex  flex-row  items-center justify-between">
+                        <div className="flex lg:flex-row flex-col  lg:gap-0 gap-[10px]  lg:items-center max-w-[435.47px] w-full justify-start lg:justify-between">
+                          <img className="w-[24px] h-[24px]" src={cross} alt="del" />
+                          <div className="flex flex-row  items-center gap-[28.7px]">
                             <img
                               className="w-[138px] h-[94px]"
                               src={item.img}
@@ -72,6 +72,7 @@ const Cart = () => {
                                   className="w-[27.2px] cursor-pointer h-full flex justify-end items-center"
                                 >
                                   <img src={minus} alt="minus" />
+                                  
                                 </div>
 
                                 <h4>{count}</h4>
@@ -114,7 +115,7 @@ const Cart = () => {
                               </div>
                             </>
                           )}
-                          <h4 className="sm:w-[113px]">$499</h4>
+                          <h4 className="w-[113px]">$499</h4>
                         </div>
                       </div>
                     </div>

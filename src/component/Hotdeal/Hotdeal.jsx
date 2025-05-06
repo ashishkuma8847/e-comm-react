@@ -18,7 +18,7 @@ import Sidebar from "./Sidebar";
 const Hotdeal = () => {
 
   const [nike, setnike] = useState(true);
-  const [popup, setpopup] = useState(true);
+  const [popup, setpopup] = useState(false);
   const [isnike, setisnike] = useState(false);
   const nikedata = () => {
     setnike(true);

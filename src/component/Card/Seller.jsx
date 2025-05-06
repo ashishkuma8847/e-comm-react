@@ -8,7 +8,7 @@ const Seller = ({data}) => {
     <>
     
     {data.map((item, index) => (
-              <div key={index}>
+              <div className='flex justify-center items-center' key={index}>
                 <div className={ ` border-2 relative  border-lightwhite rounded w-[100%] max-w-[299.5px] flex flex-col justify-center items-center`}>
                   {/* Deal Badge */}
     

@@ -32,10 +32,10 @@ const Contect = () => {
             <div className="flex flex-col xl:flex-row gap-12 xl:gap-[50.9px] items-center pb-[135px]">
               
               {/* Image and Contact Info */}
-              <div className="relative text-white flex flex-col items-end bg-primary-blue w-full xl:max-w-[626px] sm:h-[600px] xl:h-[715.62px] ">
-                <div className="flex flex-col mt-16 xl:mt-[89px] mr-6 xl:mr-[100px] z-10">
+              <div className="relative  text-white flex flex-col items-end bg-primary-blue w-full xl:max-w-[626px] sm:h-[600px] xl:h-[715.62px] ">
+                <div className="flex pl-[30px] pb-[10px] flex-col mt-16 xl:mt-[89px] mr-6 xl:mr-[100px] z-10">
                   <div className="absolute bg-primary-blue w-[100px] h-[100px] xl:w-[130.4px] xl:h-[133.17px] rounded-full top-[250px] xl:top-[291.22px] right-[-20px]"></div>
-                  <img className="sm:absolute static left-4 xl:right-[103.13px] top-[-20px] xl:top-[21.36px] w-[400px] md:w-[500px] xl:w-[718px] h-auto z-0 " src={caracterimg} alt="img" />
+                  <img className="sm:absolute static left-4 xl:left-[-120px] top-[-20px] xl:top-[21.36px] w-[400px] md:w-[500px] xl:w-[718px] h-auto z-0 " src={caracterimg} alt="img" />
                   <h4 className="w-auto xl:w-[156px] font-Raleway font-semibold text-2xl xl:text-[40px] mb-16">get in touch</h4>
                   <h4 className="font-Raleway font-medium text-sm xl:text-[14px] mb-6">contact@e-comm.ng</h4>
                   <h4 className="font-Raleway font-medium text-sm xl:text-[14px] mb-10">+234 4556 6665 34</h4>

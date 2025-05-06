@@ -107,7 +107,7 @@ const Header = () => {
                 <div className="lg:hidden ">
 
                  
-                  <div className={`max-h-1vh lg:hidden h-full ${Click1 ? "w-full opacity-100" : "w-0 opacity-0"} z-50 flex flex-col gap-[50px] sm:gap-[10px]  pt-[34.74px] px-[20.04px]  transition-all duration-500 top-0 right-0 absolute bg-lightgray  `}>
+                  <div className={`max-h-1vh lg:hidden h-full ${Click1 ? "w-full opacity-100 px-[20.04px]" : "w-0 opacity-0 px-0"} z-50 flex flex-col gap-[50px] sm:gap-[10px]  pt-[34.74px]   transition-all duration-500 top-0 right-0 absolute bg-lightgray  `}>
                     <div className={`${Click1 ? " block   " : "hidden "} lg:flex  flex w-[134.32px] justify-between items-center`}>
                       <img src={icon} alt="icon" />
                       <h4 className=' font-poppins font-bold text-[18px]  text-primary-dark'>E-comm</h4>
@@ -161,8 +161,9 @@ const Header = () => {
                           <h4 className='w-[53px] text-primary text-end'> Items</h4>
                           <h4 className='w-[52px] text-primary opacity-[50%]'>$0.00</h4>
                         </div>
-                        <img className='w-[20.95px] h-[20.94px] ' src={search} alt="search" />
                       </div>
+                      <img className='w-[20.95px] h-[20.94px] ' src={search} alt="search" />
+
                     </div>
                   </div>
                 </div>

@@ -102,13 +102,13 @@ const Shipping = () => {
 
         {/* SEARCH BAR */}
         <div className="container px-5">
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pb-[95.41px]">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-0 pb-[95.41px]">
             <input
-              className="w-full sm:w-[508px] text-primary opacity-35 px-5 py-4 h-[64px] font-poppins text-base md:text-[18px] border-t-2 border-b-2 border-l-2 border-primary-blue rounded-tl-md rounded-bl-md outline-none"
+              className="w-full sm:w-[508px] text-primary opacity-35 px-5 py-4 h-[64px] font-poppins text-base md:text-[18px] border-t-2 border-b-2 border-l-2 border-r-2 rounded-r md:border-r-0 md:rounded-r-none border-primary-blue rounded-tl-md rounded-bl-md outline-none"
               type="text"
               placeholder="Search query..."
             />
-            <button className="w-full sm:w-[127px] px-6 py-4 font-poppins font-semibold text-lg text-white bg-primary-blue rounded-r-md">
+            <button className="w-full sm:w-[127px] px-6 py-4 h-[64px] font-poppins rounded-l-md md:rounded-l-none font-semibold text-lg text-white bg-primary-blue rounded-r-md">
               Search
             </button>
           </div>
