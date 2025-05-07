@@ -8,9 +8,9 @@ const Paymenydetails = ({valuefirst}) => {
     
     (<>
             
-        <div className="flex justify-between pl-[20px] pb-[27px]">
-           <div className="flex flex-col max-w-[380px] w-full">
-             <div className="flex flex-col gap-[33px] mb-[24px]">
+        <div className="flex flex-col lg:flex-row justify-between md:pl-[20px] pb-[27px]">
+           <div className="flex flex-col-reverse lg:flex-col max-w-[380px] w-full">
+             <div className="flex lg:flex-col flex-col-reverse   gap-[33px] mb-[24px]">
                <Input
                  classname={" w-full "}
                  placeholder={"First Name"}
@@ -63,7 +63,7 @@ const Paymenydetails = ({valuefirst}) => {
                </div>
              </div>
            </div>
-             <div className="w-[383px]">
+             <div className="max-w-[383px] w-full">
              <Input
                  classname={" w-full mb-[39.41px] "}
                  placeholder={"Last Name"}
@@ -81,7 +81,7 @@ const Paymenydetails = ({valuefirst}) => {
                />
              </div>
          </div>
-         <button onClick={valuefirst}  className={` w-[338px] flex justify-center m-auto font-Nunito font-[800] text-2xl tracking-[-2%] items-center bg-skyblue  rounded text-white cursor-pointer h-[70px]`}>Go to Payment</button>
+         <button onClick={valuefirst}  className={` max-w-[338px] w-full flex justify-center m-auto font-Nunito font-[800] text-2xl tracking-[-2%] items-center bg-skyblue  rounded text-white cursor-pointer h-[70px]`}>Go to Payment</button>
         
         </>)
   )

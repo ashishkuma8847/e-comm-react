@@ -7,22 +7,22 @@ const Carddetails = ({valuesec}) => {
 
   return (
     (<>
-        <div className="flex justify-between items-start w-full pb-[127px]">
+        <div className="flex flex-col lg:flex-row justify-center gap-5 lg:gap-0 items-center lg:justify-between lg:items-start w-full pb-[127px]">
      <img src={card} alt="cardvisa" />
-     <div className=" w-[336px]">
+     <div className=" max-w-[336px] w-full">
      <Input
                classname={"w-full  mb-[31px] "}
                placeholder={"Card Number"}
                type={"text"}
              />
-             <div className="w-full flex justify-between mb-[37px]">
+             <div className="w-full flex gap-[10px] md:gap-0 flex-col md:flex-row justify-between mb-[37px]">
              <Input
-               classname={" w-[161px]   "}
+               classname={" md:w-[161px]   "}
                placeholder={"Expiry"}
                type={"text"}
              />
              <Input
-               classname={" w-[161px]   "}
+               classname={" md:w-[161px]   "}
                placeholder={"CVV"}
                type={"text"}
              />
@@ -53,7 +53,7 @@ const Carddetails = ({valuesec}) => {
                       </div>
      </div>
    </div>
-   <button onClick={valuesec} className={` w-[338px] flex justify-center m-auto font-Nunito font-[800] text-2xl tracking-[-2%] items-center bg-skyblue  rounded text-white cursor-pointer h-[70px]`}>Confirm</button>
+   <button onClick={valuesec} className={` max-w-[338px] w-full flex justify-center m-auto font-Nunito font-[800] text-2xl tracking-[-2%] items-center bg-skyblue  rounded text-white cursor-pointer h-[70px]`}>Confirm</button>
        </>)  
   )
 }

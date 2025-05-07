@@ -49,18 +49,18 @@ const Cart = () => {
                       <div className="flex  flex-row  items-center justify-between">
                         <div className="flex lg:flex-row flex-col  lg:gap-0 gap-[10px]  lg:items-center max-w-[435.47px] w-full justify-start lg:justify-between">
                           <img className="w-[24px] h-[24px]" src={cross} alt="del" />
-                          <div className="flex flex-row  items-center gap-[28.7px]">
+                          <div className="flex md:flex-row flex-col  items-start md:items-center gap-[28.7px]">
                             <img
                               className="w-[138px] h-[94px]"
                               src={item.img}
                               alt="redshoue"
                             />
-                            <h4 className="font-poppins text-[18px] text-primary">
+                            <h4 className="font-poppins text-[13px] sm:text-[18px] text-primary">
                               Nike Airmax 270 react
                             </h4>
                           </div>
                         </div>
-                        <div className="font-poppins text-[18px] text-primary flex items-center max-w-[488px] w-full justify-between">
+                        <div className="font-poppins sm:flex-row sm:gap-0 gap-2 flex-col text-[13px] sm:text-[18px] text-primary flex items-center max-w-[488px] w-full justify-between">
                           {index === 0 ? (
                             <>
                               <h4>${count * 499}</h4>
@@ -115,7 +115,7 @@ const Cart = () => {
                               </div>
                             </>
                           )}
-                          <h4 className="w-[113px]">$499</h4>
+                          <h4 className="sm:w-[113px]">$499</h4>
                         </div>
                       </div>
                     </div>
@@ -178,7 +178,7 @@ const Cart = () => {
                     <>
                       <div onClick={()=>setCheck(false)}  className="fixed inset-0  bg-[#2222224D]    z-40"></div>
 
-                      <div  className="fixed inset-0 flex w-[1021px] m-auto  justify-center items-center z-50">
+                      <div  className="fixed  inset-0 flex   m-auto  justify-center items-center z-50">
                         <Popupcart varient={true} data={()=>setCheck(false)}/>
                       </div>
                     </>
