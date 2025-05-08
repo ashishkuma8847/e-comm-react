@@ -17,9 +17,13 @@ import Sidebar from "./Sidebar";
 
 const Hotdeal = () => {
 
+  
   const [nike, setnike] = useState(true);
   const [popup, setpopup] = useState(false);
   const [isnike, setisnike] = useState(false);
+  const [countpage, setcountpage] = useState(0);
+
+
   const nikedata = () => {
     setnike(true);
     setisnike(false);
@@ -155,7 +159,7 @@ const Hotdeal = () => {
                       nike ? "block " : "hidden"
                     }`}
                   >
-                    <Seller  data={hotdeljson.hotdeal} />
+                    <Seller  data={ countpage == 0 ? hotdeljson.hotdeal : countpage === 1 ? hotdeljson.hotdeal1 : countpage === 2 ? hotdeljson.hotdeal : countpage == 3 ? hotdeljson.hotdeal1 : countpage === 4 && hotdeljson.hotdeal} />
                   </Link>
                   <div
                     className={`${isnike ? "block" : "hidden"} flex flex-col`}
@@ -245,13 +249,16 @@ const Hotdeal = () => {
                       </div>
                     ))}
                   </div>
-                  <div className="flex mt-[47px] bg-lightgray justify-center items-center pt-[16px] pb-[18px] ">
+                  <div className="flex mt-[47px] bg-lightgray justify-center items-center  ">
                     {data.map((item, index) => (
-                      <div
-                        className="flex justify-center items-center bg-transparent "
+                      <div onClick={()=>  { 
+                        index >= 0 && index <= 5 && setcountpage(index)
+                                        }}
+                        className={`${index === countpage ? "bg-primary-blue text-white" : "bg-transparent text-primary-dark"} flex justify-center items-center  `}
                         key={index + item - Date.now()}
                       >
-                        <h4 className="w-[63px]   flex justify-center text-primary-dark items-center font-[400] text-[18px] h-[56px] cursor-pointer">
+                     
+                        <h4 className="w-[63px]   flex justify-center  items-center font-[400] text-[18px] h-[56px] cursor-pointer">
                           {item.value}
                         </h4>
                       </div>

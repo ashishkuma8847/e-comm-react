@@ -93,6 +93,43 @@
               "deal":"HOT"
             }
       ],
+      "hotdeal1": [
+          {
+             
+              "image": "../../public/images/firstProduct.png",  
+              "deal":"HOT"
+            },
+            {
+            
+              "image": "../../public/images/brownpurseProduct.png",
+              "deal":"HOT"
+
+            },
+            {
+             
+              "image": "../../public/images/otherProduct.png",
+              "deal":"HOT"
+
+            },
+            {
+              
+              "image": "../../public/images/blueshoueProduct.png",
+              "deal":"HOT"
+             
+            },
+            {
+            
+              "image": "../../public/images/shouebottom.png",
+              "deal":"HOT"
+
+            },
+            {
+            
+              "image": "../../public/images/shoueright.png",
+              "deal":"HOT"
+
+            }
+      ],
       "data3":[
        
         {
