@@ -9,7 +9,7 @@ const Popupcart = ({ data ,varient}) => {
   
   return (
     <>
-      <section>
+      <section >
         <main>
           <div className="lg:w-[1021px] md:w-[600px] sm:w-[400px] w-[310px]  bg-white p-[30px_15px_30px_15px] md:p-[41.19px_97.59px_78.34px_68.23px] rounded">
             <div className="flex flex-col">
