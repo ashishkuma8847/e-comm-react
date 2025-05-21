@@ -1,58 +1,58 @@
 {
-    "path":[
+    "path": [
         {
-            "title":"HOME",
-            "path":"/"
+            "title": "HOME",
+            "path": "/"
         },
         {
-            "title":"BAGS",
-            "path":"/Bags"
+            "title": "BAGS",
+            "path": "/Bags"
         },
         {
-            "title":"SNEAKERS",
-            "path":"/Sneakers"
+            "title": "SNEAKERS",
+            "path": "/Sneakers"
         },
         {
-            "title":"BELT",
-            "path":"/Belt"
+            "title": "BELT",
+            "path": "/Belt"
         },
         {
-            "title":"CONTACT",
-            "path":"/Contect"
+            "title": "CONTACT",
+            "path": "/Contect"
         }
     ],
-    "datacatogry":[
+    "datacatogry": [
         {
-            "title":"Coporate Shoes "
+            "title": "Coporate Shoes "
         },
         {
-            "title":"Sneakers "
+            "title": "Sneakers "
         },
         {
-            "title":"Sandals "
+            "title": "Sandals "
         },
         {
-            "title":"Sport Shoe "
+            "title": "Sport Shoe "
         },
         {
-            "title":"Trainers "
-        }    
+            "title": "Trainers "
+        }
     ],
-    "datacatogryhotdeal":[
+    "datacatogryhotdeal": [
         {
-            "title":"HOT DEAL"
+            "title": "HOT DEAL"
         },
         {
-            "title":"Sunglasses"
+            "title": "Sunglasses"
         },
         {
-            "title":"Belts"
+            "title": "Belts"
         },
         {
-            "title":"Handbags"
+            "title": "Handbags"
         },
         {
-            "title":"Sneakers "
-        }    
+            "title": "Sneakers "
+        }
     ]
 }

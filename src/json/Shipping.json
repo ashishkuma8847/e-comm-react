@@ -17,19 +17,16 @@
         
             {
                 "img":"../../public/svg/NIKE.svg",
-                "tittle":"Fashion Industry",
-                "width":"xl:w-[377.65px]"
+                "tittle":"Fashion Industry"
             },
             {
                 "img":"../../public/svg/figma.svg",
-                "tittle":"Best Design Tools",
-                "width":"xl:w-[325.65px]"
+                "tittle":"Best Design Tools"
 
             },
             {
                 "img":"../../public/svg/kronos-logo.svg",
-                "tittle":"SHR Community",
-                "width":"xl:w-[377.65px]"
+                "tittle":"SHR Community"
 
             }
         

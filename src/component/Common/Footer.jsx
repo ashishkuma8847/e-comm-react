@@ -17,7 +17,7 @@ const Footer = () => {
             <div className="flex flex-wrap justify-between gap-6">
               {footerjson.data.map((item, index) => (
                 <div key={item + index + Date.now()} className="w-full sm:w-[48%] md:w-[30%] lg:w-auto">
-                  <div className={`flex flex-col ${item.width || ''} ${item.gap || 'gap-3'}`}>
+                  <div className={`flex flex-col gap-4 w-[221.1px] `}>
                     <div className="flex items-center gap-3">
                       {item.img && (
                         <img
