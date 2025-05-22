@@ -83,6 +83,7 @@ const Header = () => {
       : <>
         <section className={`  ${Click1 ? " hidden" : "block"} transition-all  duration-200 border-b-[2px] border-lightgray`}>
 
+        
 
           <div className="container">
             <div className="pt-[9.74px]  md:flex justify-between items-center hidden ">
