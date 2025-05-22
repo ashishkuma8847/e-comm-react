@@ -14,6 +14,7 @@ import PageNotFound from './component/error/PageNotFound';
 import './App.css'
 import Product from './component/product/Product';
 import Cart from './component/cart/Cart';
+import Skeleton from 'react-loading-skeleton';
 
 
 const AnimatedRoutes = () => {
@@ -34,30 +35,25 @@ const AnimatedRoutes = () => {
         <Route path='/cart' element={<Cart />} />
       </Routes>
     </AnimatePresence>
-  );
+  );  
 };
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  }, []);
+
 
   return (
     <>
-      {/* {loading ? (
-        <Loader />
-      ) : */}
-      <Router>
-        <ScrollToTop />
-        <Header />
-        <AnimatedRoutes />
-        <Footer />
-      </Router>
-      {/* } */}
+      
+        
+      
+        <Router>
+          <ScrollToTop />
+          <Header />
+          <AnimatedRoutes />
+          <Footer />
+        </Router>
+      
 
     </>
   );

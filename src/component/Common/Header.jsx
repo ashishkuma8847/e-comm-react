@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import arrowdown from "../../../public/svg/arrowdown.svg"
 import profile from "../../../public/svg/profile.svg"
 import cart from "../../../public/svg/cart.svg"
@@ -6,6 +6,8 @@ import search from "../../../public/svg/search.svg"
 import icon from "../../../public/svg/icon.svg"
 import Headerjson from "../../json/Header.json"
 import { Link, NavLink } from 'react-router-dom'
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import Popup from './Popup'
 const Dropdown = ({ name, items, activeDropdown, setActiveDropdown }) => {
   const down = activeDropdown === name;
@@ -44,7 +46,13 @@ const Dropdown = ({ name, items, activeDropdown, setActiveDropdown }) => {
 
 const Header = () => {
 
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
   const [homedata, sethomedata] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
   const [Click1, setClick1] = useState(false)
@@ -52,161 +60,181 @@ const Header = () => {
 
 
   return (
-    <>
-      <section className={`  ${Click1 ? " hidden" : "block"} transition-all  duration-200 border-b-[2px] border-lightgray`}>
+    loading ? <div className="container flex flex-col ">
+      <div className="flex justify-between items-center w-full pt-[10px] mb-[35px]">
+
+        <Skeleton height={"28px"} width={"113px"} />
+        <Skeleton height={"59px"} width={"366px"} />
+      </div>
+      <div className="flex justify-between items-center ">
+        <Skeleton height={"44px"} width={"134px"} />
+        <div className="w-[815px] flex justify-between items-center">
+          <Skeleton height={"32px"} width={"69px"} />
+          <Skeleton height={"32px"} width={"65px"} />
+          <Skeleton height={"32px"} width={"119px"} />
+          <Skeleton height={"32px"} width={"52px"} />
+          <Skeleton height={"32px"} width={"117px"} />
+
+        </div>
+      </div>
+
+    </div>
+
+      : <>
+        <section className={`  ${Click1 ? " hidden" : "block"} transition-all  duration-200 border-b-[2px] border-lightgray`}>
 
 
-        <div className="container">
-          <div className="pt-[9.74px]  md:flex justify-between items-center hidden ">
-            <div className={ ` flex gap-4`}>
-              <Dropdown
-                name="EN"
-                items={["EN", "HINDI", "PUNJABI"]}
-                activeDropdown={activeDropdown}
-                setActiveDropdown={setActiveDropdown}
-              />
-              <Dropdown
-                name="USD"
-                items={["IND", "USD", "USA"]}
-                activeDropdown={activeDropdown}
-                setActiveDropdown={setActiveDropdown}
-              />
-            </div>
-            <div className="flex justify-between w-[366.15px]  items-center">
-              <div className="flex justify-between items-center  w-[113.53px] ">
-                <img src={profile} className='w-[20px] h-[20px]' alt="profile" />
-                <h4 className='font-proxima font-[400] text-xl    text-primary'>My profile</h4>
+          <div className="container">
+            <div className="pt-[9.74px]  md:flex justify-between items-center hidden ">
+              <div className={` flex gap-4`}>
+                <Dropdown
+                  name="EN"
+                  items={["EN", "HINDI", "PUNJABI"]}
+                  activeDropdown={activeDropdown}
+                  setActiveDropdown={setActiveDropdown}
+                />
+                <Dropdown
+                  name="USD"
+                  items={["IND", "USD", "USA"]}
+                  activeDropdown={activeDropdown}
+                  setActiveDropdown={setActiveDropdown}
+                />
               </div>
-              <div className="w-[75px] p-[16px_25px_19px_26px]  relative">
-                <Link to={"/cart"}>
-                  <img src={cart} className='' alt="cart" />
-                </Link>
-                <span className='bg-primary-red top-[5px] border-white border-[2px] right-[15px]  absolute flex justify-center items-center text-white font-poppins font-bold text-[10px] tracking-[0.5px] w-[22px] h-[22px]  rounded-full' >2</span>
+              <div className="flex justify-between w-[366.15px]  items-center">
+                <div className="flex justify-between items-center  w-[113.53px] ">
+                  <img src={profile} className='w-[20px] h-[20px]' alt="profile" />
+                  <h4 className='font-proxima font-[400] text-xl    text-primary'>My profile</h4>
+                </div>
+                <div className="w-[75px] p-[16px_25px_19px_26px]  relative">
+                  <Link to={"/cart"}>
+                    <img src={cart} className='' alt="cart" />
+                  </Link>
+                  <span className='bg-primary-red top-[5px] border-white border-[2px] right-[15px]  absolute flex justify-center items-center text-white font-poppins font-bold text-[10px] tracking-[0.5px] w-[22px] h-[22px]  rounded-full' >2</span>
+                </div>
+                <div className="flex justify-between  font-proxima font-[400] text-xl w-[137px] ">
+                  <h4 className='w-[53px] text-primary text-end'> Items</h4>
+                  <h4 className='w-[52px] text-primary opacity-[50%]'>$0.00</h4>
+                </div>
+                <img className='w-[20.95px] h-[20.94px] ' src={search} alt="search" />
               </div>
-              <div className="flex justify-between  font-proxima font-[400] text-xl w-[137px] ">
-                <h4 className='w-[53px] text-primary text-end'> Items</h4>
-                <h4 className='w-[52px] text-primary opacity-[50%]'>$0.00</h4>
-              </div>
-              <img className='w-[20.95px] h-[20.94px] ' src={search} alt="search" />
             </div>
           </div>
-        </div>
-      </section>
-      <section className=' pt-[34.74px] pb-[34.04px]'>
-        <div className="container">
-          <div className="flex  justify-between  ">
-            <div className={`${Click1 ? " hidden   " : "block "} lg:flex  flex w-[134.32px] justify-between items-center`}>
-              <img src={icon} alt="icon" />
-              <h4 className=' font-poppins font-bold text-[18px]  text-primary-dark'>E-comm</h4>
-            </div>
+        </section>
+        <section className=' pt-[34.74px] pb-[34.04px]'>
+          <div className="container">
+            <div className="flex  justify-between  ">
+              <div className={`${Click1 ? " hidden   " : "block "} lg:flex  flex w-[134.32px] justify-between items-center`}>
+                <img src={icon} alt="icon" />
+                <h4 className=' font-poppins font-bold text-[18px]  text-primary-dark'>E-comm</h4>
+              </div>
 
 
 
-            {
-              (<>
-                <div className="lg:hidden ">
-
-                 
-                  <div className={`max-h-1vh lg:hidden h-full ${Click1 ? "w-full opacity-100 px-[20.04px]" : "w-0 opacity-0 px-0"} z-50 flex flex-col gap-[50px] sm:gap-[10px]  pt-[34.74px]   transition-all duration-500 top-0 right-0 absolute bg-lightgray  `}>
-                    <div className={`${Click1 ? " block   " : "hidden "} lg:flex  flex w-[134.32px] justify-between items-center`}>
-                      <img src={icon} alt="icon" />
-                      <h4 className=' font-poppins font-bold text-[18px]  text-primary-dark'>E-comm</h4>
-                    </div>
-                    <div className="flex gap-2 md:gap-[50px] h-fit md:h-[59px] md:flex-row flex-col md:items-center">
-                      {Click1 &&
-                        Headerjson.path.map((item, index) => (
-                          <NavLink onClick={() => setClick1(false)} key={Date.now() + item + index} className="text-2xl font-[500] font-poppins" to={item.path}>
-                            {
-
-                              index === 0 ? (<>
-
-                                <Popup child={item.title} />
-
-
-
-                              </>) : <h4>{item.title}</h4>
-                            }
-                          </NavLink>
-
-                        ))
-                      }
-                    </div>
-                    <div  className={`    md:flex justify-between flex flex-col sm:gap-0 gap-5 sm:flex-row  items-center  `}>
-                      <div className={`${!Click1 && "hidden"} flex gap-4`}>
-                        <Dropdown
-                          name="EN"
-                          items={["EN", "HINDI", "PUNJABI"]}
-                          activeDropdown={activeDropdown}
-                          setActiveDropdown={setActiveDropdown}
-                        />
-                        <Dropdown
-                          name="USD"
-                          items={["IND", "USD", "USA"]}
-                          activeDropdown={activeDropdown}
-                          setActiveDropdown={setActiveDropdown}
-                        />
-                      </div>
-                      <div className={`${!Click1 && "hidden"} flex  justify-between w-fit sm:w-[366.15px]  items-center`}>
-                        <div className="flex justify-between items-center  w-[113.53px] ">
-                          <img src={profile} className='w-[20px] h-[20px]' alt="profile" />
-                          <h4 className='font-proxima font-[400] text-xl    text-primary'>My profile</h4>
-                        </div>
-                        <div className="w-[75px] p-[16px_25px_19px_26px]  relative">
-                          <Link onClick={() => setClick1(false)} to={"/cart"}>
-                            <img src={cart} className='' alt="cart" />
-                          </Link>
-                          <span className='bg-primary-red top-[5px] border-white border-[2px] right-[15px]  absolute flex justify-center items-center text-white font-poppins font-bold text-[10px] tracking-[0.5px] w-[22px] h-[22px]  rounded-full' >2</span>
-                        </div>
-                        <div className="flex justify-between  font-proxima font-[400] text-xl w-[137px] ">
-                          <h4 className='w-[53px] text-primary text-end'> Items</h4>
-                          <h4 className='w-[52px] text-primary opacity-[50%]'>$0.00</h4>
-                        </div>
-                      </div>
-                      <img className='w-[20.95px] h-[20.94px] ' src={search} alt="search" />
-
-                    </div>
-                  </div>
-                </div>
-
-
-
-              </>)
-            }
-
-
-
-            <button className="grid  lg:hidden  h-[40px] items-center   relative cursor-pointer" onClick={() => (setClick1(!Click1))}>
-              <p className={`${Click1 ? "-rotate-45 absolute  z-50 " : "-rotate-0 z-0"} transition-all border-black  w-8 border-2 h-1 duration-500`} ></p>
-              <span className={`${Click1 ? "border-transparent" : "border-black"} w-8 border-2 transition-all duration-75 h-1`} ></span>
-              <p className={`${Click1 ? "rotate-45 absolute  z-50" : "rotate-0 absolute  z-0"} transition-all border-black  w-8 border-2 h-1 duration-500`}></p>
-            </button>
-            <div className="hidden  lg:w-[815.49px] sm:w-[515px] sm:text-xl xl:flex  lg:flex relative justify-between items-center font-poppins font-medium lg:text-2xl  text-primary">
               {
-                Headerjson.path.map((item, index) => (
-                  <div className='' key={Date.now() + item + index}>
-                    <NavLink className="" to={item.path}>
-                      {
-
-                        index === 0 ? (<>
-
-                          <Popup child={item.title} />
+                (<>
+                  <div className="lg:hidden ">
 
 
+                    <div className={`max-h-1vh lg:hidden h-full ${Click1 ? "w-full opacity-100 px-[20.04px]" : "w-0 opacity-0 px-0"} z-50 flex flex-col gap-[50px] sm:gap-[10px]  pt-[34.74px]   transition-all duration-500 top-0 right-0 absolute bg-lightgray  `}>
+                      <div className={`${Click1 ? " block   " : "hidden "} lg:flex  flex w-[134.32px] justify-between items-center`}>
+                        <img src={icon} alt="icon" />
+                        <h4 className=' font-poppins font-bold text-[18px]  text-primary-dark'>E-comm</h4>
+                      </div>
+                      <div className="flex gap-2 md:gap-[50px] h-fit md:h-[59px] md:flex-row flex-col md:items-center">
+                        {Click1 &&
+                          Headerjson.path.map((item, index) => (
+                            <NavLink onClick={() => setClick1(false)} key={Date.now() + item + index} className="text-2xl font-[500] font-poppins" to={item.path}>
+                              {
 
-                        </>) : <h4>{item.title}</h4>
-                      }
-                    </NavLink>
+                                index === 0 ? (<>
 
+                                  <Popup child={item.title} />
+
+
+
+                                </>) : <h4>{item.title}</h4>
+                              }
+                            </NavLink>
+
+                          ))
+                        }
+                      </div>
+                      <div className={`    md:flex justify-between flex flex-col sm:gap-0 gap-5 sm:flex-row  items-center  `}>
+                        <div className={`${!Click1 && "hidden"} flex gap-4`}>
+                          <Dropdown
+                            name="EN"
+                            items={["EN", "HINDI", "PUNJABI"]}
+                            activeDropdown={activeDropdown}
+                            setActiveDropdown={setActiveDropdown}
+                          />
+                          <Dropdown
+                            name="USD"
+                            items={["IND", "USD", "USA"]}
+                            activeDropdown={activeDropdown}
+                            setActiveDropdown={setActiveDropdown}
+                          />
+                        </div>
+                        <div className={`${!Click1 && "hidden"} flex  justify-between w-fit sm:w-[366.15px]  items-center`}>
+                          <div className="flex justify-between items-center  w-[113.53px] ">
+                            <img src={profile} className='w-[20px] h-[20px]' alt="profile" />
+                            <h4 className='font-proxima font-[400] text-xl    text-primary'>My profile</h4>
+                          </div>
+                          <div className="w-[75px] p-[16px_25px_19px_26px]  relative">
+                            <Link onClick={() => setClick1(false)} to={"/cart"}>
+                              <img src={cart} className='' alt="cart" />
+                            </Link>
+                            <span className='bg-primary-red top-[5px] border-white border-[2px] right-[15px]  absolute flex justify-center items-center text-white font-poppins font-bold text-[10px] tracking-[0.5px] w-[22px] h-[22px]  rounded-full' >2</span>
+                          </div>
+                          <div className="flex justify-between  font-proxima font-[400] text-xl w-[137px] ">
+                            <h4 className='w-[53px] text-primary text-end'> Items</h4>
+                            <h4 className='w-[52px] text-primary opacity-[50%]'>$0.00</h4>
+                          </div>
+                        </div>
+                        <img className='w-[20.95px] h-[20.94px] ' src={search} alt="search" />
+
+                      </div>
+                    </div>
                   </div>
-                ))
+
+
+
+                </>)
               }
 
+
+
+              <button className="grid  lg:hidden  h-[40px] items-center   relative cursor-pointer" onClick={() => (setClick1(!Click1))}>
+                <p className={`${Click1 ? "-rotate-45 absolute  z-50 " : "-rotate-0 z-0"} transition-all border-black  w-8 border-2 h-1 duration-500`} ></p>
+                <span className={`${Click1 ? "border-transparent" : "border-black"} w-8 border-2 transition-all duration-75 h-1`} ></span>
+                <p className={`${Click1 ? "rotate-45 absolute  z-50" : "rotate-0 absolute  z-0"} transition-all border-black  w-8 border-2 h-1 duration-500`}></p>
+              </button>
+              <div className="hidden  lg:w-[815.49px] sm:w-[515px] sm:text-xl xl:flex  lg:flex relative justify-between items-center font-poppins font-medium lg:text-2xl  text-primary">
+                {
+                  Headerjson.path.map((item, index) => (
+                    <div className='' key={Date.now() + item + index}>
+                      <NavLink className="" to={item.path}>
+                        {
+
+                          index === 0 ? (<>
+
+                            <Popup child={item.title} />
+
+
+
+                          </>) : <h4>{item.title}</h4>
+                        }
+                      </NavLink>
+
+                    </div>
+                  ))
+                }
+
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-    </>
+      </>
   )
 }
 
