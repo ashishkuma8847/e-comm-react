@@ -32,11 +32,31 @@ const Hotdeal = () => {
     setisnike(true);
     setnike(false);
   };
-  const pageVariants = {
-    initial: { x: "100vw", opacity: 0 },
-    animate: { x: 0, opacity: 1, transition: { duration: 0.3 } },
-    exit: { x: "-100vw", opacity: 0, transition: { duration: 0.3 } },
-  };
+  const verticalFlip = {
+  initial: {
+    rotateX: 180,
+    opacity: 0,
+    transformOrigin: "bottom",
+  },
+  animate: {
+    rotateX: 0,
+    opacity: 1,
+    transformOrigin: "bottom",
+    transition: {
+      duration: 0.8,
+      ease: "easeInOut",
+    },
+  },
+  exit: {
+    rotateX: -180,
+    opacity: 0,
+    transformOrigin: "bottom",
+    transition: {
+      duration: 0.8,
+      ease: "easeInOut",
+    },
+  },
+};
   const data = [
     {
       value: "1",
@@ -57,10 +77,13 @@ const Hotdeal = () => {
   return (
     <>
       <motion.div
-        variants={pageVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
+       variants={verticalFlip}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      style={{
+        transformStyle: "preserve-3d",
+        perspective: 1200,}}
       >
         <section className="mb-[155px]">
           <main>

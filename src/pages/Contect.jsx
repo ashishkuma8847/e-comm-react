@@ -4,19 +4,42 @@ import { motion } from "framer-motion";
 import caracterimg from "../../public/images/call.png"
 import Input from '../component/ui/Input';
 
-const pageVariants = {
-  initial: { x: "100vw", opacity: 0 },
-  animate: { x: 0, opacity: 1, transition: { duration: 0.3 } },
-  exit: { x: "-100vw", opacity: 0, transition: { duration: 0.3 } }
+const verticalFlip = {
+  initial: {
+    rotateX: 180,
+    opacity: 0,
+    transformOrigin: "bottom",
+  },
+  animate: {
+    rotateX: 0,
+    opacity: 1,
+    transformOrigin: "bottom",
+    transition: {
+      duration: 0.8,
+      ease: "easeInOut",
+    },
+  },
+  exit: {
+    rotateX: -180,
+    opacity: 0,
+    transformOrigin: "bottom",
+    transition: {
+      duration: 0.8,
+      ease: "easeInOut",
+    },
+  },
 };
 
 const Contect = () => {
   return (
     <motion.div
-      variants={pageVariants}
+     variants={verticalFlip}
       initial="initial"
       animate="animate"
       exit="exit"
+      style={{
+        transformStyle: "preserve-3d",
+        perspective: 1200,}}
     >
       <section>
         <main>

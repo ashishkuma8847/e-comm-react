@@ -18,7 +18,35 @@ import "./Product.css"
 import nikeprojson from "../../json/nikeinfo.json"
 import { Link } from 'react-router-dom'
 import Seller from '../../component/Card/Seller'
+import { motion } from "framer-motion";
+
 const Product = () => {
+
+    const verticalFlip = {
+  initial: {
+    rotateX: 180,
+    opacity: 0,
+    transformOrigin: "bottom",
+  },
+  animate: {
+    rotateX: 0,
+    opacity: 1,
+    transformOrigin: "bottom",
+    transition: {
+      duration: 0.8,
+      ease: "easeInOut",
+    },
+  },
+  exit: {
+    rotateX: -180,
+    opacity: 0,
+    transformOrigin: "bottom",
+    transition: {
+      duration: 0.8,
+      ease: "easeInOut",
+    },
+  },
+};
     const [isImage, setImage] = useState(nikepro.data[2].img)
     const [isborder, setIsborder] = useState(false);
     const [arrowdata, setarrowdata] = useState(false);
@@ -40,6 +68,15 @@ const Product = () => {
     ]
     return (
         <>
+         <motion.div
+       variants={verticalFlip}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      style={{
+        transformStyle: "preserve-3d",
+        perspective: 1200,}}
+      >
             <section >
                 <main>
                     <div className=" flex justify-center items-center bg-sidegray py-[14.5px] gap-2 font-normal md:text-[18px] text-[15 px] mb-[42.28px] ">
@@ -263,7 +300,7 @@ const Product = () => {
                         </div>
                     </div>
                 </main>
-            </section>
+            </section></motion.div>
         </>
     )
 }

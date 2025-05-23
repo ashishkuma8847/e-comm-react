@@ -9,12 +9,37 @@ import Shipping from '../component/Home/Shipping';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-const pageVariants = {
-  initial: { x: "100vw", opacity: 0 }, 
-  animate: { x: 0, opacity: 1, transition: { duration: 0.3 } }, 
-  exit: { x: "-100vw", opacity: 0, transition: { duration: 0.3 } } 
-};
+// const pageVariants = {
+//   initial: { x: "100vw", opacity: 0 }, 
+//   animate: { x: 0, opacity: 1, transition: { duration: 0.3 } }, 
+//   exit: { x: "-100vw", opacity: 0, transition: { duration: 0.3 } } 
+// };
 
+const verticalFlip = {
+  initial: {
+    rotateX: 180,
+    opacity: 0,
+    transformOrigin: "bottom",
+  },
+  animate: {
+    rotateX: 0,
+    opacity: 1,
+    transformOrigin: "bottom",
+    transition: {
+      duration: 0.8,
+      ease: "easeInOut",
+    },
+  },
+  exit: {
+    rotateX: -180,
+    opacity: 0,
+    transformOrigin: "bottom",
+    transition: {
+      duration: 0.8,
+      ease: "easeInOut",
+    },
+  },
+};
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -40,10 +65,18 @@ const Home = () => {
         </div>
       :
       <motion.div
-      variants={pageVariants}
+      variants={verticalFlip}
       initial="initial"
       animate="animate"
       exit="exit"
+      style={{
+        transformStyle: "preserve-3d",
+        perspective: 1200,}}
+
+      // variants={pageVariants}
+      // initial="initial"
+      // animate="animate"
+      // exit="exit"
     >
     <Flashoff/>
     <Bannerproducts/>
