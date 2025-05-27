@@ -1,11 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import bag from "../../../public/Images/blackpurspreview.png"
 import shoe from "../../../public/Images/yellowproduct.png"
 import redshoe from "../../../public/Images/Productred.png"
 
 const Bannerproducts = () => {
+   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/api/getallhomedata');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setUsers(data);
+      } catch (error) {
+        console.error('Error fetching data:', error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
+
     return (
         <>
+      
             <div className="container    hidden xl:block            relative mb-[334.88px]">
                 <div className="flex absolute -top-[90px] rounded bg-lightwhite">
                     <div className="relative rounded-[5px] ">

@@ -45,9 +45,9 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   
   useEffect(() => {
-    setTimeout(() => {
+    // setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    // }, 2000);
   }, []);
   return (
     <>
