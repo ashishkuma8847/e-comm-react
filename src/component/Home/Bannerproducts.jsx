@@ -4,7 +4,7 @@ import shoe from "../../../public/Images/yellowproduct.png"
 import redshoe from "../../../public/Images/Productred.png"
 
 const Bannerproducts = () => {
-   const [users, setUsers] = useState([]);
+   const [users, setUsers] = useState({data:[]});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -15,6 +15,7 @@ const Bannerproducts = () => {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
+        console.log(data)
         setUsers(data);
       } catch (error) {
         console.error('Error fetching data:', error.message);
@@ -25,7 +26,8 @@ const Bannerproducts = () => {
 
     fetchUsers();
   }, []);
-
+  
+ 
 
     return (
         <>

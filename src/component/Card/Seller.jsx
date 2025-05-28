@@ -1,9 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import wishlist from "../../../public/svg/wishlist.svg"
 import cart from "../../../public/svg/cartblue.svg"
 import { Link } from 'react-router-dom'
 const Seller = ({data}) => {
+   const [users, setUsers] = useState({user:[]});
+    const [loading, setLoading] = useState(true);
   
+    useEffect(() => {
+      const fetchUsers = async () => {
+        try {
+          const response = await fetch('http://localhost:3000/api/getalldata');
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          const data = await response.json();
+          console.log(data)
+          setUsers(data);
+        } catch (error) {
+          console.error('Error fetching data:', error.message);
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchUsers();
+    }, []);
+
   return (
     <>
     
