@@ -9,31 +9,24 @@ import { Link, NavLink } from 'react-router-dom'
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import Popup from './Popup'
+
 const Dropdown = ({ name, items, activeDropdown, setActiveDropdown }) => {
   const down = activeDropdown === name;
-
+  const [data, setdata] = useState("")
   return (
     <>
       <div
         onClick={() => setActiveDropdown(down ? null : name)}
-        className="font-proxima cursor-pointer flex flex-col  relative"
-      >
+        className="font-proxima cursor-pointer flex flex-col  relative">
         <div className="flex gap-[5.6px] items-center">
-          <h1 className="font-[400] text-xl  text-primary-dark ">{name}</h1>
-          <img
-            className={`transition-all duration-200 ${down ? "rotate-180" : "rotate-0"}`}
-            src={arrowdown}
-            alt="arrowdown"
-          />
+          <h1 className={`${data ? "text-primary-blue" : "text-primary-dark"} font-[400] text-xl   `}>{data ? data : name}</h1>
+          <img className={`transition-all duration-200 ${down ? "rotate-180" : "rotate-0"}`} src={arrowdown} alt="arrowdown" />
         </div>
 
-        <div
-          className={`w-[100px] bg-primary-blue p-1 top-[40px] transition-all duration-200 text-white rounded flex flex-col absolute justify-center items-center ${down ? "h-[100px] z-10 opacity-100" : "h-0 -z-10 opacity-0"
-            }`}
-        >
+        <div className={`w-[100px] bg-primary-blue p-1 top-[40px] transition-all duration-200 text-white rounded flex flex-col absolute justify-center items-center ${down ? "h-[100px] z-10 opacity-100" : "h-0 -z-10 opacity-0"}`}>
           {items.map((item, index) => (
             <div key={index}>
-              <h1 className={`${index === 0 ? "w-[38.26px]" : "w-[55.26px]"} font-[400]  text-x2l   border-b-2 border-b-transparent hover:border-b-white`}>
+              <h1 onClick={() => setdata(item)} className={`${index === 0 ? "w-[38.26px]" : "w-[55.26px]"} font-[400]  text-x2l   border-b-2 border-b-transparent hover:border-b-white`}>
                 {item}
               </h1>
             </div>
@@ -53,10 +46,8 @@ const Header = () => {
       setLoading(false);
     }, 2000);
   }, []);
-  const [homedata, sethomedata] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
   const [Click1, setClick1] = useState(false)
-  const [cross, setcross] = useState(false)
 
 
   return (
@@ -77,13 +68,10 @@ const Header = () => {
 
         </div>
       </div>
-
     </div>
 
       : <>
         <section className={`  ${Click1 ? " hidden" : "block"} transition-all  duration-200 border-b-[2px] border-lightgray`}>
-
-        
 
           <div className="container">
             <div className="pt-[9.74px]  md:flex justify-between items-center hidden ">
@@ -128,8 +116,6 @@ const Header = () => {
                 <img src={icon} alt="icon" />
                 <h4 className=' font-poppins font-bold text-[18px]  text-primary-dark'>E-comm</h4>
               </div>
-
-
 
               {
                 (<>
@@ -198,10 +184,8 @@ const Header = () => {
                   </div>
 
 
-
                 </>)
               }
-
 
 
               <button className="grid  lg:hidden  h-[40px] items-center   relative cursor-pointer" onClick={() => (setClick1(!Click1))}>

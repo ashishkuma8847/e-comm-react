@@ -15,7 +15,6 @@ const Bannerproducts = () => {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        console.log(data)
         setUsers(data);
       } catch (error) {
         console.error('Error fetching data:', error.message);

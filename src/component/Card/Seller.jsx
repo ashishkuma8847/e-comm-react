@@ -14,7 +14,6 @@ const Seller = ({data}) => {
             throw new Error('Network response was not ok');
           }
           const data = await response.json();
-          console.log(data)
           setUsers(data);
         } catch (error) {
           console.error('Error fetching data:', error.message);
@@ -26,17 +25,17 @@ const Seller = ({data}) => {
       fetchUsers();
     }, []);
 
-  return (
+    return (
     <>
     
-    {data.map((item, index) => (
-              <div className='flex justify-center items-center' key={index}>
+    {users.user.map((item, index) => (
+              <div className='flex justify-center items-center w-[301px]' key={index}>
                 <div className={ ` border-2 relative  border-lightwhite rounded w-[100%] max-w-[299.5px] flex flex-col justify-center items-center`}>
                   {/* Deal Badge */}
     
-                  {item.deal && (
+                  {item.hotdeal && (
                     <span className="font-proxima z-50 absolute top-0 left-0 bg-primary-red rounded text-white font-normal text-[18px] w-[64px] h-[33px] flex justify-center items-center">
-                      {item.deal}
+                      {item.hotdeal}
                     </span>
                   )}
     
@@ -62,7 +61,7 @@ const Seller = ({data}) => {
                   <div className="flex flex-col items-center justify-center gap-[6px] pt-[9.5px] pb-[18px]">
     
                     <h4 className="font-poppins font-bold text-[18px] leading-[150%] text-natural-blue text-center">
-                      Nike Air Max 270 React
+                     {item.name}
                     </h4>
     
                     <img
@@ -73,15 +72,15 @@ const Seller = ({data}) => {
     
                     <div className="flex items-center gap-[13.14px]">
                       <h4 className="font-poppins font-bold text-[18px] leading-[180%] text-primary-blue">
-                        $299,43
+                        {item.originalPrice}
                       </h4>
     
                       <div className="flex justify-between items-center w-[122px]">
                         <h4 className="font-poppins font-normal text-[14px] leading-[150%] tracking-[0.5px] line-through text-natural-gray">
-                          $534,33
+                          {item.price}
                         </h4>
                         <h4 className="font-poppins font-bold text-[14px] leading-[150%] text-primary-red">
-                          24% Off
+                          {item.discountPercent}
                         </h4>
                       </div>
                     </div>

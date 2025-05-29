@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { motion } from "framer-motion";
 import Flashoff from '../component/Home/Flashoff';
@@ -49,8 +49,13 @@ const Home = () => {
       setLoading(false);
     // }, 2000);
   }, []);
+  
   return (
     <>
+
+  
+
+
     {
       loading ? 
       <div className="container flex items-center">
@@ -85,6 +90,7 @@ const Home = () => {
     <Shipping/>
     </motion.div>
     }
+
     </>
   )
 }
