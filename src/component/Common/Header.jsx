@@ -134,11 +134,7 @@ const Header = () => {
                               {
 
                                 index === 0 ? (<>
-
                                   <Popup child={item.title} />
-
-
-
                                 </>) : <h4>{item.title}</h4>
                               }
                             </NavLink>
