@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Sneacker from "../Card/Sneacker";
 import sallerjson from "../../json/saller.json";
 import iconninedot from "../../../public/svg/iconninedot.svg";
@@ -14,10 +14,11 @@ import rating from "../../../public/svg/rate.svg";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Sidebar from "./Sidebar";
+import { useParams } from 'react-router-dom';
 
 const Hotdeal = () => {
 
-  
+
   const [nike, setnike] = useState(true);
   const [popup, setpopup] = useState(false);
   const [isnike, setisnike] = useState(false);
@@ -33,30 +34,30 @@ const Hotdeal = () => {
     setnike(false);
   };
   const verticalFlip = {
-  initial: {
-    rotateX: 180,
-    opacity: 0,
-    transformOrigin: "bottom",
-  },
-  animate: {
-    rotateX: 0,
-    opacity: 1,
-    transformOrigin: "bottom",
-    transition: {
-      duration: 0.8,
-      ease: "easeInOut",
+    initial: {
+      rotateX: 180,
+      opacity: 0,
+      transformOrigin: "bottom",
     },
-  },
-  exit: {
-    rotateX: -180,
-    opacity: 0,
-    transformOrigin: "bottom",
-    transition: {
-      duration: 0.8,
-      ease: "easeInOut",
+    animate: {
+      rotateX: 0,
+      opacity: 1,
+      transformOrigin: "bottom",
+      transition: {
+        duration: 0.8,
+        ease: "easeInOut",
+      },
     },
-  },
-};
+    exit: {
+      rotateX: -180,
+      opacity: 0,
+      transformOrigin: "bottom",
+      transition: {
+        duration: 0.8,
+        ease: "easeInOut",
+      },
+    },
+  };
   const data = [
     {
       value: "1",
@@ -74,16 +75,43 @@ const Hotdeal = () => {
       value: "5",
     },
   ];
+
+  const { id } = useParams(); // <- this extracts "1" from "/Hotdeal/1"
+
+  const [users, setUsers] = useState({ user: [] });
+  console.log(users, "single data")
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/api/getonedata/${id}`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setUsers(data);
+      } catch (error) {
+        console.error('Error fetching data:', error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
   return (
     <>
       <motion.div
-       variants={verticalFlip}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      style={{
-        transformStyle: "preserve-3d",
-        perspective: 1200,}}
+        variants={verticalFlip}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        style={{
+          transformStyle: "preserve-3d",
+          perspective: 1200,
+        }}
       >
         <section className="mb-[155px]">
           <main>
@@ -94,16 +122,16 @@ const Hotdeal = () => {
             </div>
             <div className="container ">
               <div className="flex relative   justify-between">
-                <div className="hidden xl:block"> <Sidebar data={""}/></div>
-             
-               <div  className={`${popup ? "w-[300px]  " :"w-[30px] "}  xl:hidden  absolute z-50 flex transition-all duration-200`}>
-                      <div className={`${popup ? "w-[270px]  opacity-100 z-50" :"w-0 opacity-0 -z-50"}  transition-all duration-200`}>
-                    <Sidebar data={popup}/>  
-                      </div>
-                      <div onClick={()=>setpopup(!popup)} className={` w-[30px] h-[50px] rounded-r bg-buttongray flex items-center justify-center`}>
-<img className={`${popup ? "rotate-90" :"-rotate-90"}  transition-all duration-200 w-[15px] h-[15px]`} src={arrow} alt="" />
-                      </div>
-               </div>
+                <div className="hidden xl:block"> <Sidebar data={""} /></div>
+
+                <div className={`${popup ? "w-[300px]  " : "w-[30px] "}  xl:hidden  absolute z-50 flex transition-all duration-200`}>
+                  <div className={`${popup ? "w-[270px]  opacity-100 z-50" : "w-0 opacity-0 -z-50"}  transition-all duration-200`}>
+                    <Sidebar data={popup} />
+                  </div>
+                  <div onClick={() => setpopup(!popup)} className={` w-[30px] h-[50px] rounded-r bg-buttongray flex items-center justify-center`}>
+                    <img className={`${popup ? "rotate-90" : "-rotate-90"}  transition-all duration-200 w-[15px] h-[15px]`} src={arrow} alt="" />
+                  </div>
+                </div>
 
 
 
@@ -178,20 +206,18 @@ const Hotdeal = () => {
                   </div>
                   <Link
                     to={"/product"}
-                    className={`grid grid-cols-1 w-[] sm:grid-cols-2 lg:grid-cols-3  mt-[27px]  md:grid-cols-2 xl:grid-cols-3 gap-[33px] place-items-center ${
-                      nike ? "block " : "hidden"
-                    }`}
+                    className={`grid grid-cols-1 w-[] sm:grid-cols-2 lg:grid-cols-3  mt-[27px]  md:grid-cols-2 xl:grid-cols-3 gap-[33px] place-items-center ${nike ? "block " : "hidden"
+                      }`}
                   >
-                    <Seller  data={ countpage == 0 ? hotdeljson.hotdeal : countpage === 1 ? hotdeljson.hotdeal1 : countpage === 2 ? hotdeljson.hotdeal : countpage == 3 ? hotdeljson.hotdeal1 : countpage === 4 && hotdeljson.hotdeal} />
+                    <Seller data={countpage == 0 ? hotdeljson.hotdeal : countpage === 1 ? hotdeljson.hotdeal1 : countpage === 2 ? hotdeljson.hotdeal : countpage == 3 ? hotdeljson.hotdeal1 : countpage === 4 && hotdeljson.hotdeal} />
                   </Link>
                   <div
                     className={`${isnike ? "block" : "hidden"} flex flex-col`}
                   >
                     {hotdeljson.data3.map((item, index) => (
                       <div
-                        className={`max-w-[870px]  w-full border-sidegray relative pt-[30px] pb-[26px] flex  ${
-                          index <= 2 ? "border-b-2 " : "border-none"
-                        }`}
+                        className={`max-w-[870px]  w-full border-sidegray relative pt-[30px] pb-[26px] flex  ${index <= 2 ? "border-b-2 " : "border-none"
+                          }`}
                         key={index}
                       >
                         <Link>
@@ -274,20 +300,20 @@ const Hotdeal = () => {
                   </div>
                   <div className="flex mt-[47px] bg-lightgray justify-center items-center  ">
                     {data.map((item, index) => (
-                      <div onClick={()=>  { 
+                      <div onClick={() => {
                         index >= 0 && index <= 5 && setcountpage(index)
-                                        }}
+                      }}
                         className={`${index === countpage ? "bg-primary-blue text-white" : "bg-transparent text-primary-dark"} flex justify-center items-center  `}
                         key={index + item - Date.now()}
                       >
-                     
+
                         <h4 className="w-[63px]   flex justify-center  items-center font-[400] text-[18px] h-[56px] cursor-pointer">
                           {item.value}
                         </h4>
                       </div>
                     ))}
                   </div>
-                </div> 
+                </div>
               </div>
             </div>
           </main>

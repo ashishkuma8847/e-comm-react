@@ -30,7 +30,7 @@ const AnimatedRoutes = () => {
         <Route path='/Belt' element={<Belt />} />
         <Route path='/Contect' element={<Contect />} />
         <Route path='/error' element={<PageNotFound />} />
-        <Route path='/Hotdeal' element={<Hotdeal />} />
+        <Route path='/Hotdeal/:id' element={<Hotdeal />} />
         <Route path='/product' element={<Product />} />
         <Route path='/cart' element={<Cart />} />
       </Routes>
