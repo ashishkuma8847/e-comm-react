@@ -76,21 +76,20 @@ const Hotdeal = () => {
     },
   ];
 
-  const { id } = useParams(); // <- this extracts "1" from "/Hotdeal/1"
+  const { id } = useParams(); 
 
   const [users, setUsers] = useState({ user: [] });
-  console.log(users, "single data")
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/getonedata/${id}`);
+        const response = await fetch(`http://localhost:3000/api/getallhotdeal`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setUsers(data);
+        setUsers(data.data);
       } catch (error) {
         console.error('Error fetching data:', error.message);
       } finally {
@@ -100,7 +99,6 @@ const Hotdeal = () => {
 
     fetchUsers();
   }, []);
-
   return (
     <>
       <motion.div
@@ -136,7 +134,7 @@ const Hotdeal = () => {
 
 
 
-                <div className="m-auto">
+                <div className="">
                   <div className="mb-[23px]">
                     <Sneacker
                       relative={"flex flex-col xl:flex-row justify-center items-center xl:justify-start items-start"}
@@ -209,7 +207,13 @@ const Hotdeal = () => {
                     className={`grid grid-cols-1 w-[] sm:grid-cols-2 lg:grid-cols-3  mt-[27px]  md:grid-cols-2 xl:grid-cols-3 gap-[33px] place-items-center ${nike ? "block " : "hidden"
                       }`}
                   >
-                    <Seller data={countpage == 0 ? hotdeljson.hotdeal : countpage === 1 ? hotdeljson.hotdeal1 : countpage === 2 ? hotdeljson.hotdeal : countpage == 3 ? hotdeljson.hotdeal1 : countpage === 4 && hotdeljson.hotdeal} />
+                    {
+                      users.map((item,index)=>(
+
+                        <Seller data={item} />
+
+                      ))
+                    }
                   </Link>
                   <div
                     className={`${isnike ? "block" : "hidden"} flex flex-col`}

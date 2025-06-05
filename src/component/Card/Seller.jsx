@@ -1,22 +1,22 @@
 import wishlist from "../../../public/svg/wishlist.svg"
 import cart from "../../../public/svg/cartblue.svg"
 import { Link } from "react-router-dom"
-const Seller = ({ item }) => {
+const Seller = ({ data }) => {
   return (
     <>
       <div className='flex justify-center items-center w-[301px]' >
         <div className={` border-2 relative  border-lightwhite rounded w-[100%] max-w-[299.5px] flex flex-col justify-center items-center`}>
           {/* Deal Badge */}
 
-          {item?.hotdeal && (
+          {data?.hotdeal && (
             <span className="font-proxima z-50 absolute top-0 left-0 bg-primary-red rounded text-white font-normal text-[18px] w-[64px] h-[33px] flex justify-center items-center">
-              {item?.hotdeal}
+              {data?.hotdeal}
             </span>
           )}
           {/* Product Image */}
           <div className="group">
             <img
-              src={`http://localhost:3000/    /${item?.productimg}`}
+              src={`http://localhost:3000/upload/${data?.images}`}
               className="  hover:blur-xs  h-[272.5px] object-cover"
               alt="product"
             />
@@ -35,26 +35,26 @@ const Seller = ({ item }) => {
           <div className="flex flex-col items-center justify-center gap-[6px] pt-[9.5px] pb-[18px]">
 
             <h4 className="font-poppins font-bold text-[18px] leading-[150%] text-natural-blue text-center">
-              {item?.name}
+              {data?.name}
             </h4>
 
             <img
-              src={`http://localhost:3000/upload/${item?.raiting}`}
+              src={`http://localhost:3000/upload/${data?.raiting}`}
               className="w-[123.6px] h-[15.14px]"
               alt="rating"
             />
 
             <div className="flex items-center gap-[13.14px]">
               <h4 className="font-poppins font-bold text-[18px] leading-[180%] text-primary-blue">
-                {item?.originalPrice}
+                {data?.originalPrice}
               </h4>
 
               <div className="flex justify-between items-center w-[122px]">
                 <h4 className="font-poppins font-normal text-[14px] leading-[150%] tracking-[0.5px] line-through text-natural-gray">
-                  {item?.price}
+                  {data?.price}
                 </h4>
                 <h4 className="font-poppins font-bold text-[14px] leading-[150%] text-primary-red">
-                  {item?.discountPercent}
+                  {data?.discountPercent}
                 </h4>
               </div>
             </div>

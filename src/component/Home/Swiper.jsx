@@ -85,7 +85,6 @@ const Swiperdata = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [produtsdata, setProdutsdata] = useState([]);
   const [loading, setLoading] = useState(false);
-  console.log(loading, "loadingloadingloading")
 
   const categories = ["All", ...new Set(data.saller.map((item) => item.category))];
 
@@ -96,15 +95,12 @@ const Swiperdata = () => {
 
   const fetchUsers = async () => {
     try {
-      setLoading(true);
       const response = await fetch("http://localhost:3000/api/getalldata");
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
-      setTimeout(() => {
         setProdutsdata(data.user);
-      }, 5000);
     } catch (error) {
       console.error("Error fetching data:", error.message);
     } finally {
@@ -116,17 +112,7 @@ const Swiperdata = () => {
     fetchUsers();
   }, []);
 
-  // 👇 Skeleton card JSX
-  const SkeletonCard = () => (
-    <div className="w-full max-w-[260px] h-[350px] bg-gray-200 rounded-xl animate-pulse shadow-md">
-      <div className="h-[180px] bg-gray-300 rounded-t-xl"></div>
-      <div className="p-4 space-y-3">
-        <div className="h-4 bg-gray-300 rounded w-3/4"></div>
-        <div className="h-4 bg-gray-300 rounded w-1/2"></div>
-        <div className="h-4 bg-gray-300 rounded w-full"></div>
-      </div>
-    </div>
-  );
+
 
   return (
     <>
@@ -148,13 +134,10 @@ const Swiperdata = () => {
 
       {/* Product Grid or Skeletons */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-[34.5px] place-items-center">
-        {loading
-          ? // Render 8 skeletons as placeholder
-          Array.from({ length: 8 }).map((_, index) => (
-            <SkeletonCard key={index} />
-          ))
-          : produtsdata && produtsdata && produtsdata.length > 0 && produtsdata?.map((item, index) => (
+        { produtsdata && produtsdata && produtsdata.length > 0 && produtsdata?.map((item, index) => (
+         
             <Link key={Date.now() + "productsdata" + index} to={`/Hotdeal/${item?.id}`}>
+             
               <Seller data={item} />
             </Link>
           ))}
