@@ -25,6 +25,7 @@ const Bannerproducts = () => {
 
     fetchUsers();
   }, []);
+  console.log(users)
   
 
     return (

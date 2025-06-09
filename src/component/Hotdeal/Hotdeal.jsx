@@ -78,7 +78,8 @@ const Hotdeal = () => {
 
   const { id } = useParams(); 
 
-  const [users, setUsers] = useState({ user: [] });
+  const [databar, setdatabar] = useState([]);
+  const [datasidebar, setdatasidebar] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -89,7 +90,7 @@ const Hotdeal = () => {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setUsers(data.data);
+        setdatabar(data.data);
       } catch (error) {
         console.error('Error fetching data:', error.message);
       } finally {
@@ -99,6 +100,27 @@ const Hotdeal = () => {
 
     fetchUsers();
   }, []);
+
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/api/getallhotdealside`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setdatasidebar(data.data);
+      } catch (error) {
+        console.error('Error fetching data:', error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+  console.log(datasidebar,"fdssssssssssssssssssss")
   return (
     <>
       <motion.div
@@ -207,22 +229,23 @@ const Hotdeal = () => {
                     className={`grid grid-cols-1 w-[] sm:grid-cols-2 lg:grid-cols-3  mt-[27px]  md:grid-cols-2 xl:grid-cols-3 gap-[33px] place-items-center ${nike ? "block " : "hidden"
                       }`}
                   >
-                    {
-                      users.map((item,index)=>(
+                   {
+                    databar.map((item,index)=>(
+<div key={index+item+Date.now}> <Seller data={item} /></div>
+                     
+                    ))
+                   }
 
-                        <Seller data={item} />
-
-                      ))
-                    }
+                     
                   </Link>
                   <div
                     className={`${isnike ? "block" : "hidden"} flex flex-col`}
                   >
-                    {hotdeljson.data3.map((item, index) => (
+                    {datasidebar.map((item, index) => (
                       <div
                         className={`max-w-[870px]  w-full border-sidegray relative pt-[30px] pb-[26px] flex  ${index <= 2 ? "border-b-2 " : "border-none"
                           }`}
-                        key={index}
+                        key={index+item}
                       >
                         <Link>
                           <div className="flex gap-[14px] flex-col lg:flex-row justify-center items-center lg:justify-start lg:items-start">
@@ -231,13 +254,13 @@ const Hotdeal = () => {
                                 {" "}
                                 <Link to={"/product"}>
                                   <img
-                                    src={item.image}
-                                    className=""
+                                    src={`http://localhost:3000/upload/${item.images}`}
+                                    className="w-[299px] h-[272px]"
                                     alt="image"
                                   />
-                                  {item.deal && (
+                                  {item.hotdeal && (
                                     <span className="font-proxima  absolute  top-[32px] z-50  bg-primary-red rounded text-white font-normal text-[18px] w-[64px] h-[33px] flex justify-center items-center">
-                                      {item.deal}
+                                      {item.hotdeal}
                                     </span>
                                   )}
                                 </Link>
@@ -246,16 +269,16 @@ const Hotdeal = () => {
 
                             <div className="flex flex-col justify-center items-center lg:justify-start lg:items-start">
                               <h1 className="font-poppins font-medium text-2xl text-primary-dark">
-                                Nike Airmax 270 React
+                                {item.name}
                               </h1>
                               <div className="flex items-center justify-center lg:justify-start pt-[14px] pb-5 border-b-2 border-sidegray max-w-[470px] w-full gap-[15px]">
                                 <img
                                   className="max-w-[72px] w-full"
-                                  src={rating}
+                                  src={`http://localhost:3000/upload/${item.raiting}`}
                                   alt="image"
                                 />
                                 <h4 className="font-proxima font-normal text-sm text-lightgray-white">
-                                  0 reviews
+                                  {item.reviews} reviews
                                 </h4>
                                 <h4 className="font-proxima font-normal text-sm text-primary-blue">
                                   Submit a review
@@ -263,13 +286,13 @@ const Hotdeal = () => {
                               </div>
                               <div className="flex pt-[10px] pb-5 items-center gap-[9px]">
                                 <h4 className="font-poppins font-bold text-xl tracking-[0.5px] text-primary-blue leading-[180%]">
-                                  $299,43
+                                 {item.originalPrice}
                                 </h4>
                                 <h4 className="font-poppins font-medium text-sm tracking-[0.5px] text-natural-gray leading-[150%] line-through">
-                                  $534,33
+                                  {item.price}
                                 </h4>
                                 <h4 className="font-poppins font-bold text-sm tracking-[0.5px] text-primary-red leading-[150%]">
-                                  24% Off
+                                  {item.discountPercent}
                                 </h4>
                               </div>
                               <h4 className="font-poppins mb-[28.25px] font-medium text-sm text-primary max-w-[652px] w-full">
@@ -308,7 +331,7 @@ const Hotdeal = () => {
                         index >= 0 && index <= 5 && setcountpage(index)
                       }}
                         className={`${index === countpage ? "bg-primary-blue text-white" : "bg-transparent text-primary-dark"} flex justify-center items-center  `}
-                        key={index + item - Date.now()}
+                        key={index + item + Date.now()}
                       >
 
                         <h4 className="w-[63px]   flex justify-center  items-center font-[400] text-[18px] h-[56px] cursor-pointer">

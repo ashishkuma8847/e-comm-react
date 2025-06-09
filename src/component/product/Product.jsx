@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import nikepro from "../../json/nikepro.json"
 import rating from "../../../public/svg/rate.svg"
 import productjson from "../../json/Product.json"
@@ -21,7 +21,25 @@ import Seller from '../../component/Card/Seller'
 import { motion } from "framer-motion";
 
 const Product = () => {
+      const [produtsdata, setProdutsdata] = useState([]);
+     const fetchUsers = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/api/getalldata");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+     
+        setProdutsdata(data.user.slice(0, 4));
 
+    } catch (error) {
+      console.error("Error fetching data:", error.message);
+    } 
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
     const verticalFlip = {
   initial: {
     rotateX: 180,
@@ -66,6 +84,25 @@ const Product = () => {
 
         }
     ]
+    const value = [
+        {
+            value:"XS"
+        },
+        {
+            value:"M"
+        },
+        {
+            value:"S"
+        },
+        {
+            value:"XL"
+        },
+        {
+            value:"XXL"
+        }
+    ]
+    const [xldata, setxldata] = useState("XS");
+
     return (
         <>
          <motion.div
@@ -127,14 +164,20 @@ const Product = () => {
                                 <div className="flex flex-col gap-4">
                                     {
                                         productjson.title1.map((item, index) => (
+                                            <div key={item+index}>
+                                                
                                             <h4>{item.titledata}</h4>
+                                            </div>
                                         ))
                                     }
                                 </div>
                                 <div className="flex flex-col gap-4 ">
                                     {
                                         productjson.title2.map((item, index) => (
+                                            <div key={item+index}>
+
                                             <h4>{item.titledata}</h4>
+                                            </div>
                                         ))
                                     }
                                 </div>
@@ -167,15 +210,16 @@ const Product = () => {
                             <div className="flex relative gap-[98.36px] w-full mb-[20px] items-center pb-[21px] border-b-2 border-sidegray" >
                                 <h4 className='font-poppins text-[16px] text-primary '>Size</h4>
                                 <div onClick={() => setarrowdata(!arrowdata)} className={`  flex items-center max-w-[123px] w-full border-2 justify-between border-sidegray rounded p-[10px_18px_10px_16px]`}>
-                                    <h4 className='text-[14px] '>XS</h4>
+                                    <h4 className='text-[14px] '>{xldata && xldata }</h4>
                                     <img className={`${arrowdata ? "rotate-180" : "rotate-0"} transition-all duration-200 w-[7.9px] h-[4.25px]`} src={arrow} alt="arrow" />
                                 </div>
 
-                                <div className={` ${arrowdata ? "h-[112px] opacity-100 z-50" : "h-0 opacity-0 -z-50"} transition-all duration-200 flex flex-col w-16 left-[160px] top-[45px]  bg-sidegray rounded py-2 px-4 absolute text-start`}>
-                                    <h4>M</h4>
-                                    <h4>S</h4>
-                                    <h4>XL</h4>
-                                    <h4>XXL</h4>
+                                <div className={` ${arrowdata ? "h-[135px] opacity-100 z-50" : "h-0 opacity-0 -z-50"} transition-all duration-200 flex flex-col w-16 left-[160px] top-[45px]  bg-sidegray rounded py-2 px-4 absolute text-start`}>
+                                 {
+                                    value.map((item,index)=>(
+                                        <div key={item+index}><h4 onClick={()=>setxldata(item.value)}>{item.value}</h4></div>
+                                    ))
+                                 }
                                 </div>
 
 
@@ -295,7 +339,14 @@ const Product = () => {
                         <div className="flex flex-col gap-[83.76px] pb-[86.26px] justify-center items-center">
                             <h4 className='font-poppins font-[600] sm:text-[35px] text-[28px] text-primary-dark'>RELATED PRODUCTS</h4>
                         <div className="xl:flex grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-y-[30px] grid-rows-2 w-full justify-between">
-                            <Seller data={productjson.saller}/>
+                            {
+                                produtsdata.map((item,index)=>(
+                                    <div key={item+index}>
+
+                                        <Seller data={item}/>
+                                    </div>
+                                ))
+                            }
                         </div>
                         </div>
                     </div>

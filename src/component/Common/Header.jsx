@@ -42,33 +42,14 @@ const Header = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
       setLoading(false);
-    }, 2000);
   }, []);
   const [activeDropdown, setActiveDropdown] = useState(null)
   const [Click1, setClick1] = useState(false)
 
 
   return (
-    loading ? <div className="container flex flex-col ">
-      <div className="flex justify-between items-center w-full pt-[10px] mb-[35px]">
-
-        <Skeleton height={"28px"} width={"113px"} />
-        <Skeleton height={"59px"} width={"366px"} />
-      </div>
-      <div className="flex justify-between items-center ">
-        <Skeleton height={"44px"} width={"134px"} />
-        <div className="w-[815px] flex justify-between items-center">
-          <Skeleton height={"32px"} width={"69px"} />
-          <Skeleton height={"32px"} width={"65px"} />
-          <Skeleton height={"32px"} width={"119px"} />
-          <Skeleton height={"32px"} width={"52px"} />
-          <Skeleton height={"32px"} width={"117px"} />
-
-        </div>
-      </div>
-    </div>
+    loading ? ""
 
       : <>
         <section className={`  ${Click1 ? " hidden" : "block"} transition-all  duration-200 border-b-[2px] border-lightgray`}>
