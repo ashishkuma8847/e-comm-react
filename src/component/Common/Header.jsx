@@ -93,10 +93,11 @@ const Header = () => {
         <section className=' pt-[34.74px] pb-[34.04px]'>
           <div className="container">
             <div className="flex  justify-between  ">
-              <div className={`${Click1 ? " hidden   " : "block "} lg:flex  flex w-[134.32px] justify-between items-center`}>
+              <Link to={"/"}> <div className={`${Click1 ? " hidden   " : "block "} lg:flex  flex w-[134.32px] justify-between items-center`}>
                 <img src={icon} alt="icon" />
                 <h4 className=' font-poppins font-bold text-[18px]  text-primary-dark'>E-comm</h4>
-              </div>
+              </div></Link>
+             
 
               {
                 (<>
@@ -104,10 +105,11 @@ const Header = () => {
 
 
                     <div className={`max-h-1vh lg:hidden h-full ${Click1 ? "w-full opacity-100 px-[20.04px]" : "w-0 opacity-0 px-0"} z-50 flex flex-col gap-[50px] sm:gap-[10px]  pt-[34.74px]   transition-all duration-500 top-0 right-0 absolute bg-lightgray  `}>
-                      <div className={`${Click1 ? " block   " : "hidden "} lg:flex  flex w-[134.32px] justify-between items-center`}>
+                      <Link onClick={()=>setClick1(false)} to={"/"}><div className={`${Click1 ? " block   " : "hidden "} lg:flex  flex w-[134.32px] justify-between items-center`}>
                         <img src={icon} alt="icon" />
                         <h4 className=' font-poppins font-bold text-[18px]  text-primary-dark'>E-comm</h4>
-                      </div>
+                      </div></Link>
+                      
                       <div className="flex gap-2 md:gap-[50px] h-fit md:h-[59px] md:flex-row flex-col md:items-center">
                         {Click1 &&
                           Headerjson.path.map((item, index) => (

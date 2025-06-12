@@ -76,7 +76,7 @@
 // export default Swiperdata;
 
 
-import React, { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import data from "../../json/saller.json";
 import Seller from "../../component/Card/Seller";
 import { Link } from "react-router-dom";
@@ -100,7 +100,7 @@ const Swiperdata = () => {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
-        setProdutsdata(data.user);
+      setProdutsdata(data.user);
     } catch (error) {
       console.error("Error fetching data:", error.message);
     } finally {
@@ -132,15 +132,15 @@ const Swiperdata = () => {
         ))}
       </div>
 
+
+
       {/* Product Grid or Skeletons */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-[34.5px] place-items-center">
-        { produtsdata && produtsdata && produtsdata.length > 0 && produtsdata?.map((item, index) => (
-         
-            <Link key={Date.now() + "productsdata" + index} to={`/Hotdeal/${item?.id}`}>
-             
-              <Seller data={item} />
-            </Link>
-          ))}
+        {produtsdata && produtsdata && produtsdata.length > 0 && produtsdata?.map((item, index) => (
+          <Link key={Date.now() + "productsdata" + index} to={`/product/${item?.id}`}>
+            <Seller data={item} />
+          </Link>
+        ))}
       </div>
     </>
   );

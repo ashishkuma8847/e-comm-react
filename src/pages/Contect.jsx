@@ -1,5 +1,3 @@
-import React from 'react'
-import PageNotFound from '../component/error/PageNotFound'
 import { motion } from "framer-motion";
 import caracterimg from "../../public/images/call.png"
 import Input from '../component/ui/Input';

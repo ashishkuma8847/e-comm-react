@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import backimg from "../../../public/svg/StatusBar.svg";
 import cross from "../../../public/svg/bluecross.svg";
 import Paymenydetails from "../cart/Paymenydetails";

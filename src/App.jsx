@@ -10,7 +10,6 @@ import Contect from './pages/Contect';
 import Hotdeal from './component/Hotdeal/Hotdeal';
 import Header from './component/Common/Header';
 import Footer from './component/Common/Footer';
-import PageNotFound from './component/error/PageNotFound';
 import './App.css'
 import Product from './component/product/Product';
 import Cart from './component/cart/Cart';
@@ -29,9 +28,8 @@ const AnimatedRoutes = () => {
         <Route path='/Sneakers' element={<Sneakers />} />
         <Route path='/Belt' element={<Belt />} />
         <Route path='/Contect' element={<Contect />} />
-        <Route path='/error' element={<PageNotFound />} />
-        <Route path='/Hotdeal/:id' element={<Hotdeal />} />
-        <Route path='/product' element={<Product />} />
+        <Route path='/Hotdeal' element={<Hotdeal />} />
+        <Route path='/product/:id' element={<Product />} />
         <Route path='/cart' element={<Cart />} />
       </Routes>
     </AnimatePresence>

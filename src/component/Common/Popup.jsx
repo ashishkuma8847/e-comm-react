@@ -53,7 +53,7 @@ const Popup = ({child}) => {
                                     Headerjson.datacatogryhotdeal.map((item, index) => (
                                       <div key={index}>
                                         {
-                                          index === 0 ? (<><Link onClick={()=>sethomedata(false)} to={"/Hotdeal"}>
+                                          index === 0 ? (<><Link onClick={()=>sethomedata(false)} to={"/Hotdeal/:id"}>
                                             <h4 className='font-poppins  font-normal text-[16px]'>{item.title}</h4>
                                           </Link>
                                           </>) : <Link onClick={()=>sethomedata(false)} to={"/error"}>

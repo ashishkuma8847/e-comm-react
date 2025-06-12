@@ -1,5 +1,3 @@
-import React from 'react'
-import PageNotFound from '../component/error/PageNotFound'
 import { motion } from "framer-motion";
 
 const pageVariants = {
@@ -15,7 +13,6 @@ const Belt = () => {
     animate="animate"
     exit="exit"
   >
-    <PageNotFound/>
     </motion.div>
 
   )

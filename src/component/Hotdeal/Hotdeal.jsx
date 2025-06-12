@@ -82,22 +82,23 @@ const Hotdeal = () => {
   const [datasidebar, setdatasidebar] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response = await fetch(`http://localhost:3000/api/getallhotdeal`);
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        setdatabar(data.data);
-      } catch (error) {
-        console.error('Error fetching data:', error.message);
-      } finally {
-        setLoading(false);
+  const fetchUsers = async () => {
+    try {
+      setLoading(true)
+      const response = await fetch(`http://localhost:3000/api/getallhotdeal/${id}`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
       }
-    };
-
+      const data = await response.json();
+      setdatabar(data.data);
+    } catch (error) {
+      console.error('Error fetching data:', error.message);
+      setLoading(false);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
     fetchUsers();
   }, []);
 
