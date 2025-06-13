@@ -91,7 +91,6 @@ const Product = () => {
         fetchUsers()
         fetchitems();
     }, []);
-    console.log(itemsdata,"=====================================")
     return (
         <>
 
@@ -327,10 +326,10 @@ const Product = () => {
                             <div className="xl:flex grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-y-[30px] grid-rows-2 w-full justify-between">
                                 {
                                     produtsdata.map((item, index) => (
-                                        <div key={item + index}>
+                                        <Link to={`/product/${item.id}`} key={item + index}>
 
                                             <Seller data={item} />
-                                        </div>
+                                        </Link>
                                     ))
                                 }
                             </div>
