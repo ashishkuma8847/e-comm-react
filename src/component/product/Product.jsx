@@ -31,7 +31,7 @@ const Product = () => {
     const [isindex, setindex] = useState(0)
     const [isImage, setImage] = useState("");
     const [xldata, setxldata] = useState("XS");
-    const [items, setitems] = useState([]);
+    const [itemsdata, setitemsdata] = useState([ ]);
 
 
 
@@ -80,7 +80,7 @@ const Product = () => {
                 throw new Error("Network response was not ok");
             }
             const data = await response.json();
-            setitems(data?.data)
+            setitemsdata([data.data])
         } catch (error) {
             console.error("Error fetching data:", error.message);
         }
@@ -91,7 +91,7 @@ const Product = () => {
         fetchUsers()
         fetchitems();
     }, []);
-
+    console.log(itemsdata,"=====================================")
     return (
         <>
 
@@ -106,12 +106,12 @@ const Product = () => {
                     </div>
                     <div className="container">
                         {
-                            items?.map((item, index) => {
+                            itemsdata.map((item, index) => {
                                 return (<>
                                     <div key={item + index}>
                                         <div className="flex  lg:pl-[21.45px] pb-[49px] flex-col  gap-[30px] lg:gap-0 lg:flex-row  justify-between xl:justify-start">
                                             <div className="lg:mr-[36px]">
-                                                <img className={'object-contain max-w-[375px] w-full h-[272px] bg-lightwhite rounded'} src={`http://localhost:3000/upload/${isImage || item.images[0].img}`} />
+                                                <img className={'object-contain max-w-[375px] w-full h-[272px] bg-lightwhite rounded'} src={`http://localhost:3000/upload/${isImage || item.images[2].img}`} />
                                                 <div className="sm:flex grid grid-cols-2 gap-[15.50px] lg:pt-[150px] pt-[50px] w-full">
                                                     {
                                                         item.images.map((item, index) => (
@@ -125,37 +125,37 @@ const Product = () => {
                                             </div>
                                             <div className="flex flex-col max-w-[500px] w-full lg:mr-[32px] overflow-hidden  ">
                                                 <div className="flex flex-col gap-[27px] pb-[22px] mb-[17px] border-b-2 border-sidegray w-full">
-                                                    <h1 className=' font-poppins font-[500] text-2xl text-primary-dark'>Nike Airmax 270 React</h1>
+                                                    <h1 className=' font-poppins font-[500] text-2xl text-primary-dark'>{item.name}</h1>
                                                     <div className="flex items-center sm:gap-[17px] gap-[10px]">
-                                                        <img className='w-[77px] h-[11px]' src={rating} alt="rating" />
-                                                        <h4 className=' font-[400] text-[16px] text-lightgray-white'>0 reviews</h4>
+                                                        <img className='w-[77px] h-[11px]' src={`http://localhost:3000/upload/${item.raiting}`} alt="rating" />
+                                                        <h4 className=' font-[400] text-[16px] text-lightgray-white'>{item.rewiews} rewiews</h4>
                                                         <h4 className='font-[400] text-[16px] text-skyblue'>Submit a review</h4>
                                                     </div>
                                                 </div>
                                                 <div className="flex items-center gap-[9.14px] mb-[18px]">
-                                                    <h4 className='font-poppins font-bold text-xl leading-[180%] tracking-[0.5px] text-primary-blue '>$299,43</h4>
+                                                    <h4 className='font-poppins font-bold text-xl leading-[180%] tracking-[0.5px] text-primary-blue '>{item.originalPrice}</h4>
                                                     <div className=" flex items-center gap-[8px]">
-                                                        <h4 className='font-poppins line-through font-[400] text-[14px] leading-[150%] tracking-[0.5px] text-natural-gray'>$534,33</h4>
-                                                        <h4 className='font-poppins font-bold text-[14px] leading-[150%] tracking-[0.5px] text-primary-red'>24% Off</h4>
+                                                        <h4 className='font-poppins line-through font-[400] text-[14px] leading-[150%] tracking-[0.5px] text-natural-gray'>{item.price}</h4>
+                                                        <h4 className='font-poppins font-bold text-[14px] leading-[150%] tracking-[0.5px] text-primary-red'>{item.discountPercent}</h4>
                                                     </div>
                                                 </div>
                                                 <div className="flex font-poppins font-normal text-[14px] text-primary gap-[53px] pb-[23px] border-b-2 border-sidegray mb-[20px]">
                                                     <div className="flex flex-col gap-4">
                                                         {
-                                                            productjson.title1.map((item, index) => (
+                                                            item.avalible.map((item, index) => (
                                                                 <div key={item + index}>
 
-                                                                    <h4>{item.titledata}</h4>
+                                                                    <h4>{item.title}</h4>
                                                                 </div>
                                                             ))
                                                         }
                                                     </div>
                                                     <div className="flex flex-col gap-4 ">
                                                         {
-                                                            productjson.title2.map((item, index) => (
+                                                            item.optionavalible.map((item, index) => (
                                                                 <div key={item + index}>
 
-                                                                    <h4>{item.titledata}</h4>
+                                                                    <h4>{item.title}</h4>
                                                                 </div>
                                                             ))
                                                         }
@@ -167,16 +167,17 @@ const Product = () => {
                                                         {
                                                             productjson &&
                                                             <div className="flex gap-[17px] ">
-                                                                {productjson.color.map((item, index) => (
+                                                                {item.selectedColor.map((item, index) => (
                                                                     <Fragment key={index + item + Date.now()}>
+                                                                        
                                                                         <div
-                                                                            className="flex items-center w-[27px] h-[27px] justify-center rounded-full"
+                                                                            className="flex  items-center w-[27px] h-[27px] justify-center rounded-full"
                                                                             style={{ border: `2px solid  ${isborder === index ? item?.color : "transparent"}` }}
                                                                         >
                                                                             <button
                                                                                 style={{ background: item.color }}
                                                                                 onClick={() => setIsborder(index)}
-                                                                                className={`${isborder === index ? "w-[17px] h-[17px]" : "h-[21px] w-[21px]"
+                                                                                className={`cursor-pointer ${isborder === index ? "w-[17px] h-[17px]" : "h-[21px] w-[21px]"
                                                                                     } rounded-full`}
                                                                             ></button>
                                                                         </div>
@@ -244,10 +245,10 @@ const Product = () => {
                                                         className="mySwiper"
                                                     >
                                                         {
-                                                            data?.map((item, index) => (
+                                                            item.bestsellerimg.map((item, index) => (
                                                                 <div key={index + item + Date.now()}>
                                                                     <SwiperSlide ><div className="flex flex-col mb-[30px] justify-center items-center border-2 rounded border-sidegray">
-                                                                        <img className='w-[284px] h-[240px]' src={swiperimg} alt="" />
+                                                                        <img className='w-[284px] h-[240px]' src={`http://localhost:3000/upload/${item.img}`} alt="" />
                                                                         <div className="flex flex-col w-[93px] gap-[12px] justify-center pt-[53px] pb-[34px] items-center  ">
                                                                             <img className='w-[77px] h-[11px] ' src={rating} alt="rating" />
                                                                             <div className="flex gap-[11.42px] items-center justify-center ">
@@ -266,14 +267,26 @@ const Product = () => {
                                         <div className="bg-lightgray rounded relative  flex-col  max-w-[930px] w-full mt-[49px] mb-[78px] hidden lg:flex">
                                             <div className=" flex ab gap-[79px] pl-[31.82px] z-50  pt-[34.29px]">
                                                 {
-                                                    nikeprojson.infromation.map((item, index) => (
+                                                    item.paragraph.map((item, index) => (
                                                         <div key={index + item - Date.now()}>
                                                             <Link to={item.path}>
-                                                                <div onClick={() => setindex(item.value)} className={` ${index === 0 ? "174.82px" : index === 1 ? "87.44px" : "109.92px"} flex   h-[55px] `} >
-                                                                    <h1 className='font-poppins  font-normal text-lg hover:border-b-4  hover:border-primary-blue hover:text-primary-blue'>{item.info}</h1>
+                                                                <div  className={` ${index === 0 ? "174.82px" : index === 1 ? "87.44px" : "109.92px"} flex   h-[55px] `} >
+                                                                    {
+                                                                        index === 0 && (<>
+                                                                            <h1 onClick={()=>setindex(0)} className='font-poppins  font-normal text-lg hover:border-b-4  hover:border-primary-blue hover:text-primary-blue'>{item.title}</h1>
+                                                                         
+                                                                        </>)
+                                                                    }
                                                                     {
                                                                         index === 1 && (<>
+                                                                            <h1 onClick={()=>setindex(1)} className='font-poppins  font-normal text-lg hover:border-b-4  hover:border-primary-blue hover:text-primary-blue'>{item.title}</h1>
                                                                             <p className='font-poppins font-normal leading-[180%] text-neutral-gray tracking-[0.5px] pl-0.5 pt-[0.3px]'>0</p>
+                                                                        </>)
+                                                                    }
+                                                                    {
+                                                                        index === 2 && (<>
+                                                                            <h1 onClick={()=>setindex(2)} className='font-poppins  font-normal text-lg hover:border-b-4  hover:border-primary-blue hover:text-primary-blue'>{item.title}</h1>
+                                                                            
                                                                         </>)
                                                                     }
                                                                 </div>
@@ -285,13 +298,11 @@ const Product = () => {
                                             <div className="   border-b-4 border-lightborder"></div>
                                             {
                                                 isindex == 0 && (
-                                                    nikeprojson.info.map((item, index) => (
+                                                    item.productInfomation.map((item, index) => (
                                                         <div key={index + item - Date.now()}>
-                                                            <Link to={item.path}>
-                                                                <div className="max-w-[765px] w-full pl-[31px] pt-[21px] pb-[44px] gap-[15px] flex flex-col">
-                                                                    <h4 className='font-poppins font-normal text-[12px] leading-[180%] text-neutral-gray tracking-[0.5px]'>{item.firstinfo}</h4>
-                                                                    <h4 className='font-poppins font-normal text-[12px] leading-[180%] text-neutral-gray tracking-[0.5px]'>{item.secondinfo}</h4>
-                                                                    <h4 className='font-poppins font-normal text-[12px] leading-[180%] text-neutral-gray tracking-[0.5px]'>{item.thirdinfo}</h4>
+                                                            <Link className='' to={item.path}>
+                                                                <div className={`${index == 0 ? "pl-[31px] pt-[21px]": index === 1 ? "pl-[31px]" : "pl-[31px] pb-[31px]" } max-w-[765px] w-full   gap-[15px] flex flex-col`}>
+                                                                    <h4 className='font-poppins font-normal text-[12px] leading-[180%] text-neutral-gray tracking-[0.5px]'>{item.title}</h4>
                                                                 </div>
                                                             </Link>
                                                         </div>

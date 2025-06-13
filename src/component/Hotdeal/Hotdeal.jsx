@@ -76,7 +76,6 @@ const Hotdeal = () => {
     },
   ];
 
-  const { id } = useParams(); 
 
   const [databar, setdatabar] = useState([]);
   const [datasidebar, setdatasidebar] = useState([]);
@@ -85,7 +84,7 @@ const Hotdeal = () => {
   const fetchUsers = async () => {
     try {
       setLoading(true)
-      const response = await fetch(`http://localhost:3000/api/getallhotdeal/${id}`);
+      const response = await fetch(`http://localhost:3000/api/getallhotdeal`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -121,7 +120,6 @@ const Hotdeal = () => {
 
     fetchUsers();
   }, []);
-  console.log(datasidebar,"fdssssssssssssssssssss")
   return (
     <>
       <motion.div
@@ -232,7 +230,7 @@ const Hotdeal = () => {
                   >
                    {
                     databar.map((item,index)=>(
-<div key={index+item+Date.now}> <Seller data={item} /></div>
+<Link to={`/product/${item.id}`} key={index+item+Date.now}> <Seller data={item} /></Link>
                      
                     ))
                    }
@@ -253,7 +251,7 @@ const Hotdeal = () => {
                             {
                               <>
                                 {" "}
-                                <Link to={"/product"}>
+                                <Link to={`/product/${item.id}`}>
                                   <img
                                     src={`http://localhost:3000/upload/${item.images}`}
                                     className="w-[299px] h-[272px]"
