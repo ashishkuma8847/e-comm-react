@@ -19,7 +19,7 @@ const Seller = ({ data }) => {
             </span>
           )}
           {/* Product Image */}
-          <div className="group">
+          <div className="group bg-[#f6f6f6]">
             <img
               src={`http://localhost:3000/upload/${data?.images}`}
               className="  hover:blur-xs  h-[272.5px] object-cover"

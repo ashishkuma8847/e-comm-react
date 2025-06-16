@@ -30,8 +30,8 @@ const Product = () => {
     const [count, setcount] = useState(1);
     const [isindex, setindex] = useState(0)
     const [isImage, setImage] = useState("");
-    const [xldata, setxldata] = useState("XS");
     const [itemsdata, setitemsdata] = useState([ ]);
+    const [xldata, setxldata] = useState("XS");
 
 
 
@@ -56,7 +56,6 @@ const Product = () => {
             value: "XXL"
         }
     ]
-
     // related produts api
     const fetchUsers = async () => {
         try {
@@ -104,7 +103,11 @@ const Product = () => {
                         <h4 className=" text-primary"> Nike Airmax 270 React</h4>
                     </div>
                     <div className="container">
-                        {
+                        { itemsdata.length === 0 ? (<>
+                        <div className=' flex justify-center items-center py-[100px] pb-[100px] text-[100px] font-poppins font-medium text-primary-dark' >
+                            <h4>PRODUCT NOT FOUND</h4>
+                        </div>
+                        </>):
                             itemsdata.map((item, index) => {
                                 return (<>
                                     <div key={item + index}>
@@ -116,7 +119,7 @@ const Product = () => {
                                                         item.images.map((item, index) => (
                                                             <div className='flex items-center justify-center' key={index}>
 
-                                                                <img onClick={() => setImage(item.img)} className='max-w-[86px] w-full cursor-pointer hover:border-2 hover:border-primary-blue rounded' src={`http://localhost:3000/upload/${item.img}`} alt="Image" />
+                                                                <img onClick={() => setImage(item.img)} className='max-w-[86px] bg-[#f6f6f6] w-full cursor-pointer hover:border-2 hover:border-primary-blue rounded' src={`http://localhost:3000/upload/${item.img}`} alt="Image" />
                                                             </div>
                                                         ))
                                                     }
@@ -194,9 +197,10 @@ const Product = () => {
                                                     </div>
 
                                                     <div className={` ${arrowdata ? "h-[135px] opacity-100 z-50" : "h-0 opacity-0 -z-50"} transition-all duration-200 flex flex-col w-16 left-[160px] top-[45px]  bg-sidegray rounded py-2 px-4 absolute text-start`}>
+                                                       
                                                         {
-                                                            value.map((item, index) => (
-                                                                <div onClick={() => setarrowdata(false)} key={item + index}><h4 onClick={() => setxldata(item.value)}>{item.value}</h4></div>
+                                                            item.size.map((item, index) => (
+                                                                <div onClick={() => setarrowdata(false)} key={item + index}><h4 onClick={() => setxldata(item.size)}>{item.size}</h4></div>
                                                             ))
                                                         }
                                                     </div>
@@ -246,8 +250,8 @@ const Product = () => {
                                                         {
                                                             item.bestsellerimg.map((item, index) => (
                                                                 <div key={index + item + Date.now()}>
-                                                                    <SwiperSlide ><div className="flex flex-col mb-[30px] justify-center items-center border-2 rounded border-sidegray">
-                                                                        <img className='w-[284px] h-[240px]' src={`http://localhost:3000/upload/${item.img}`} alt="" />
+                                                                    <SwiperSlide ><div className="flex  flex-col mb-[30px] justify-center items-center border-2 rounded border-sidegray">
+                                                                        <img className='w-[284px] bg-[#f6f6f6] h-[240px]' src={`http://localhost:3000/upload/${item.img}`} alt="" />
                                                                         <div className="flex flex-col w-[93px] gap-[12px] justify-center pt-[53px] pb-[34px] items-center  ">
                                                                             <img className='w-[77px] h-[11px] ' src={rating} alt="rating" />
                                                                             <div className="flex gap-[11.42px] items-center justify-center ">
