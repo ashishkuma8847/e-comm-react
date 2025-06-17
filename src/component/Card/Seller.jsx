@@ -6,14 +6,15 @@
 import wishlist from "../../../public/svg/wishlist.svg"
 import cart from "../../../public/svg/cartblue.svg"
 import { Link } from "react-router-dom"
-const Seller = ({ data }) => {
+const Seller = ({ data,varient }) => {
+  console.log(data,"--------------------")
   return (
     <>
       <div className='flex justify-center items-center w-[301px]' >
         <div className={` border-2 relative  border-lightwhite rounded w-[100%] max-w-[299.5px] flex flex-col justify-center items-center`}>
           {/* Deal Badge */}
 
-          {data?.hotdeal && (
+          { varient === true  && (
             <span className="font-proxima z-50 absolute top-0 left-0 bg-primary-red rounded text-white font-normal text-[18px] w-[64px] h-[33px] flex justify-center items-center">
               {data?.hotdeal}
             </span>
@@ -21,7 +22,7 @@ const Seller = ({ data }) => {
           {/* Product Image */}
           <div className="group bg-[#f6f6f6]">
             <img
-              src={`http://localhost:3000/upload/${data?.images}`}
+              src={`http://localhost:3000/upload/${data?.headimgage}`}
               className="  hover:blur-xs  h-[272.5px] object-cover"
               alt="product"
             />

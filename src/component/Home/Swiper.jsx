@@ -95,12 +95,12 @@ const Swiperdata = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/getalldata");
+      const response = await fetch("http://localhost:3000/api/getallproduct");
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
-      setProdutsdata(data.user);
+      setProdutsdata(data.data);
     } catch (error) {
       console.error("Error fetching data:", error.message);
     } finally {
@@ -111,7 +111,6 @@ const Swiperdata = () => {
   useEffect(() => {
     fetchUsers();
   }, []);
-
 
 
   return (
@@ -136,9 +135,9 @@ const Swiperdata = () => {
 
       {/* Product Grid or Skeletons */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-[34.5px] place-items-center">
-        {produtsdata && produtsdata && produtsdata.length > 0 && produtsdata?.map((item, index) => (
+        {produtsdata && produtsdata && produtsdata.length > 0 && produtsdata?.slice(0,8).map((item, index) => (
           <Link key={Date.now() + "productsdata" + index} to={`/product/${item?.id}`}>
-            <Seller data={item} />
+            <Seller varient={index === 0 ? true : false} data={item} />
           </Link>
         ))}
       </div>

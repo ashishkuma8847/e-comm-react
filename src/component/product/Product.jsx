@@ -59,17 +59,16 @@ const Product = () => {
     // related produts api
     const fetchUsers = async () => {
         try {
-            const response = await fetch("http://localhost:3000/api/getalldata");
+            const response = await fetch("http://localhost:3000/api/getallproduct");
             if (!response.ok) {
                 throw new Error("Network response was not ok");
             }
             const data = await response.json();
-            setProdutsdata(data.user.slice(0, 4));
+            setProdutsdata(data.data.slice(0,4));
         } catch (error) {
             console.error("Error fetching data:", error.message);
         }
     };
-
 
     //  get product by one
     const fetchitems = async () => {
@@ -90,6 +89,7 @@ const Product = () => {
         fetchUsers()
         fetchitems();
     }, []);
+
     return (
         <>
 
@@ -113,10 +113,10 @@ const Product = () => {
                                     <div key={item + index}>
                                         <div className="flex  lg:pl-[21.45px] pb-[49px] flex-col  gap-[30px] lg:gap-0 lg:flex-row  justify-between xl:justify-start">
                                             <div className="lg:mr-[36px]">
-                                                <img className={'object-contain max-w-[375px] w-full h-[272px] bg-lightwhite rounded'} src={`http://localhost:3000/upload/${isImage || item.images[2].img}`} />
+                                                <img className={'object-contain max-w-[375px] w-full h-[272px] bg-lightwhite rounded'} src={`http://localhost:3000/upload/${isImage || item.detailimages[2].img}`} />
                                                 <div className="sm:flex grid grid-cols-2 gap-[15.50px] lg:pt-[150px] pt-[50px] w-full">
                                                     {
-                                                        item.images.map((item, index) => (
+                                                        item.detailimages.map((item, index) => (
                                                             <div className='flex items-center justify-center' key={index}>
 
                                                                 <img onClick={() => setImage(item.img)} className='max-w-[86px] bg-[#f6f6f6] w-full cursor-pointer hover:border-2 hover:border-primary-blue rounded' src={`http://localhost:3000/upload/${item.img}`} alt="Image" />
@@ -332,7 +332,7 @@ const Product = () => {
                                     produtsdata.map((item, index) => (
                                         <Link to={`/product/${item.id}`} key={item + index}>
 
-                                            <Seller data={item} />
+                                            <Seller varient={index === 0 ? true : false} data={item} />
                                         </Link>
                                     ))
                                 }

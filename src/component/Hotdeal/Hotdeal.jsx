@@ -78,13 +78,12 @@ const Hotdeal = () => {
 
 
   const [databar, setdatabar] = useState([]);
-  const [datasidebar, setdatasidebar] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const fetchUsers = async () => {
     try {
       setLoading(true)
-      const response = await fetch(`http://localhost:3000/api/getallhotdeal`);
+      const response = await fetch(`http://localhost:3000/api/getallproduct`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -102,24 +101,7 @@ const Hotdeal = () => {
   }, []);
 
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response = await fetch(`http://localhost:3000/api/getallhotdealside`);
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        setdatasidebar(data.data);
-      } catch (error) {
-        console.error('Error fetching data:', error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchUsers();
-  }, []);
+  
   return (
     <>
       <motion.div
@@ -229,8 +211,8 @@ const Hotdeal = () => {
                       }`}
                   >
                    {
-                    databar.map((item,index)=>(
-<Link to={`/product/${item.id}`} key={index+item+Date.now}> <Seller data={item} /></Link>
+                    databar.slice(0,9).map((item,index)=>(
+<Link to={`/product/${item.id}`} key={index+item+Date.now}> <Seller varient={true} data={item} /></Link>
                      
                     ))
                    }
@@ -240,31 +222,26 @@ const Hotdeal = () => {
                   <div
                     className={`${isnike ? "block" : "hidden"} flex flex-col`}
                   >
-                    {datasidebar.map((item, index) => (
+                    {databar.slice(0,4).map((item, index) => (
                       <div
-                        className={`max-w-[870px]  w-full border-sidegray relative pt-[30px] pb-[26px] flex  ${index <= 2 ? "border-b-2 " : "border-none"
+                        className={`  w-full border-sidegray relative pt-[30px] pb-[26px] flex  ${index <= 2 ? "border-b-2 " : "border-none"
                           }`}
                         key={index+item}
                       >
                         <Link>
-                          <div className="flex gap-[14px] flex-col lg:flex-row justify-center items-center lg:justify-start lg:items-start">
-                            {
-                              <>
-                                {" "}
+                          <div className="flex gap-[14px]  flex-col lg:flex-row justify-center items-center lg:justify-start lg:items-start">
+                           
                                 <Link to={`/product/${item.id}`}>
                                   <img
-                                    src={`http://localhost:3000/upload/${item.images}`}
-                                    className="w-[299px] h-[272px]"
+                                    src={`http://localhost:3000/upload/${item.headimgage}`}
+                                    className="w-[299px] h-[272px] bg-[#F6F6F6] rounded"
                                     alt="image"
                                   />
-                                  {item.hotdeal && (
                                     <span className="font-proxima  absolute  top-[32px] z-50  bg-primary-red rounded text-white font-normal text-[18px] w-[64px] h-[33px] flex justify-center items-center">
                                       {item.hotdeal}
                                     </span>
-                                  )}
                                 </Link>
-                              </>
-                            }
+                             
 
                             <div className="flex flex-col justify-center items-center lg:justify-start lg:items-start">
                               <h1 className="font-poppins font-medium text-2xl text-primary-dark">
@@ -295,11 +272,7 @@ const Hotdeal = () => {
                                 </h4>
                               </div>
                               <h4 className="font-poppins mb-[28.25px] font-medium text-sm text-primary max-w-[652px] w-full">
-                                Nunc facilisis sagittis ullamcorper. Proin
-                                lectus ipsum, gravida et mattis vulputate,
-                                tristique ut lectus. Sed et lectus lorem nunc
-                                leifend laorevtr istique et congue. Vivamus
-                                adipiscin vulputate g nisl ut dolor ...
+                                {item.bestsellerp}
                               </h4>
                               <Link to={"/cart"}>
                                 <div className="flex items-center gap-4">
