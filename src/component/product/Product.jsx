@@ -32,6 +32,8 @@ const Product = () => {
     const [isImage, setImage] = useState("");
     const [itemsdata, setitemsdata] = useState([]);
     const [xldata, setxldata] = useState("XS");
+    const product =  id
+    const token =  localStorage.getItem('token').slice(0,30);
 
 
 
@@ -80,7 +82,7 @@ const Product = () => {
             console.error("Error fetching data:", error.message);
         }
     };
-
+ // post cart data
 const addToCart = async (userId, productId, quantity) => {
   try {
     const response = await fetch("http://localhost:3000/api/addToCart", {
@@ -96,22 +98,23 @@ const addToCart = async (userId, productId, quantity) => {
     });
 
     const data = await response.json();
-
     if (!response.ok) {
       throw new Error(data.message || "Failed to add to cart");
     }
 
+    alert("Item added to cart!");
     return data;
   } catch (error) {
     console.error("Error adding to cart:", error.message);
+    alert("Failed to add item to cart.");
     return { success: false, error: error.message };
   }
 };
+ 
     useEffect(() => {
         fetchUsers()
         fetchitems();
     }, []);
-
     return (
         <>
 
@@ -247,7 +250,7 @@ const addToCart = async (userId, productId, quantity) => {
 {/* //////////////////////////////////////////////////////////////////////// */}
 
                                                 <div className="flex gap-[17px] max-w-[225px] w-full">
-                                                    <button onClick={()=>addToCart("18c777c4-7c80-4d63-a24d-928995fe408d", id, count)} className="flex items-center gap-2 bg-lightskyblue  max-w-[159px] w-full pt-[14px] pb-[16px] h-[48px] justify-center rounded">
+                                                    <button onClick={()=>addToCart(token, product, count)} className="flex items-center gap-2 bg-lightskyblue  max-w-[159px] w-full pt-[14px] pb-[16px] h-[48px] justify-center rounded">
                                                         <img src={cart} className="w-[15.95px] h-[16px]" alt="image" />
                                                         <h4 className='font-poppins font-medium text-sm text-primary-blue'>Add To Cart</h4>
                                                     </button>
