@@ -1,4 +1,3 @@
-import React from 'react'
 import Swiperdata from './Swiper'
 import { Link } from 'react-router-dom'
 
@@ -20,11 +19,13 @@ const Saller = () => {
 
             {/* Load More Button */}
             <div className="flex justify-center">
-              <Link to={"/error"} ><button
+              <Link to={"/error"} >
+              <button
                 className="cursor-pointer h-[33px]  text-primary-blue font-poppins font-[500] text-lg sm:text-xl border-b-[3px] border-primary-blue"
               >
                 LOAD MORE
-              </button></Link>
+              </button>
+              </Link>
               
             </div>
           </div>

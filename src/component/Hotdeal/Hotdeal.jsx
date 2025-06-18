@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Sneacker from "../Card/Sneacker";
 import sallerjson from "../../json/saller.json";
 import iconninedot from "../../../public/svg/iconninedot.svg";
@@ -7,14 +7,11 @@ import iconninedotcolor from "../../../public/svg/ninedotswithoutcolor.svg";
 import threelinemenu from "../../../public/svg/threelinemenu.svg";
 import threelinemenuncolor from "../../../public/svg/threelinemenuwithcolor.svg";
 import Seller from "../Card/Seller";
-import hotdeljson from "../../json/saller.json";
 import cart from "../../../public/svg/cartblue.svg";
 import wishlist from "../../../public/svg/wishlistblue.svg";
-import rating from "../../../public/svg/rate.svg";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Sidebar from "./Sidebar";
-import { useParams } from 'react-router-dom';
 
 const Hotdeal = () => {
 
@@ -101,7 +98,7 @@ const Hotdeal = () => {
   }, []);
 
 
-  
+
   return (
     <>
       <motion.div
@@ -133,9 +130,6 @@ const Hotdeal = () => {
                     <img className={`${popup ? "rotate-90" : "-rotate-90"}  transition-all duration-200 w-[15px] h-[15px]`} src={arrow} alt="" />
                   </div>
                 </div>
-
-
-
 
                 <div className="">
                   <div className="mb-[23px]">
@@ -210,38 +204,36 @@ const Hotdeal = () => {
                     className={`grid grid-cols-1 w-[] sm:grid-cols-2 lg:grid-cols-3  mt-[27px]  md:grid-cols-2 xl:grid-cols-3 gap-[33px] place-items-center ${nike ? "block " : "hidden"
                       }`}
                   >
-                   {
-                    databar.slice(0,9).map((item,index)=>(
-<Link to={`/product/${item.id}`} key={index+item+Date.now}> <Seller varient={true} data={item} /></Link>
-                     
-                    ))
-                   }
+                    {
+                      databar.slice(0, 9)?.map((item, index) => (
+                        <Link to={`/product/${item.id}`} key={index + item + Date.now}> <Seller varient={true} data={item} /></Link>
 
-                     
+                      ))
+                    }
                   </Link>
                   <div
                     className={`${isnike ? "block" : "hidden"} flex flex-col`}
                   >
-                    {databar.slice(0,4).map((item, index) => (
+                    {databar.slice(0, 4).map((item, index) => (
                       <div
                         className={`  w-full border-sidegray relative pt-[30px] pb-[26px] flex  ${index <= 2 ? "border-b-2 " : "border-none"
                           }`}
-                        key={index+item}
+                        key={index + item}
                       >
                         <Link>
                           <div className="flex gap-[14px]  flex-col lg:flex-row justify-center items-center lg:justify-start lg:items-start">
-                           
-                                <Link to={`/product/${item.id}`}>
-                                  <img
-                                    src={`http://localhost:3000/upload/${item.headimgage}`}
-                                    className="w-[299px] h-[272px] bg-[#F6F6F6] rounded"
-                                    alt="image"
-                                  />
-                                    <span className="font-proxima  absolute  top-[32px] z-50  bg-primary-red rounded text-white font-normal text-[18px] w-[64px] h-[33px] flex justify-center items-center">
-                                      {item.hotdeal}
-                                    </span>
-                                </Link>
-                             
+
+                            <Link to={`/product/${item.id}`}>
+                              <img
+                                src={`http://localhost:3000/upload/${item.headimgage}`}
+                                className="w-[299px] h-[272px] bg-[#F6F6F6] rounded"
+                                alt="image"
+                              />
+                              <span className="font-proxima  absolute  top-[32px] z-50  bg-primary-red rounded text-white font-normal text-[18px] w-[64px] h-[33px] flex justify-center items-center">
+                                {item.hotdeal}
+                              </span>
+                            </Link>
+
 
                             <div className="flex flex-col justify-center items-center lg:justify-start lg:items-start">
                               <h1 className="font-poppins font-medium text-2xl text-primary-dark">
@@ -262,7 +254,7 @@ const Hotdeal = () => {
                               </div>
                               <div className="flex pt-[10px] pb-5 items-center gap-[9px]">
                                 <h4 className="font-poppins font-bold text-xl tracking-[0.5px] text-primary-blue leading-[180%]">
-                                 {item.originalPrice}
+                                  {item.originalPrice}
                                 </h4>
                                 <h4 className="font-poppins font-medium text-sm tracking-[0.5px] text-natural-gray leading-[150%] line-through">
                                   {item.price}

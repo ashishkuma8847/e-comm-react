@@ -40,7 +40,6 @@ const Contect = () => {
         perspective: 1200,}}
     >
       <section>
-        <main>
           {/* Breadcrumb */}
           <div className="flex justify-center items-center bg-sidegray py-4 gap-2 text-base md:text-lg mb-[135px]">
             <h1 className="text-primary-blue">Home</h1>
@@ -85,7 +84,6 @@ const Contect = () => {
               Search
             </button>
           </div>
-        </main>
       </section>
     </motion.div>
   );

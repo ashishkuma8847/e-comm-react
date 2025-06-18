@@ -3,11 +3,10 @@
  * @description This component displays a single product card for sellers, including product image, rating, prices, and action buttons (wishlist/cart).
  */
 
-import wishlist from "../../../public/svg/wishlist.svg"
-import cart from "../../../public/svg/cartblue.svg"
+import wishlist from "/svg/wishlist.svg"
+import cart from "/svg/cartblue.svg"
 import { Link } from "react-router-dom"
-const Seller = ({ data,varient }) => {
-  console.log(data,"--------------------")
+const Seller = ({ data,varient}) => {
   return (
     <>
       <div className='flex justify-center items-center w-[301px]' >

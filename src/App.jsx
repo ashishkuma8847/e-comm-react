@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
+import { BrowserRouter as Router, Route, Routes, useLocation, BrowserRouter } from 'react-router-dom';
 import ScrollToTop from './component/Common/ScrollToTop';
 import Home from './pages/Home';
 import Bags from './pages/Bags';
@@ -13,46 +11,39 @@ import Footer from './component/Common/Footer';
 import './App.css'
 import Product from './component/product/Product';
 import Cart from './component/cart/Cart';
-import Skeleton from 'react-loading-skeleton';
+import Login from './component/loginpage/Login';
+import Signup from './component/loginpage/signup';
 
-
-const AnimatedRoutes = () => {
-  const location = useLocation();
-
-  return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-
-        <Route path='/' element={<Home />} />
-        <Route path='/Bags' element={<Bags />} />
-        <Route path='/Sneakers' element={<Sneakers />} />
-        <Route path='/Belt' element={<Belt />} />
-        <Route path='/Contect' element={<Contect />} />
-        <Route path='/Hotdeal' element={<Hotdeal />} />
-        <Route path='/product/:id' element={<Product />} />
-        <Route path='/cart' element={<Cart />} />
-      </Routes>
-    </AnimatePresence>
-  );  
-};
-
-const App = () => {
 
 
 
+const App = () => {
   return (
     <>
-      
+     <Router>
+      <Routes>
+        <Route path="/Signup" element={<Signup />} />
+        <Route path="/Login" element={<Login />} />
+      </Routes>
+    </Router>
+    
+    
+      <BrowserRouter>
+        <ScrollToTop />
         
-      
-        <Router>
-          <ScrollToTop />
-          <Header />
-          <AnimatedRoutes />
-          <Footer />
-        </Router>
-      
-
+        <Header />
+      <Routes location={location} key={location.pathname}>
+      <Route path='/' element={<Home />} />
+      <Route path='/Bags' element={<Bags />} />
+      <Route path='/Sneakers' element={<Sneakers />} />
+      <Route path='/Belt' element={<Belt />} />
+      <Route path='/Contect' element={<Contect />} />
+      <Route path='/Hotdeal' element={<Hotdeal />} />
+      <Route path='/product/:id' element={<Product />} />
+      <Route path='/cart' element={<Cart />} />
+    </Routes>
+        <Footer />
+      </BrowserRouter>
     </>
   );
 };
