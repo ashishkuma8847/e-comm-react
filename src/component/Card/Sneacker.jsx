@@ -1,5 +1,4 @@
-import React from "react";
-import sneackerimage from "../../../public/images/sneacker.png";
+import sneackerimage from "/images/sneacker.png";
 const Sneacker = ({width,container,height,imgclass,headingstyle,pstyle,buttonstyle,spanstyle,section,relative}) => {
   return (
     <>

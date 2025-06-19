@@ -99,14 +99,15 @@ const addToCart = async (userId, productId, quantity) => {
 
     const data = await response.json();
     if (!response.ok) {
-      throw new Error(data.message || "Failed to add to cart");
+      throw new Error(data.message );
     }
-
+  localStorage.setItem("core",data.message)
     alert("Item added to cart!");
     return data;
   } catch (error) {
     console.error("Error adding to cart:", error.message);
-    alert("Failed to add item to cart.");
+    const core  = localStorage.getItem("core")
+    alert(core);
     return { success: false, error: error.message };
   }
 };

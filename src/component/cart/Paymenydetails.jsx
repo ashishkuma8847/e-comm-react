@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Input from '../ui/Input'
 import cartjson from "../../json/Cart.json"
 const Paymenydetails = ({valuefirst}) => {

@@ -1,11 +1,11 @@
 import React from "react";
 import footerjson from "../../json/Footer.json";
-import Westernunion from "../../../public/svg/Western-union.svg";
-import card2 from "../../../public/svg/card2.svg";
-import Paypal from "../../../public/svg/Paypal.svg";
-import backgroundvisa from "../../../public/svg/visabackground.svg";
-import visaname from "../../../public/svg/visaname.svg";
-import visasidebar from "../../../public/svg/visasidebar.svg";
+import Westernunion from "/svg/Western-union.svg";
+import card2 from "/svg/card2.svg";
+import Paypal from "/svg/Paypal.svg";
+import backgroundvisa from "/svg/visabackground.svg";
+import visaname from "/svg/visaname.svg";
+import visasidebar from "/svg/visasidebar.svg";
 
 const Footer = () => {
   return (

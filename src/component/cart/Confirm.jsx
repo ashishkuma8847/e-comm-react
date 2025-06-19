@@ -1,5 +1,4 @@
-import React from 'react'
-import successicon from "../../../public/svg/SuccessIcon.svg"
+import successicon from "/svg/SuccessIcon.svg"
 
 const Confirm = ({data}) => {
   return (
