@@ -17,6 +17,7 @@ import { Link, useParams } from 'react-router-dom'
 import Seller from '../../component/Card/Seller'
 import CustomButton from '../ui/CustomButton'
 import { Facebook, Twitter } from 'lucide-react'
+import axios from 'axios'
 
 const Product = () => {
 
@@ -33,7 +34,7 @@ const Product = () => {
     const [itemsdata, setitemsdata] = useState([]);
     const [xldata, setxldata] = useState("XS");
     const product =  id
-    const token =  localStorage.getItem('token').slice(0,30);
+    const token =  localStorage.getItem('id')
 
 
 
@@ -85,33 +86,19 @@ const Product = () => {
  // post cart data
 const addToCart = async (userId, productId, quantity) => {
   try {
-    const response = await fetch("http://localhost:3000/api/addToCart", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        userId,
-        productId,
-        quantity,
-      }),
+    const response = await axios.post("http://localhost:3000/api/addToCart", {
+      userId,
+      productId,
+      quantity,
     });
-
-    const data = await response.json();
-    if (!response.ok) {
-      throw new Error(data.message );
-    }
-  localStorage.setItem("core",data.message)
-    alert("Item added to cart!");
-    return data;
+ 
+    console.log("Item added to cart:", response.data);
   } catch (error) {
-    console.error("Error adding to cart:", error.message);
-    const core  = localStorage.getItem("core")
-    alert(core);
-    return { success: false, error: error.message };
+    console.error("Error adding to cart:", error.response?.data || error.message);
   }
 };
- 
+  
+
     useEffect(() => {
         fetchUsers()
         fetchitems();

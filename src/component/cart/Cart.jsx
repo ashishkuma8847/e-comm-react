@@ -4,12 +4,31 @@ import plus from "/svg/plus.svg";
 import minus from "/svg/minus.svg";
 import cartjson from "../../json/Cart.json";
 import Popupcart from "../Card/Popupcart";
+import { useEffect } from "react";
+import axios from "axios";
 
 const Cart = () => {
   const [count, setcount] = useState(1);
   const [iscount, setiscount] = useState(1);
   const [isCheck, setCheck] = useState(false);
- 
+  const [addcart, setaddcart] = useState([]);
+  const userid =  localStorage.getItem('id')
+  useEffect(() => {
+    const fetchCart = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/api/getcart/${userid}`);
+        setaddcart(response.data.cartItems);
+        console.log(response,"=============================================")
+      } catch (error) {
+        console.error("Error fetching cart items:", error);
+      } 
+    };
+
+    if (userid) {
+      fetchCart();
+    }
+  }, [userid]);
+console.log(addcart,"-----------------")
   return (
     <>
 
@@ -25,6 +44,9 @@ const Cart = () => {
           <div className="container">
             <div className="flex flex-col">
               <div className="flex flex-col">
+
+
+
                 <div className="w-full hidden  pb-[23px] border-b-2 border-sidegray mb-[40px] pl-[50.46px] lg:flex justify-between items-center font-poppins font-[500] text-xl">
                   <h4>PRODUCT</h4>
                   <div className="flex items-center max-w-[488px] w-full justify-between">
@@ -34,26 +56,30 @@ const Cart = () => {
                   </div>
                 </div>
                 <div className="flex flex-col gap-[111.35px] pb-[62.2px]">
-                  {cartjson.data.map((item, index) => (
+                  {addcart.map((item, index) => (
                     <div key={index + item + Date.now()}>
                       <div className="flex  flex-row  items-center justify-between">
+
+
+
                         <div className="flex lg:flex-row flex-col  lg:gap-0 gap-[10px]  lg:items-center max-w-[435.47px] w-full justify-start lg:justify-between">
                           <img className="w-[24px] h-[24px]" src={cross} alt="del" />
                           <div className="flex md:flex-row flex-col  items-start md:items-center gap-[28.7px]">
                             <img
                               className="w-[138px] h-[94px]"
-                              src={item.img}
+                              src={`http://localhost:3000/upload/${item.Product.headimgage}`}
                               alt="redshoue"
                             />
+                           
                             <h4 className="font-poppins text-[13px] sm:text-[18px] text-primary">
-                              Nike Airmax 270 react
+                             {item.Product.name}
                             </h4>
                           </div>
                         </div>
                         <div className="font-poppins sm:flex-row sm:gap-0 gap-2 flex-col text-[13px] sm:text-[18px] text-primary flex items-center max-w-[488px] w-full justify-between">
-                          {index === 0 ? (
-                            <>
-                              <h4>${count * 499}</h4>
+                         
+                            
+                              <h4>{item.Product.originalPrice}</h4>
                               <div className="flex w-[125px]  bg-sidegray h-[49px] justify-between items-center rounded border-2 border-sidegray">
                                 <div
                                   onClick={() =>
@@ -75,43 +101,19 @@ const Cart = () => {
                                   <img src={plus} alt="plus" />
                                 </div>
                               </div>
-                            </>
-                          ) : (
-                            <>
-                              <h4>${iscount * 499}</h4>
-                              <div className="flex w-[125px]  bg-sidegray h-[49px] justify-between items-center rounded border-2 border-sidegray">
-                                <div
-                                  onClick={() =>
-                                    setiscount(
-                                      iscount == 1 ? iscount : iscount - 1
-                                    )
-                                  }
-                                  className="w-[27.2px] cursor-pointer h-full flex justify-end items-center"
-                                >
-                                  <img src={minus} alt="minus" />
-                                </div>
-
-                                <h4>{iscount}</h4>
-                                <div
-                                  onClick={() =>
-                                    setiscount(
-                                      iscount >= 10 ? iscount : iscount + 1
-                                    )
-                                  }
-                                  className="w-[27.2px] cursor-pointer h-full flex justify-start items-center"
-                                >
-                                  <img src={plus} alt="plus" />
-                                </div>
-                              </div>
-                            </>
-                          )}
-                          <h4 className="sm:w-[113px]">$499</h4>
+                           
+                          <h4 className="sm:w-[113px]">{item.Product.originalPrice}</h4>
                         </div>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
+
+
+
+
+
               <div className="flex md:justify-between md:items-start pb-[156.47px] flex-col gap-[20px] md:gap-0 justify-center items-center md:flex-row">
                 <div className="flex  ">
                   <input

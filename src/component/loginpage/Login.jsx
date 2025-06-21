@@ -32,7 +32,7 @@ const Login = () => {
 
       if (res.ok) {
         // If login is successful, store token in localStorage
-        localStorage.setItem('token', data.token);
+        localStorage.setItem('id', data.data);
 
         // Show success message
         setMessage('Login successful!');
