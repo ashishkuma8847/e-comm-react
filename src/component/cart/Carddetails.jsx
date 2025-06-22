@@ -1,6 +1,7 @@
 import  { useState } from 'react'
 import card from "/svg/visacardcart.svg"
 import Input from '../ui/Input'
+import CustomButton from '../ui/CustomButton';
 
 const Carddetails = ({ valuesec }) => {
   const [click, setclick] = useState(false);
@@ -53,7 +54,7 @@ const Carddetails = ({ valuesec }) => {
           </div>
         </div>
       </div>
-      <button onClick={valuesec} className={` max-w-[338px] w-full flex justify-center m-auto font-Nunito font-[800] text-2xl tracking-[-2%] items-center bg-skyblue  rounded text-white cursor-pointer h-[70px]`}>Confirm</button>
+      <CustomButton      onClick={valuesec} >Confirm</CustomButton>
     </>)
   )
 }

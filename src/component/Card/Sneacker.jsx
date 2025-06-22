@@ -1,3 +1,4 @@
+import CustomButton from "../ui/CustomButton";
 import sneackerimage from "/images/sneacker.png";
 const Sneacker = ({width,container,height,imgclass,headingstyle,pstyle,buttonstyle,spanstyle,section,relative}) => {
   return (
@@ -13,9 +14,10 @@ const Sneacker = ({width,container,height,imgclass,headingstyle,pstyle,buttonsty
                 <p className={`${pstyle} font-poppins  `}>
                   Performance and design. Taken right to the edge.
                 </p>
-                <button className={ `${buttonstyle} font-poppins `}>
+                <div className="w-[130px]">
+                <CustomButton size="md" variant="default">
                   SHOP NOW
-                </button>
+                </CustomButton></div>
                 <span className={`${spanstyle} bg-white `}></span>
               </div>
               <img
