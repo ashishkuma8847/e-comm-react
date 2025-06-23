@@ -15,15 +15,15 @@ const Shipping = () => {
               >
                 <div className="flex flex-col justify-center items-center gap-8">
                   <img
-                    className="w-[80px] md:w-[100.76px] h-auto"
+                    className="w-[60px] xl:w-[100.76px] h-[77px]"
                     src={item.img}
                     alt="shippingimg"
                   />
-                  <h4 className="font-poppins text-primary-dark font-medium text-[20px] md:text-[27px] text-center">
+                  <h4 className="font-poppins text-primary-dark font-medium text-[15px] xl:text-[20px] md:text-[20px] text-center">
                     {item.tittle}
                   </h4>
                 </div>
-                <p className="font-proxima text-center text-base md:text-[18px] text-primary-dark">
+                <p className="font-proxima text-center text-base md:text-[12px] xl:text-[18px] text-primary-dark">
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry.
                 </p>

@@ -38,7 +38,12 @@ const Bannerproducts = () => {
               <div key={index + item + Date.now()} className="relative rounded-[5px] ">
                 <h1 className='absolute text-natural-blue font-poppins font-bold text-xl leading-[150%] tracking-[0.5px] top-[29px] left-[52px] max-w-[202px] w-full'>{item.name}</h1>
                 <div className="">
-                  <img src={`http://localhost:3000/upload/${item.images}`} alt="product" />
+                  {
+                    index == 1 ? (<>
+                    <img className='w-[400px]' src={`http://localhost:3000/upload/${item.images}`} alt="product" />
+                    </>):<img src={`http://localhost:3000/upload/${item.images}`} alt="product" />
+                  }
+                  
                 </div>
                 <div className="absolute flex bottom-14 left-[52px] gap-2 items-center">
                   <h4 className='font-poppins font-normal text-lg leading-[150%] tracking-[0.5px] line-through text-natural-gray'>{item.price}</h4>

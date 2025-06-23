@@ -9,7 +9,7 @@ import { Link } from "react-router-dom"
 const Seller = ({ data,varient}) => {
   return (
     <>
-      <div className='flex justify-center items-center w-[301px]' >
+      <div className='flex justify-center items-center w-[301px]  ' >
         <div className={` border-2 relative  border-lightwhite rounded w-[100%] max-w-[299.5px] flex flex-col justify-center items-center`}>
           {/* Deal Badge */}
 

@@ -12,7 +12,6 @@ const Cart = () => {
   const [addcart, setaddcart] = useState([]);
   const userid = localStorage.getItem("id");
 
-
   // get cart data 
   useEffect(() => {
     const fetchCart = async () => {
@@ -42,10 +41,11 @@ const Cart = () => {
      
       setaddcart((item) =>
         item.map((item) =>
-          item.productId === productId  ? { ...item, quantity: newQuantity } : item
+          item.productId === productId  ? { ...item, quantity: newQuantity  } : item
             
         )
       );
+
       console.log( response.data);
     } catch (error) {
       console.error(
@@ -97,9 +97,10 @@ const removeCartItem = async (userId, productId) => {
                   </div>
                 </div>
                 <div className="flex flex-col gap-[111.35px] pb-[62.2px]">
-                  {addcart.map((item, index) => {
+                  { 
+                  addcart.map((item, index) => {
                     const quantity = item.quantity;
-                    const productId = item.productId || item.Product.id;
+                    const productId = item.productId 
 
                     const handleIncrease = () => {
                       if (quantity < 10) {
@@ -124,9 +125,10 @@ const removeCartItem = async (userId, productId) => {
                                 src={cross}
                                 alt="del"
                               />
-                              <div className="flex md:flex-row flex-col  items-start md:items-center gap-[28.7px]">
+                              <div className="flex md:flex-row flex-col  items-s
+                              tart md:items-center gap-[28.7px]">
                                 <img
-                                  className="w-[138px] h-[94px]"
+                                  className="w-[110px] h-[94px] bg-[#F6F6F6]"
                                   src={`http://localhost:3000/upload/${item.Product.headimgage}`}
                                   alt="redshoue"
                                 />

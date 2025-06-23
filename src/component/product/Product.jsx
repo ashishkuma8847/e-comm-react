@@ -35,7 +35,6 @@ const Product = () => {
     const [xldata, setxldata] = useState("XS");
     const product =  id
     const token =  localStorage.getItem('id')
- localStorage.setItem("count",count)
 
 
     // size data
@@ -238,8 +237,8 @@ const addToCart = async (userId, productId, quantity) => {
 {/* //////////////////////////////////////////////////////////////////////// */}
 
                                                 <div className="flex gap-[17px] max-w-[225px] w-full">
-                                                    <Link to={"/cart"}>
-                                                    <button onClick={()=>addToCart(token, product, count)} className="flex items-center gap-2 bg-lightskyblue  max-w-[159px] w-full pt-[14px] pb-[16px] h-[48px] justify-center rounded">
+                                                    <Link className='flex items-center gap-2 bg-lightskyblue  max-w-[159px] w-full pt-[14px] pb-[16px] h-[48px] justify-center rounded' to={"/cart"}>
+                                                    <button onClick={()=>addToCart(token, product, count)} className='flex gap-2'>
                                                         <img src={cart} className="w-[15.95px] h-[16px]" alt="image" />
                                                         <h4 className='font-poppins font-medium text-sm text-primary-blue'>Add To Cart</h4>
                                                     </button>

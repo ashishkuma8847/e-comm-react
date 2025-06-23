@@ -172,7 +172,7 @@ const Header = () => {
                 <span className={`${Click1 ? "border-transparent" : "border-black"} w-8 border-2 transition-all duration-75 h-1`} ></span>
                 <p className={`${Click1 ? "rotate-45 absolute  z-50" : "rotate-0 absolute  z-0"} transition-all border-black  w-8 border-2 h-1 duration-500`}></p>
               </button>
-              <div className="hidden  lg:w-[815.49px] sm:w-[515px] sm:text-xl xl:flex  lg:flex relative justify-between items-center font-poppins font-medium lg:text-2xl  text-primary">
+              <div className="hidden  lg:w-[815.49px] sm:w-[515px] sm:text-xl xl:flex  lg:flex relative md:gap-[70px] xl:gap-0 justify-end xl:justify-between items-center font-poppins font-medium lg:text-2xl  text-primary">
                 {
                   Headerjson.path.map((item, index) => (
                     <div className='' key={Date.now() + item + index}>

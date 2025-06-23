@@ -54,7 +54,7 @@ const Swiperdata = () => {
       </div>
 
       {/* Product Grid or Skeletons */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-[34.5px] place-items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-4 gap-[34.5px] place-items-center">
         {produtsdata && produtsdata && produtsdata.length > 0 && produtsdata?.slice(0,8).map((item, index) => (
           <Link key={Date.now() + "productsdata" + index} to={`/product/${item?.id}`}>
             <Seller varient={index === 0 ? true : false} data={item} />
