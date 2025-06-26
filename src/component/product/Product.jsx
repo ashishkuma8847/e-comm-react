@@ -91,7 +91,6 @@ const addToCart = async (userId, productId, quantity) => {
       quantity,
     });
  
-    console.log("Item added to cart:", response.data);
   } catch (error) {
     console.error("Error adding to cart:", error.response?.data || error.message);
   }

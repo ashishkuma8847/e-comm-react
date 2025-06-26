@@ -11,7 +11,11 @@ const Cart = () => {
   const [isCheck, setCheck] = useState(false);
   const [addcart, setaddcart] = useState([]);
   const userid = localStorage.getItem("id");
-
+ const totalPrice = addcart.reduce(
+  (acc, item) => acc + item.Product.originalPrice * item.quantity,
+  0
+);
+ console.log(totalPrice)
   // get cart data 
   useEffect(() => {
     const fetchCart = async () => {
@@ -139,7 +143,7 @@ const removeCartItem = async (userId, productId) => {
                               </div>
                             </div>
                             <div className="font-poppins sm:flex-row sm:gap-0 gap-2 flex-col text-[13px] sm:text-[18px] text-primary flex items-center max-w-[488px] w-full justify-between">
-                              <h4>{item.Product.originalPrice}</h4>
+                              <h4>$ {item.Product.originalPrice  }</h4>
 
                               <div className="flex w-[125px]  bg-sidegray h-[49px] justify-between items-center rounded border-2 border-sidegray">
                                 <div
@@ -159,7 +163,7 @@ const removeCartItem = async (userId, productId) => {
                               </div>
 
                               <h4 className="sm:w-[113px]">
-                                {item.Product.originalPrice}
+                                ${item.Product.originalPrice * item.quantity}
                               </h4>
                             </div>
                           </div>
@@ -202,7 +206,7 @@ const removeCartItem = async (userId, productId) => {
                             </>
                           ) : (
                             <>
-                              {/* <h4>${(count + iscount) * item.value}</h4> */}
+                              <h4>${totalPrice}</h4>
                             </>
                           )}
                         </div>
@@ -211,7 +215,7 @@ const removeCartItem = async (userId, productId) => {
                   </div>
                   <div className="flex pb-[24px] justify-between font-poppins font-[500] text-primary-dark text-[30px]">
                     <h4>TOTAL</h4>
-                    {/* <h4>${(count + iscount) * 499 + 20}</h4> */}
+                    <h4>${totalPrice+ 20}</h4>
                   </div>
                   <div
                     onClick={() => setCheck(true)}
