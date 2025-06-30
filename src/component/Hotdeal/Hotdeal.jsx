@@ -254,10 +254,10 @@ const Hotdeal = () => {
                               </div>
                               <div className="flex pt-[10px] pb-5 items-center gap-[9px]">
                                 <h4 className="font-poppins font-bold text-xl tracking-[0.5px] text-primary-blue leading-[180%]">
-                                  {item.originalPrice}
+                                  ${item.originalPrice}
                                 </h4>
                                 <h4 className="font-poppins font-medium text-sm tracking-[0.5px] text-natural-gray leading-[150%] line-through">
-                                  {item.price}
+                                  ${item.price}
                                 </h4>
                                 <h4 className="font-poppins font-bold text-sm tracking-[0.5px] text-primary-red leading-[150%]">
                                   {item.discountPercent}

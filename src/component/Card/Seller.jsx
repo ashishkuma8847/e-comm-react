@@ -51,12 +51,12 @@ const Seller = ({ data,varient}) => {
 
             <div className="flex items-center gap-[13.14px]">
               <h4 className="font-poppins font-bold text-[18px] leading-[180%] text-primary-blue">
-                {data?.originalPrice}
+                ${data?.originalPrice}
               </h4>
 
               <div className="flex justify-between items-center w-[122px]">
                 <h4 className="font-poppins font-normal text-[14px] leading-[150%] tracking-[0.5px] line-through text-natural-gray">
-                  {data?.price}
+                  ${data?.price}
                 </h4>
                 <h4 className="font-poppins font-bold text-[14px] leading-[150%] text-primary-red">
                   {data?.discountPercent}

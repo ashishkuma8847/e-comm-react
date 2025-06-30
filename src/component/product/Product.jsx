@@ -33,7 +33,7 @@ const Product = () => {
     const [isImage, setImage] = useState("");
     const [itemsdata, setitemsdata] = useState([]);
     const [xldata, setxldata] = useState("XS");
-    const product =  id
+    const product =  id 
     const token =  localStorage.getItem('id')
 
 
@@ -90,9 +90,11 @@ const addToCart = async (userId, productId, quantity) => {
       productId,
       quantity,
     });
- 
+   
+    console.log("Cart response:", response.data);
   } catch (error) {
     console.error("Error adding to cart:", error.response?.data || error.message);
+
   }
 };
   
@@ -236,12 +238,12 @@ const addToCart = async (userId, productId, quantity) => {
 {/* //////////////////////////////////////////////////////////////////////// */}
 
                                                 <div className="flex gap-[17px] max-w-[225px] w-full">
-                                                    <Link className='flex items-center gap-2 bg-lightskyblue  max-w-[159px] w-full pt-[14px] pb-[16px] h-[48px] justify-center rounded' to={"/cart"}>
-                                                    <button onClick={()=>addToCart(token, product, count)} className='flex gap-2'>
+                                                    {/* <Link className='flex items-center gap-2 bg-lightskyblue  max-w-[159px] w-full pt-[14px] pb-[16px] h-[48px] justify-center rounded' to={"/cart"}> */}
+                                                    <button onClick={async ()=> await addToCart(token, product, count)} className='flex gap-2'>
                                                         <img src={cart} className="w-[15.95px] h-[16px]" alt="image" />
                                                         <h4 className='font-poppins font-medium text-sm text-primary-blue'>Add To Cart</h4>
                                                     </button>
-                                                    </Link>
+                                                    {/* </Link> */}
                                                     <div className="flex bg-lightskyblue h-[48px] w-[48px] justify-center items-center   rounded">
                                                         <img src={wishlist} alt="image" />
                                                     </div>

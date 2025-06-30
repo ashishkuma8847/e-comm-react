@@ -36,6 +36,7 @@ const Cart = () => {
 
   //update quantity
   const updateCartItem = async (userId, productId, newQuantity) => {
+    console.log(userId,"-----------", productId,"---------", newQuantity)
     try {
       const response = await axios.put("http://localhost:3000/api/cartupdate", {
         userId,
@@ -90,6 +91,11 @@ const removeCartItem = async (userId, productId) => {
             <h4 className=" text-primary"> Nike Airmax 270 React</h4>
           </div>
           <div className="container">
+            {
+              addcart.length === 0 ? (<>
+              <h4 className="py-[180px] flex justify-center text-[100px] font-medium">CART NOT FOUND</h4>
+              </>):(<>
+              
             <div className="flex flex-col">
               <div className="flex flex-col">
                 <div className="w-full hidden  pb-[23px] border-b-2 border-sidegray mb-[40px] pl-[50.46px] lg:flex justify-between items-center font-poppins font-[500] text-xl">
@@ -244,6 +250,8 @@ const removeCartItem = async (userId, productId) => {
                 </div>
               </div>
             </div>
+              </>)
+            }
           </div>
         </main>
       </section>
