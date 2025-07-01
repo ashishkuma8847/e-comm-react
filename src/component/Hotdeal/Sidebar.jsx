@@ -1,8 +1,8 @@
-import React, { Fragment, useState } from 'react'
+import  { Fragment, useState } from 'react'
 import deals from "../../json/Hotdeal.json";
 import { Link } from 'react-router-dom';
 
-const Sidebar = ({data}) => {
+const Sidebar = () => {
       const [color, setcolor] = useState(false);
       const [price, setPrice] = useState(13.99);
       const [isborder, setIsborder] = useState(false);

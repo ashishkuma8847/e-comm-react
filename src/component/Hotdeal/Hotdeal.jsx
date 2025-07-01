@@ -10,7 +10,6 @@ import Seller from "../Card/Seller";
 import cart from "../../../public/svg/cartblue.svg";
 import wishlist from "../../../public/svg/wishlistblue.svg";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import Sidebar from "./Sidebar";
 
 const Hotdeal = () => {
@@ -30,31 +29,7 @@ const Hotdeal = () => {
     setisnike(true);
     setnike(false);
   };
-  const verticalFlip = {
-    initial: {
-      rotateX: 180,
-      opacity: 0,
-      transformOrigin: "bottom",
-    },
-    animate: {
-      rotateX: 0,
-      opacity: 1,
-      transformOrigin: "bottom",
-      transition: {
-        duration: 0.8,
-        ease: "easeInOut",
-      },
-    },
-    exit: {
-      rotateX: -180,
-      opacity: 0,
-      transformOrigin: "bottom",
-      transition: {
-        duration: 0.8,
-        ease: "easeInOut",
-      },
-    },
-  };
+ 
   const data = [
     {
       value: "1",
@@ -101,16 +76,7 @@ const Hotdeal = () => {
 
   return (
     <>
-      <motion.div
-        variants={verticalFlip}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        style={{
-          transformStyle: "preserve-3d",
-          perspective: 1200,
-        }}
-      >
+    
         <section className="mb-[155px]">
           <main>
             <div className=" flex justify-center items-center bg-sidegray py-[14.5px] gap-2 font-normal text-[18px] mb-[51.53px] ">
@@ -309,7 +275,6 @@ const Hotdeal = () => {
             </div>
           </main>
         </section>
-      </motion.div>
     </>
   );
 };

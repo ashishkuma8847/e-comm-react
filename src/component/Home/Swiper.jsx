@@ -10,10 +10,7 @@ const Swiperdata = () => {
 
   const categories = ["All", ...new Set(data.saller.map((item) => item.category))];
 
-  const filteredProducts =
-    selectedCategory === "All"
-      ? data.saller
-      : data.saller.filter((item) => item.category === selectedCategory);
+
 
   const fetchUsers = async () => {
     try {

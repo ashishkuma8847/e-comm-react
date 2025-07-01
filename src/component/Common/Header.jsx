@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import {  useState } from 'react'
 import arrowdown from "../../../public/svg/arrowdown.svg"
 import profile from "../../../public/svg/profile.svg"
 import cart from "../../../public/svg/cart.svg"
@@ -6,7 +6,6 @@ import search from "../../../public/svg/search.svg"
 import icon from "../../../public/svg/icon.svg"
 import Headerjson from "../../json/Header.json"
 import { Link, NavLink } from 'react-router-dom'
-import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import Popup from './Popup'
 
@@ -39,19 +38,13 @@ const Dropdown = ({ name, items, activeDropdown, setActiveDropdown }) => {
 
 const Header = () => {
 
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-      setLoading(false);
-  }, []);
   const [activeDropdown, setActiveDropdown] = useState(null)
   const [Click1, setClick1] = useState(false)
 
 
   return (
-    loading ? ""
-
-      : <>
+    <>
         <section className={`  ${Click1 ? " hidden" : "block"} transition-all  duration-200 border-b-[2px] border-lightgray`}>
 
           <div className="container">

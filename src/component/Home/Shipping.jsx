@@ -1,4 +1,3 @@
-import React from "react";
 import data from "../../json/Shipping.json";
 
 const Shipping = () => {

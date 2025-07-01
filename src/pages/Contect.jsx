@@ -1,44 +1,11 @@
-import { motion } from "framer-motion";
 import caracterimg from "../../public/images/call.png"
 import Input from '../component/ui/Input';
 
-const verticalFlip = {
-  initial: {
-    rotateX: 180,
-    opacity: 0,
-    transformOrigin: "bottom",
-  },
-  animate: {
-    rotateX: 0,
-    opacity: 1,
-    transformOrigin: "bottom",
-    transition: {
-      duration: 0.8,
-      ease: "easeInOut",
-    },
-  },
-  exit: {
-    rotateX: -180,
-    opacity: 0,
-    transformOrigin: "bottom",
-    transition: {
-      duration: 0.8,
-      ease: "easeInOut",
-    },
-  },
-};
+
 
 const Contect = () => {
   return (
-    <motion.div
-     variants={verticalFlip}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      style={{
-        transformStyle: "preserve-3d",
-        perspective: 1200,}}
-    >
+  
       <section>
           {/* Breadcrumb */}
           <div className="flex justify-center items-center bg-sidegray py-4 gap-2 text-base md:text-lg mb-[135px]">
@@ -85,7 +52,6 @@ const Contect = () => {
             </button>
           </div>
       </section>
-    </motion.div>
   );
 };
 

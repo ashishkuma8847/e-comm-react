@@ -4,7 +4,7 @@ import cross from "/svg/bluecross.svg";
 import Paymenydetails from "../cart/Paymenydetails";
 import Carddetails from "../cart/Carddetails";
 import Confirm from "../cart/Confirm";
-const Popupcart = ({ data, varient }) => {
+const Popupcart = ({ data }) => {
   const [button, setbutton] = useState(0)
 
   return (

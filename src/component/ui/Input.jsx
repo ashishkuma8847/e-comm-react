@@ -1,4 +1,3 @@
-import React from 'react'
 
 const Input = ({ classname, type, placeholder, varient, labelclass, forlabel, labelvalue, inputid }) => {
   return (

@@ -13,10 +13,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
 import "./Product.css"
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import Seller from '../../component/Card/Seller'
-import CustomButton from '../ui/CustomButton'
-import { Facebook, Twitter } from 'lucide-react'
 import axios from 'axios'
 
 const Product = () => {
@@ -35,6 +33,8 @@ const Product = () => {
     const [xldata, setxldata] = useState("XS");
     const product =  id 
     const token =  localStorage.getItem('id')
+    const navigate = useNavigate();
+     const [loading, setLoading] = useState(false); 
 
 
     // size data
@@ -82,6 +82,7 @@ const Product = () => {
             console.error("Error fetching data:", error.message);
         }
     };
+    console.log(itemsdata,"-----------------------------")
  // post cart data
 const addToCart = async (userId, productId, quantity) => {
   try {
@@ -90,14 +91,27 @@ const addToCart = async (userId, productId, quantity) => {
       productId,
       quantity,
     });
-   
+
     console.log("Cart response:", response.data);
+    return true; 
   } catch (error) {
     console.error("Error adding to cart:", error.response?.data || error.message);
-
+    return false;
   }
 };
-  
+
+  const handleAddToCart = async () => {
+    setLoading(true)
+    const success = await addToCart(token, product, count);
+        
+        setLoading(false)
+    if (success) {
+      navigate("/cart");
+    } else {
+      alert("Failed to add to cart");
+    }
+  };
+
 
     useEffect(() => {
         fetchUsers()
@@ -116,7 +130,7 @@ const addToCart = async (userId, productId, quantity) => {
                     <h4 className=" text-primary"> Nike Airmax 270 React</h4>
                 </div>
                 <div className="container">
-                    {itemsdata.length === 0 ? (<>
+                    {loading ? (<><h4> please wait ....</h4></>): itemsdata.length === 0 ? (<>
                         <div className=' flex justify-center items-center py-[100px] pb-[100px] text-[100px] font-poppins font-medium text-primary-dark' >
                             <h4>PRODUCT NOT FOUND</h4>
                         </div>
@@ -238,13 +252,13 @@ const addToCart = async (userId, productId, quantity) => {
 {/* //////////////////////////////////////////////////////////////////////// */}
 
                                                 <div className="flex gap-[17px] max-w-[225px] w-full">
-                                                    {/* <Link className='flex items-center gap-2 bg-lightskyblue  max-w-[159px] w-full pt-[14px] pb-[16px] h-[48px] justify-center rounded' to={"/cart"}> */}
-                                                    <button onClick={async ()=> await addToCart(token, product, count)} className='flex gap-2'>
+                                                    {/* <Link onClick={async ()=> await addToCart(token, product, count)} className='' to={"/cart"}> */}
+                                                    <button onClick={()=>handleAddToCart()}  className=' flex items-center gap-2 cursor-pointer bg-lightskyblue  max-w-[159px] w-full pt-[14px] pb-[16px] h-[48px] justify-center rounded'>
                                                         <img src={cart} className="w-[15.95px] h-[16px]" alt="image" />
                                                         <h4 className='font-poppins font-medium text-sm text-primary-blue'>Add To Cart</h4>
                                                     </button>
                                                     {/* </Link> */}
-                                                    <div className="flex bg-lightskyblue h-[48px] w-[48px] justify-center items-center   rounded">
+                                                    <div className="flex cursor-pointer bg-lightskyblue h-[48px] w-[48px] justify-center items-center   rounded">
                                                         <img src={wishlist} alt="image" />
                                                     </div>
                                                 </div>

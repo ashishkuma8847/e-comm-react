@@ -1,7 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import bag from "../../../public/Images/blackpurspreview.png"
-import shoe from "../../../public/Images/yellowproduct.png"
-import redshoe from "../../../public/Images/Productred.png"
+import  { useEffect, useState } from 'react'
 
 const Bannerproducts = () => {
   const [users, setUsers] = useState([]);

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes, useLocation, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter , Route, Routes, useParams } from 'react-router-dom';
 import ScrollToTop from './component/Common/ScrollToTop';
 import Home from './pages/Home';
 import Bags from './pages/Bags';
@@ -18,31 +18,36 @@ import Signup from './component/loginpage/signup';
 
 
 const App = () => {
+  const isAuthPage = location.pathname === "/Login" || location.pathname === "/Signup";
   return (
     <>
-     <Router>
-      <Routes>
-        <Route path="/Signup" element={<Signup />} />
-        <Route path="/Login" element={<Login />} />
-      </Routes>
-    </Router>
-    
-    
+
       <BrowserRouter>
         <ScrollToTop />
+        {
+          isAuthPage ?  
+          
+          <Routes>
+            <Route path="/Signup" element={<Signup />} />
+            <Route path="/Login" element={<Login />} />
+          </Routes>
+           :
+          
+          (<><Header />
+        <Routes location={location} key={location.pathname}>
+          <Route path='/' element={<Home />} />
+          <Route path='/Bags' element={<Bags />} />
+          <Route path='/Sneakers' element={<Sneakers />} />
+          <Route path='/Belt' element={<Belt />} />
+          <Route path='/Contect' element={<Contect />} />
+          <Route path='/Hotdeal' element={<Hotdeal />} />
+          <Route path='/product/:id' element={<Product />} />
+          <Route path='/cart' element={<Cart />} />
+        </Routes>
+        <Footer /></>)
+        }
+          
         
-        <Header />
-      <Routes location={location} key={location.pathname}>
-      <Route path='/' element={<Home />} />
-      <Route path='/Bags' element={<Bags />} />
-      <Route path='/Sneakers' element={<Sneakers />} />
-      <Route path='/Belt' element={<Belt />} />
-      <Route path='/Contect' element={<Contect />} />
-      <Route path='/Hotdeal' element={<Hotdeal />} />
-      <Route path='/product/:id' element={<Product />} />
-      <Route path='/cart' element={<Cart />} />
-    </Routes>
-        <Footer />
       </BrowserRouter>
     </>
   );

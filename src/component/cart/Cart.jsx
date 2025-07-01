@@ -11,6 +11,8 @@ const Cart = () => {
   const [isCheck, setCheck] = useState(false);
   const [addcart, setaddcart] = useState([]);
   const userid = localStorage.getItem("id");
+  
+  // for all price add in single value
  const totalPrice = addcart.reduce(
   (acc, item) => acc + item.Product.originalPrice * item.quantity,
   0
@@ -36,7 +38,6 @@ const Cart = () => {
 
   //update quantity
   const updateCartItem = async (userId, productId, newQuantity) => {
-    console.log(userId,"-----------", productId,"---------", newQuantity)
     try {
       const response = await axios.put("http://localhost:3000/api/cartupdate", {
         userId,
@@ -130,8 +131,8 @@ const removeCartItem = async (userId, productId) => {
                         <div key={index + item + Date.now()}>
                           <div className="flex  flex-row  items-center justify-between">
                             <div className="flex lg:flex-row flex-col  lg:gap-0 gap-[10px]  lg:items-center max-w-[435.47px] w-full justify-start lg:justify-between">
-                              <img onClick={()=>removeCartItem(userid, item.productId)}
-                                className="w-[24px] h-[24px]"
+                              <img  onClick={()=>removeCartItem(userid, item.productId)}
+                                className="w-[24px] h-[24px] cursor-pointer"
                                 src={cross}
                                 alt="del"
                               />
@@ -187,7 +188,7 @@ const removeCartItem = async (userId, productId) => {
                     type="text"
                     placeholder="Voucher code"
                   />
-                  <button className="max-w-[127px] w-full p-[18px_21px_14px_21px] font-poppins h-[60px] font-[500] text-[18px] text-white bg-primary-blue rounded-r-[3px]">
+                  <button className="max-w-[127px] cursor-pointer w-full p-[18px_21px_14px_21px] font-poppins h-[60px] font-[500] text-[18px] text-white bg-primary-blue rounded-r-[3px]">
                     Redeem
                   </button>
                 </div>
