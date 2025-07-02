@@ -54,7 +54,7 @@ const Carddetails = ({ valuesec }) => {
           </div>
         </div>
       </div>
-      <CustomButton      onClick={valuesec} >Confirm</CustomButton>
+      <button      onClick={valuesec} className={` max-w-[338px] w-full flex justify-center m-auto font-Nunito font-[800] text-2xl tracking-[-2%] items-center bg-skyblue  rounded text-white cursor-pointer h-[70px]`} >Confirm</button>
     </>)
   )
 }

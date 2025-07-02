@@ -10,14 +10,13 @@ import axios from "axios";
 const Cart = () => {
   const [isCheck, setCheck] = useState(false);
   const [addcart, setaddcart] = useState([]);
-  const userid = localStorage.getItem("id");
   
+  const userid = localStorage.getItem("id");
   // for all price add in single value
  const totalPrice = addcart.reduce(
   (acc, item) => acc + item.Product.originalPrice * item.quantity,
   0
 );
- console.log(totalPrice)
   // get cart data 
   useEffect(() => {
     const fetchCart = async () => {
@@ -25,8 +24,8 @@ const Cart = () => {
         const response = await axios.get(
           `http://localhost:3000/api/getcart/${userid}`
         );
+
         setaddcart(response.data.cartItems);
-        console.log(response, "=============================================");
       } catch (error) {
         console.error("Error fetching cart items:", error);
       }
@@ -52,7 +51,6 @@ const Cart = () => {
         )
       );
 
-      console.log( response.data);
     } catch (error) {
       console.error(
         "Error updating cart item:",
@@ -67,8 +65,9 @@ const removeCartItem = async (userId, productId) => {
       data: { userId, productId } 
     });
 
-    console.log( response.data);
-
+if(response.ok){
+   window.location.reload()
+}
     setaddcart((item) =>
       item.filter((item) =>
         !(item.productId === productId )
@@ -84,6 +83,7 @@ const removeCartItem = async (userId, productId) => {
     <>
       <section>
         <main>
+          
           <div className=" flex justify-center items-center bg-sidegray py-[14.5px] gap-2 font-normal sm:text-[18px] text-[15px] mb-[42.28px] ">
             <h1 className="text-primary-blue ">Home</h1>
             <h4 className=" text-lightgray-white"> /</h4>
@@ -94,7 +94,7 @@ const removeCartItem = async (userId, productId) => {
           <div className="container">
             {
               addcart.length === 0 ? (<>
-              <h4 className="py-[180px] flex justify-center text-[100px] font-medium">CART NOT FOUND</h4>
+              <h4 className="py-[180px] flex justify-center text-[100px] font-medium">Please Add Cart</h4>
               </>):(<>
               
             <div className="flex flex-col">

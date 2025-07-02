@@ -31,10 +31,10 @@ const Product = () => {
     const [isImage, setImage] = useState("");
     const [itemsdata, setitemsdata] = useState([]);
     const [xldata, setxldata] = useState("XS");
-    const product =  id 
-    const token =  localStorage.getItem('id')
+    const product = id
+    const token = localStorage.getItem('id')
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-     const [loading, setLoading] = useState(false); 
 
 
     // size data
@@ -56,6 +56,7 @@ const Product = () => {
         }
     ]
     // related produts api
+
     const fetchUsers = async () => {
         try {
             const response = await fetch(`http://localhost:3000/api/getallproduct`);
@@ -63,7 +64,7 @@ const Product = () => {
                 throw new Error("Network response was not ok");
             }
             const data = await response.json();
-            setProdutsdata(data.data.slice(0, 4));
+            setProdutsdata(data.data);
         } catch (error) {
             console.error("Error fetching data:", error.message);
         }
@@ -77,46 +78,55 @@ const Product = () => {
                 throw new Error("Network response was not ok");
             }
             const data = await response.json();
+            console.log(data)
             setitemsdata([data.data])
         } catch (error) {
             console.error("Error fetching data:", error.message);
         }
     };
-    console.log(itemsdata,"-----------------------------")
- // post cart data
-const addToCart = async (userId, productId, quantity) => {
-  try {
-    const response = await axios.post("http://localhost:3000/api/addToCart", {
-      userId,
-      productId,
-      quantity,
-    });
+    // post cart data
+    const addToCart = async (userId, productId, quantity) => {
+        try {
+            const response = await axios.post("http://localhost:3000/api/addToCart", {
+                userId,
+                productId,
+                quantity,
+            });
 
-    console.log("Cart response:", response.data);
-    return true; 
-  } catch (error) {
-    console.error("Error adding to cart:", error.response?.data || error.message);
-    return false;
-  }
-};
+            console.log("Cart response:", response.data);
+            return true;
+        } catch (error) {
+            console.error("Error adding to cart:", error.response?.data || error.message);
+            return false;
+        }
+    };
 
-  const handleAddToCart = async () => {
-    setLoading(true)
-    const success = await addToCart(token, product, count);
-        
+    const handleAddToCart = async () => {
+        setLoading(true)
+        const success = await addToCart(token, product, count);
+
         setLoading(false)
-    if (success) {
-      navigate("/cart");
-    } else {
-      alert("Failed to add to cart");
-    }
-  };
+        if (success) {
+            navigate("/cart");
+             window.location.reload()
+        } else {
+            alert("Failed to add to cart");
+        }
+    };
 
 
     useEffect(() => {
-        fetchUsers()
-        fetchitems();
-    }, []);
+        const fetchSequential = async () => {
+            setLoading(true)
+            await fetchUsers(); 
+            setLoading(false)
+            if (id) {
+                await fetchitems(); 
+            }
+        };
+
+        fetchSequential();
+    }, [id]);
     return (
         <>
 
@@ -130,7 +140,7 @@ const addToCart = async (userId, productId, quantity) => {
                     <h4 className=" text-primary"> Nike Airmax 270 React</h4>
                 </div>
                 <div className="container">
-                    {loading ? (<><h4> please wait ....</h4></>): itemsdata.length === 0 ? (<>
+                    {loading ? (<><h4 className='flex justify-center items-center py-[100px] pb-[100px] text-[100px] font-poppins font-medium text-primary-dark' > please wait ....</h4></>) : itemsdata.length === 0 ? (<>
                         <div className=' flex justify-center items-center py-[100px] pb-[100px] text-[100px] font-poppins font-medium text-primary-dark' >
                             <h4>PRODUCT NOT FOUND</h4>
                         </div>
@@ -249,11 +259,11 @@ const addToCart = async (userId, productId, quantity) => {
 
 
 
-{/* //////////////////////////////////////////////////////////////////////// */}
+                                                {/* //////////////////////////////////////////////////////////////////////// */}
 
                                                 <div className="flex gap-[17px] max-w-[225px] w-full">
                                                     {/* <Link onClick={async ()=> await addToCart(token, product, count)} className='' to={"/cart"}> */}
-                                                    <button onClick={()=>handleAddToCart()}  className=' flex items-center gap-2 cursor-pointer bg-lightskyblue  max-w-[159px] w-full pt-[14px] pb-[16px] h-[48px] justify-center rounded'>
+                                                    <button onClick={() => handleAddToCart()} className=' flex items-center gap-2 cursor-pointer bg-lightskyblue  max-w-[159px] w-full pt-[14px] pb-[16px] h-[48px] justify-center rounded'>
                                                         <img src={cart} className="w-[15.95px] h-[16px]" alt="image" />
                                                         <h4 className='font-poppins font-medium text-sm text-primary-blue'>Add To Cart</h4>
                                                     </button>
@@ -380,7 +390,7 @@ const addToCart = async (userId, productId, quantity) => {
                         <h4 className='font-poppins font-[600] sm:text-[35px] text-[28px] text-primary-dark'>RELATED PRODUCTS</h4>
                         <div className="xl:flex grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-y-[30px] grid-rows-2 w-full justify-between">
                             {
-                                produtsdata.length > 0 && produtsdata?.map((item, index) => (
+                                produtsdata.length > 0 && produtsdata?.slice(0, 4).map((item, index) => (
                                     <Link to={`/product/${item.id}`} key={item + index}>
                                         <Seller
                                             varient={index === 0 ? true : false}
