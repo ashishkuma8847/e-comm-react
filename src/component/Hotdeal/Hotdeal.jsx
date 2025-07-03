@@ -55,7 +55,7 @@ const Hotdeal = () => {
   const fetchUsers = async () => {
     try {
       setLoading(true)
-      const response = await fetch(`http://localhost:3000/api/getallproduct`);
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/getallproduct`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -73,6 +73,7 @@ const Hotdeal = () => {
   }, []);
 
 
+const Baseimgurl= import.meta.env.VITE_BASE_URL_IMG
 
   return (
     <>
@@ -191,7 +192,7 @@ const Hotdeal = () => {
 
                             <Link to={`/product/${item.id}`}>
                               <img
-                                src={`http://localhost:3000/upload/${item.headimgage}`}
+                                src={`${Baseimgurl}/${item.headimgage}`}
                                 className="w-[299px] h-[272px] bg-[#F6F6F6] rounded"
                                 alt="image"
                               />
@@ -208,7 +209,7 @@ const Hotdeal = () => {
                               <div className="flex items-center justify-center lg:justify-start pt-[14px] pb-5 border-b-2 border-sidegray max-w-[470px] w-full gap-[15px]">
                                 <img
                                   className="max-w-[72px] w-full"
-                                  src={`http://localhost:3000/upload/${item.raiting}`}
+                                  src={`${Baseimgurl}/${item.raiting}`}
                                   alt="image"
                                 />
                                 <h4 className="font-proxima font-normal text-sm text-lightgray-white">

@@ -1,4 +1,4 @@
-import {  useEffect, useState } from 'react'
+import {  useState } from 'react'
 import arrowdown from "../../../public/svg/arrowdown.svg"
 import profile from "../../../public/svg/profile.svg"
 import cart from "../../../public/svg/cart.svg"
@@ -8,7 +8,7 @@ import Headerjson from "../../json/Header.json"
 import { Link, NavLink } from 'react-router-dom'
 import 'react-loading-skeleton/dist/skeleton.css';
 import Popup from './Popup'
-import axios from 'axios'
+// import { useSelector } from 'react-redux'
 
 const Dropdown = ({ name, items, activeDropdown, setActiveDropdown }) => {
   const down = activeDropdown === name;
@@ -42,11 +42,12 @@ const Header = () => {
 
   const [activeDropdown, setActiveDropdown] = useState(null)
   const [Click1, setClick1] = useState(false)
-
+    // const counter = useSelector((state)=>state.counter.value)
 
 
   return (
     <>
+    {/* <p>value:{counter}</p> */}
         <section className={`  ${Click1 ? " hidden" : "block"} transition-all  duration-200 border-b-[2px] border-lightgray`}>
 
           <div className="container">
@@ -74,7 +75,7 @@ const Header = () => {
                   <Link to={"/cart"}>
                     <img src={cart} className='' alt="cart" />
                   </Link>
-                  <span className='bg-primary-red top-[5px] border-white border-[2px] right-[15px]  absolute flex justify-center items-center text-white font-poppins font-bold text-[10px] tracking-[0.5px] w-[22px] h-[22px]  rounded-full' >{addcart}</span>
+                  <span className='bg-primary-red top-[5px] border-white border-[2px] right-[15px]  absolute flex justify-center items-center text-white font-poppins font-bold text-[10px] tracking-[0.5px] w-[22px] h-[22px]  rounded-full' >{""}</span>
                 </div>
                 <div className="flex justify-between  font-proxima font-[400] text-xl w-[137px] ">
                   <h4 className='w-[53px] text-primary text-end'> Items</h4>

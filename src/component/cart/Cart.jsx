@@ -21,8 +21,7 @@ const Cart = () => {
   useEffect(() => {
     const fetchCart = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:3000/api/getcart/${userid}`
+        const response = await axios.get( `${import.meta.env.VITE_BASE_URL}/getcart/${userid}`
         );
 
         setaddcart(response.data.cartItems);
@@ -38,7 +37,7 @@ const Cart = () => {
   //update quantity
   const updateCartItem = async (userId, productId, newQuantity) => {
     try {
-      const response = await axios.put("http://localhost:3000/api/cartupdate", {
+      const response = await axios.put(`${import.meta.env.VITE_BASE_URL}/cartupdate`, {
         userId,
         productId,
         quantity: newQuantity,
@@ -61,14 +60,10 @@ const Cart = () => {
 // remove data 
 const removeCartItem = async (userId, productId) => {
   try {
-    const response = await axios.delete("http://localhost:3000/api/cartremove", {
+    const response = await axios.delete(`${import.meta.env.VITE_BASE_URL}/cartremove`, {
       data: { userId, productId } 
     });
-
-if(response.ok){
-   window.location.reload()
-}
-    setaddcart((item) =>
+  setaddcart((item) =>
       item.filter((item) =>
         !(item.productId === productId )
       )
@@ -140,7 +135,7 @@ if(response.ok){
                               tart md:items-center gap-[28.7px]">
                                 <img
                                   className="w-[110px] h-[94px] bg-[#F6F6F6]"
-                                  src={`http://localhost:3000/upload/${item.Product.headimgage}`}
+                                  src={`${import.meta.env.VITE_BASE_URL_IMG}/${item.Product.headimgage}`}
                                   alt="redshoue"
                                 />
 

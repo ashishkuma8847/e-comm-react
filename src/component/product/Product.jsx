@@ -16,9 +16,11 @@ import "./Product.css"
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import Seller from '../../component/Card/Seller'
 import axios from 'axios'
+// import { useDispatch, useSelector } from 'react-redux'
+// import { addToCart } from '../../redux/slice/cartSlice'
 
 const Product = () => {
-
+;
     const { id } = useParams();
 
 
@@ -35,31 +37,14 @@ const Product = () => {
     const token = localStorage.getItem('id')
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const Baseimgurl= import.meta.env.VITE_BASE_URL_IMG
 
 
-    // size data
-    const value = [
-        {
-            value: "XS"
-        },
-        {
-            value: "M"
-        },
-        {
-            value: "S"
-        },
-        {
-            value: "XL"
-        },
-        {
-            value: "XXL"
-        }
-    ]
     // related produts api
 
     const fetchUsers = async () => {
         try {
-            const response = await fetch(`http://localhost:3000/api/getallproduct`);
+            const response = await fetch(`${import.meta.env.VITE_BASE_URL}/getallproduct`);
             if (!response.ok) {
                 throw new Error("Network response was not ok");
             }
@@ -73,7 +58,7 @@ const Product = () => {
     //  get product by one
     const fetchitems = async () => {
         try {
-            const response = await fetch(`http://localhost:3000/api/getoneproduct/${id}`);
+            const response = await fetch(`${import.meta.env.VITE_BASE_URL}/getoneproduct/${id}`);
             if (!response.ok) {
                 throw new Error("Network response was not ok");
             }
@@ -87,7 +72,7 @@ const Product = () => {
     // post cart data
     const addToCart = async (userId, productId, quantity) => {
         try {
-            const response = await axios.post("http://localhost:3000/api/addToCart", {
+            const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/addToCart`, {
                 userId,
                 productId,
                 quantity,
@@ -108,11 +93,12 @@ const Product = () => {
         setLoading(false)
         if (success) {
             navigate("/cart");
-             window.location.reload()
         } else {
             alert("Failed to add to cart");
         }
     };
+
+  
 
 
     useEffect(() => {
@@ -127,9 +113,30 @@ const Product = () => {
 
         fetchSequential();
     }, [id]);
+
+    // const counter = useSelector((state)=>state.counter.value)
+
+// const dispatch = useDispatch()
+
+//   const { status, error } = useSelector((state) => state.cart)
+
+//   const handleAddToCart = async () => {
+//     const resultAction = await dispatch(
+//       addToCart({ userId: token, productId: product, quantity: count })
+//     )
+
+//     if (addToCart.fulfilled.match(resultAction)) {
+//       navigate('/cart')
+//     } else {
+//       alert('Failed to add to cart: ' + resultAction.payload)
+//     }
+//   }
+//  const cartItems = useSelector((state) => state.cart)
+//  console.log(cartItems,"=============")
     return (
         <>
-
+        {/* <p>{counter}</p> */}
+        
             <section >
 
                 <div className=" flex justify-center items-center bg-sidegray py-[14.5px] gap-2 font-normal md:text-[18px] text-[15 px] mb-[42.28px] ">
@@ -150,13 +157,13 @@ const Product = () => {
                                 <div key={item + index}>
                                     <div className="flex  lg:pl-[21.45px] pb-[49px] flex-col  gap-[30px] lg:gap-0 lg:flex-row  justify-between xl:justify-start">
                                         <div className="lg:mr-[36px]">
-                                            <img className={'object-contain max-w-[375px] w-full h-[272px] bg-lightwhite rounded'} src={`http://localhost:3000/upload/${isImage || item.detailimages[2].img}`} />
+                                            <img className={'object-contain max-w-[375px] w-full h-[272px] bg-lightwhite rounded'} src={`${Baseimgurl}/${isImage || item.detailimages[2].img}`} />
                                             <div className="sm:flex grid grid-cols-2 gap-[15.50px] lg:pt-[150px] pt-[50px] w-full">
                                                 {
                                                     item.detailimages.map((item, index) => (
                                                         <div className='flex items-center justify-center' key={index}>
 
-                                                            <img onClick={() => setImage(item.img)} className='max-w-[86px] bg-[#f6f6f6] w-full cursor-pointer hover:border-2 hover:border-primary-blue rounded' src={`http://localhost:3000/upload/${item.img}`} alt="Image" />
+                                                            <img onClick={() => setImage(item.img)} className='max-w-[86px] bg-[#f6f6f6] w-full cursor-pointer hover:border-2 hover:border-primary-blue rounded' src={`${Baseimgurl}/${item.img}`} alt="Image" />
                                                         </div>
                                                     ))
                                                 }
@@ -166,7 +173,7 @@ const Product = () => {
                                             <div className="flex flex-col gap-[27px] pb-[22px] mb-[17px] border-b-2 border-sidegray w-full">
                                                 <h1 className=' font-poppins font-[500] text-2xl text-primary-dark'>{item.name}</h1>
                                                 <div className="flex items-center sm:gap-[17px] gap-[10px]">
-                                                    <img className='w-[77px] h-[11px]' src={`http://localhost:3000/upload/${item.raiting}`} alt="rating" />
+                                                    <img className='w-[77px] h-[11px]' src={`${Baseimgurl}/${item.raiting}`} alt="rating" />
                                                     <h4 className=' font-[400] text-[16px] text-lightgray-white'>{item.rewiews} rewiews</h4>
                                                     <h4 className='font-[400] text-[16px] text-skyblue'>Submit a review</h4>
                                                 </div>
@@ -312,7 +319,7 @@ const Product = () => {
                                                         item.bestsellerimg.map((item, index) => (
                                                             <div key={index + item + Date.now()}>
                                                                 <SwiperSlide ><div className="flex  flex-col mb-[30px] justify-center items-center border-2 rounded border-sidegray">
-                                                                    <img className='w-[284px] bg-[#f6f6f6] h-[240px]' src={`http://localhost:3000/upload/${item.img}`} alt="" />
+                                                                    <img className='w-[284px] bg-[#f6f6f6] h-[240px]' src={`${Baseimgurl}/${item.img}`} alt="" />
                                                                     <div className="flex flex-col w-[93px] gap-[12px] justify-center pt-[53px] pb-[34px] items-center  ">
                                                                         <img className='w-[77px] h-[11px] ' src={rating} alt="rating" />
                                                                         <div className="flex gap-[11.42px] items-center justify-center ">

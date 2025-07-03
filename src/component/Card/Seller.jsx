@@ -7,6 +7,7 @@ import wishlist from "/svg/wishlist.svg"
 import cart from "/svg/cartblue.svg"
 import { Link } from "react-router-dom"
 const Seller = ({ data,varient}) => {
+  const baseImgUrl= import.meta.env.VITE_BASE_URL_IMG
   return (
     <>
       <div className='flex justify-center items-center w-[301px]  ' >
@@ -21,7 +22,7 @@ const Seller = ({ data,varient}) => {
           {/* Product Image */}
           <div className="group bg-[#f6f6f6]">
             <img
-              src={`http://localhost:3000/upload/${data?.headimgage}`}
+              src={`${baseImgUrl}/${data?.headimgage}`}
               className="  hover:blur-xs  h-[272.5px] object-cover"
               alt="product"
             />
@@ -44,7 +45,7 @@ const Seller = ({ data,varient}) => {
             </h4>
 
             <img
-              src={`http://localhost:3000/upload/${data?.raiting}`}
+              src={`${baseImgUrl}/${data?.raiting}`}
               className="w-[123.6px] h-[15.14px]"
               alt="rating"
             />

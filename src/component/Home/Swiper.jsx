@@ -4,6 +4,7 @@ import Seller from "../../component/Card/Seller";
 import { Link } from "react-router-dom";
 
 const Swiperdata = () => {
+  console.log(import.meta.env.BASE_URL)
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [produtsdata, setProdutsdata] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -11,10 +12,9 @@ const Swiperdata = () => {
   const categories = ["All", ...new Set(data.saller.map((item) => item.category))];
 
 
-
   const fetchUsers = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/getallproduct");
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/getallproduct`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }

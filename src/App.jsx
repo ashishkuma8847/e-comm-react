@@ -1,4 +1,4 @@
-import { BrowserRouter , Route, Routes, useParams } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom';
 import ScrollToTop from './component/Common/ScrollToTop';
 import Home from './pages/Home';
 import Bags from './pages/Bags';
@@ -21,34 +21,35 @@ const App = () => {
   const isAuthPage = location.pathname === "/Login" || location.pathname === "/Signup";
   return (
     <>
+      <div>
+        <BrowserRouter>
+          <ScrollToTop />
+          {
+            isAuthPage ?
 
-      <BrowserRouter>
-        <ScrollToTop />
-        {
-          isAuthPage ?  
-          
-          <Routes>
-            <Route path="/Signup" element={<Signup />} />
-            <Route path="/Login" element={<Login />} />
-          </Routes>
-           :
-          
-          (<><Header />
-        <Routes location={location} key={location.pathname}>
-          <Route path='/' element={<Home />} />
-          <Route path='/Bags' element={<Bags />} />
-          <Route path='/Sneakers' element={<Sneakers />} />
-          <Route path='/Belt' element={<Belt />} />
-          <Route path='/Contect' element={<Contect />} />
-          <Route path='/Hotdeal' element={<Hotdeal />} />
-          <Route path='/product/:id' element={<Product />} />
-          <Route path='/cart' element={<Cart />} />
-        </Routes>
-        <Footer /></>)
-        }
-          
-        
-      </BrowserRouter>
+              <Routes>
+                <Route path="/Signup" element={<Signup />} />
+                <Route path="/Login" element={<Login />} />
+              </Routes>
+              :
+
+              (<><Header />
+                <Routes location={location} key={location.pathname}>
+                  <Route path='/' element={<Home />} />
+                  <Route path='/Bags' element={<Bags />} />
+                  <Route path='/Sneakers' element={<Sneakers />} />
+                  <Route path='/Belt' element={<Belt />} />
+                  <Route path='/Contect' element={<Contect />} />
+                  <Route path='/Hotdeal' element={<Hotdeal />} />
+                  <Route path='/product/:id' element={<Product />} />
+                  <Route path='/cart' element={<Cart />} />
+                </Routes>
+                <Footer /></>)
+          }
+
+
+        </BrowserRouter>
+      </div>
     </>
   );
 };

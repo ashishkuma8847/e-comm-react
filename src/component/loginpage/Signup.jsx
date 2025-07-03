@@ -13,7 +13,7 @@ const Signup = () => {
     e.preventDefault(); // Prevent default form submit behavior
 
     // Send POST request to signup API
-    const res = await fetch("http://localhost:3000/api/signup", {
+    const res = await fetch(`${import.meta.env.VITE_BASE_URL}/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form), // Convert form data to JSON

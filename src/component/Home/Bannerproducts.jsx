@@ -8,7 +8,7 @@ const Bannerproducts = () => {
     const fetchUsers = async () => {
       try {
         setLoading(true)
-        const response = await fetch('http://localhost:3000/api/getallhomedata');
+        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/getallhomedata`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -24,7 +24,7 @@ const Bannerproducts = () => {
     fetchUsers();
   }, []);
   console.log(users)
-
+const Baseimgurl= import.meta.env.VITE_BASE_URL_IMG
 
   return (
     <>
@@ -37,8 +37,8 @@ const Bannerproducts = () => {
                 <div className="">
                   {
                     index == 1 ? (<>
-                    <img className='w-[400px]' src={`http://localhost:3000/upload/${item.images}`} alt="product" />
-                    </>):<img src={`http://localhost:3000/upload/${item.images}`} alt="product" />
+                    <img className='w-[400px]' src={`${Baseimgurl}/${item.images}`} alt="product" />
+                    </>):<img src={`${Baseimgurl}/${item.images}`} alt="product" />
                   }
                   
                 </div>

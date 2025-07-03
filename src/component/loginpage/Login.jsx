@@ -22,7 +22,7 @@ const Login = () => {
       setMessage('');
 
       // Send login request to backend API
-      const res = await fetch('http://localhost:3000/api/login', {
+      const res = await fetch(`${import.meta.env.VITE_BASE_URL}/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form), // Convert form state to JSON
