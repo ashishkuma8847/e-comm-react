@@ -16,11 +16,11 @@ import "./Product.css"
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import Seller from '../../component/Card/Seller'
 import axios from 'axios'
-// import { useDispatch, useSelector } from 'react-redux'
-// import { addToCart } from '../../redux/slice/cartSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToCart } from '../../redux/slice/cartSlice'
 
 const Product = () => {
-;
+    ;
     const { id } = useParams();
 
 
@@ -37,7 +37,7 @@ const Product = () => {
     const token = localStorage.getItem('id')
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const Baseimgurl= import.meta.env.VITE_BASE_URL_IMG
+    const Baseimgurl = import.meta.env.VITE_BASE_URL_IMG
 
 
     // related produts api
@@ -70,44 +70,44 @@ const Product = () => {
         }
     };
     // post cart data
-    const addToCart = async (userId, productId, quantity) => {
-        try {
-            const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/addToCart`, {
-                userId,
-                productId,
-                quantity,
-            });
+    // const addToCart = async (userId, productId, quantity) => {
+    //     try {
+    //         const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/addToCart`, {
+    //             userId,
+    //             productId,
+    //             quantity,
+    //         });
 
-            console.log("Cart response:", response.data);
-            return true;
-        } catch (error) {
-            console.error("Error adding to cart:", error.response?.data || error.message);
-            return false;
-        }
-    };
+    //         console.log("Cart response:", response.data);
+    //         return true;
+    //     } catch (error) {
+    //         console.error("Error adding to cart:", error.response?.data || error.message);
+    //         return false;
+    //     }
+    // };
 
-    const handleAddToCart = async () => {
-        setLoading(true)
-        const success = await addToCart(token, product, count);
+    // const handleAddToCart = async () => {
+    //     setLoading(true)
+    //     const success = await addToCart(token, product, count);
 
-        setLoading(false)
-        if (success) {
-            navigate("/cart");
-        } else {
-            alert("Failed to add to cart");
-        }
-    };
+    //     setLoading(false)
+    //     if (success) {
+    //         navigate("/cart");
+    //     } else {
+    //         alert("Failed to add to cart");
+    //     }
+    // };
 
-  
+
 
 
     useEffect(() => {
         const fetchSequential = async () => {
             setLoading(true)
-            await fetchUsers(); 
+            await fetchUsers();
             setLoading(false)
             if (id) {
-                await fetchitems(); 
+                await fetchitems();
             }
         };
 
@@ -116,27 +116,23 @@ const Product = () => {
 
     // const counter = useSelector((state)=>state.counter.value)
 
-// const dispatch = useDispatch()
+    const dispatch = useDispatch()
 
-//   const { status, error } = useSelector((state) => state.cart)
 
-//   const handleAddToCart = async () => {
-//     const resultAction = await dispatch(
-//       addToCart({ userId: token, productId: product, quantity: count })
-//     )
+    const handleAddToCart = async () => {
+        const resultAction = await dispatch(
+            addToCart({ userId: token, productId: product, quantity: count })
+        )
 
-//     if (addToCart.fulfilled.match(resultAction)) {
-//       navigate('/cart')
-//     } else {
-//       alert('Failed to add to cart: ' + resultAction.payload)
-//     }
-//   }
-//  const cartItems = useSelector((state) => state.cart)
-//  console.log(cartItems,"=============")
+        if (addToCart.fulfilled.match(resultAction)) {
+            navigate('/cart')
+        } else {
+            alert('Failed to add to cart: ' + resultAction.payload)
+        }
+    }
     return (
         <>
-        {/* <p>{counter}</p> */}
-        
+
             <section >
 
                 <div className=" flex justify-center items-center bg-sidegray py-[14.5px] gap-2 font-normal md:text-[18px] text-[15 px] mb-[42.28px] ">

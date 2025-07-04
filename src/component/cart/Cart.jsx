@@ -6,11 +6,12 @@ import cartjson from "../../json/Cart.json";
 import Popupcart from "../Card/Popupcart";
 import { useEffect } from "react";
 import axios from "axios";
+// import { useDispatch, useSelector } from "react-redux";
+// import { fetchCartItems } from "../../redux/slice/getcartslice";
 
 const Cart = () => {
   const [isCheck, setCheck] = useState(false);
   const [addcart, setaddcart] = useState([]);
-  
   const userid = localStorage.getItem("id");
   // for all price add in single value
  const totalPrice = addcart.reduce(
@@ -18,20 +19,23 @@ const Cart = () => {
   0
 );
   // get cart data 
-  useEffect(() => {
-    const fetchCart = async () => {
-      try {
-        const response = await axios.get( `${import.meta.env.VITE_BASE_URL}/getcart/${userid}`
-        );
+  // useEffect(() => {
+  //   const fetchCart = async () => {
+  //     try {
+  //       const response = await axios.get( `${import.meta.env.VITE_BASE_URL}/getcart/${userid}`
+  //       );
 
-        setaddcart(response.data.cartItems);
-      } catch (error) {
-        console.error("Error fetching cart items:", error);
-      }
-    };
+  //       setaddcart(response.data.cartItems);
+  //     } catch (error) {
+  //       console.error("Error fetching cart items:", error);
+  //     }
+  //   };
 
-      fetchCart();
-  }, []);
+  //     fetchCart();
+  // }, []);
+
+
+
 
 
   //update quantity
@@ -88,7 +92,7 @@ const removeCartItem = async (userId, productId) => {
           </div>
           <div className="container">
             {
-              addcart.length === 0 ? (<>
+              status === 'failed' ? (<>
               <h4 className="py-[180px] flex justify-center text-[100px] font-medium">Please Add Cart</h4>
               </>):(<>
               
@@ -105,6 +109,7 @@ const removeCartItem = async (userId, productId) => {
                 <div className="flex flex-col gap-[111.35px] pb-[62.2px]">
                   { 
                   addcart.map((item, index) => {
+                   
                     const quantity = item.quantity;
                     const productId = item.productId 
 
