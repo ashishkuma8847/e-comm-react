@@ -1,48 +1,93 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-//  Async Thunk for Adding Item to Cart
-export const addToCart = createAsyncThunk( 'cart/addToCart',
-  async ({ userId, productId, quantity }, thunkAPI) => {
-    try {
-      const response = await axios.post(  `${import.meta.env.VITE_BASE_URL}/addToCart`,{ 
-        userId, productId, quantity }
-      )
-      return response.data // success
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.response?.data || error.message) // error
-    }
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
+// ------------------ Async Thunks ------------------
+
+// Add to Cart
+export const addToCart = createAsyncThunk(
+  'cart/addToCart',
+  async ({ userId, productId, quantity }) => {
+    const response = await axios.post(`${BASE_URL}/addToCart`, {
+      userId,
+      productId,
+      quantity,
+    });
+    return response.data;
   }
-)
+);
 
-//  Initial State
-const initialState = {
-  items: [],       // cart ke items
-  status: 'idle',  // loading | succeeded | failed
-  error: null,     // agar error aaye to store karega
-}
+// Get Cart
+export const fetchCart = createAsyncThunk(
+  'cart/fetchCart',
+  async (userId) => {
+    const response = await axios.get(`${BASE_URL}/getcart/${userId}`);
+    return response.data.cartItems;
+  }
+);
 
-//  Slice Creation
+// Update Quantity
+export const updateCartItem = createAsyncThunk(
+  'cart/updateCartItem',
+  async ({ userId, productId, quantity }) => {
+    await axios.put(`${BASE_URL}/cartupdate`, {
+      userId,
+      productId,
+      quantity,
+    });
+    return { productId, quantity };
+  }
+);
+
+// Remove Item
+export const removeCartItem = createAsyncThunk(
+  'cart/removeCartItem',
+  async ({ userId, productId }) => {
+    await axios.delete(`${BASE_URL}/cartremove`, {
+      data: { userId, productId },
+    });
+    return productId;
+  }
+);
+
+// ------------------ Slice ------------------
+
 const cartSlice = createSlice({
-  name: 'addcart',
-  initialState,
-  reducers: {}, // yahan sync reducers hoti hain
+  name: 'cart',
+  initialState: {
+    items: [],
+    status: 'idle',
+    error: null,
+  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(addToCart.pending, (state) => {
-        state.status = 'loading' // API call chalu
+      .addCase(fetchCart.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchCart.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.items = action.payload;
+      })
+      .addCase(fetchCart.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
       })
       .addCase(addToCart.fulfilled, (state, action) => {
-        state.status = 'succeeded' // API call success
-        state.items.push(action.payload.cartItem) // naya item add karo
+        // Optionally refetch or push directly
+        state.items.push(action.payload.addedItem);
       })
-      .addCase(addToCart.rejected, (state, action) => {
-        state.status = 'failed' // API call fail
-        state.error = action.payload // error store karo
+      .addCase(updateCartItem.fulfilled, (state, action) => {
+        const { productId, quantity } = action.payload;
+        const item = state.items.find((item) => item.productId === productId);
+        if (item) item.quantity = quantity;
       })
+      .addCase(removeCartItem.fulfilled, (state, action) => {
+        const productId = action.payload;
+        state.items = state.items.filter((item) => item.productId !== productId);
+      });
   },
-})
+});
 
-//  Export Reducer
-export default cartSlice.reducer
-
+export default cartSlice.reducer;

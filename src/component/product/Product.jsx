@@ -37,6 +37,8 @@ const Product = () => {
     const token = localStorage.getItem('id')
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch()
+
     const Baseimgurl = import.meta.env.VITE_BASE_URL_IMG
 
 
@@ -69,6 +71,19 @@ const Product = () => {
             console.error("Error fetching data:", error.message);
         }
     };
+    
+    useEffect(() => {
+        const fetchSequential = async () => {
+            setLoading(true)
+            await fetchUsers();
+            setLoading(false)
+            if (id) {
+                await fetchitems();
+            }
+        };
+
+        fetchSequential();
+    }, [id]);
     // post cart data
     // const addToCart = async (userId, productId, quantity) => {
     //     try {
@@ -98,38 +113,20 @@ const Product = () => {
     //     }
     // };
 
+// add cart using redux
+    
+  const handleAdd = async () => {
+        const resultAction = await dispatch(addToCart({ userId:token, productId:product, quantity:count }));
 
 
-
-    useEffect(() => {
-        const fetchSequential = async () => {
-            setLoading(true)
-            await fetchUsers();
-            setLoading(false)
-            if (id) {
-                await fetchitems();
-            }
-        };
-
-        fetchSequential();
-    }, [id]);
-
-    // const counter = useSelector((state)=>state.counter.value)
-
-    const dispatch = useDispatch()
+        // if (addToCart.fulfilled.match(resultAction)) {
+        //     navigate('/cart')
+        // } else {
+        //     alert('Failed to add to cart: ' + resultAction.payload)
+        // }
+    };
 
 
-    const handleAddToCart = async () => {
-        const resultAction = await dispatch(
-            addToCart({ userId: token, productId: product, quantity: count })
-        )
-
-        if (addToCart.fulfilled.match(resultAction)) {
-            navigate('/cart')
-        } else {
-            alert('Failed to add to cart: ' + resultAction.payload)
-        }
-    }
     return (
         <>
 
@@ -266,7 +263,7 @@ const Product = () => {
 
                                                 <div className="flex gap-[17px] max-w-[225px] w-full">
                                                     {/* <Link onClick={async ()=> await addToCart(token, product, count)} className='' to={"/cart"}> */}
-                                                    <button onClick={() => handleAddToCart()} className=' flex items-center gap-2 cursor-pointer bg-lightskyblue  max-w-[159px] w-full pt-[14px] pb-[16px] h-[48px] justify-center rounded'>
+                                                    <button onClick={() => handleAdd()} className=' flex items-center gap-2 cursor-pointer bg-lightskyblue  max-w-[159px] w-full pt-[14px] pb-[16px] h-[48px] justify-center rounded'>
                                                         <img src={cart} className="w-[15.95px] h-[16px]" alt="image" />
                                                         <h4 className='font-poppins font-medium text-sm text-primary-blue'>Add To Cart</h4>
                                                     </button>
